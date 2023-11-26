@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Tools;
 
 namespace EFCoreBenchmarks.models;
 
@@ -25,7 +26,7 @@ public partial class StratenregisterContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Data Source=DESKTOP-PK0VPN9;Initial Catalog=Stratenregister;Integrated Security=True; TrustServerCertificate=True;");
+        optionsBuilder.UseSqlServer(Toolkit.GetConnectionString());
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RepoDbBenchmarks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+825f3704c46cf32cc7afd4246529e5b7d3fa1912")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("RepoDbBenchmarks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RepoDbBenchmarks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

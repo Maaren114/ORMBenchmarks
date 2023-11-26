@@ -1,10 +1,15 @@
-﻿namespace EFCoreBenchmarks
+﻿using EFCoreBenchmarks.models;
+
+namespace EFCoreBenchmarks
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var repo = new Repository();
+            repo.MethodeA();
+            IEnumerable<Straat> straten = repo.GetBulk();
+            //repo.BulkAdd(straten);
         }
     }
 }

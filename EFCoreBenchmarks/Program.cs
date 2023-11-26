@@ -6,7 +6,7 @@ namespace EFCoreBenchmarks
     {
         static void Main(string[] args)
         {
-            var repo = new Repository();
+            var repo = new TestRepository();
             repo.MethodeA();
             IEnumerable<Straat> straten = repo.GetBulk();
             //repo.BulkAdd(straten);

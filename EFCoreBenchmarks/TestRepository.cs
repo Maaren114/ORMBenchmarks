@@ -14,10 +14,10 @@ using System.Threading.Tasks;
 
 namespace EFCoreBenchmarks
 {
-    public class Repository
+    public class TestRepository
     {
         private StratenregisterContext _context;
-        public Repository()
+        public TestRepository()
         {
             _context = new StratenregisterContext();
         }

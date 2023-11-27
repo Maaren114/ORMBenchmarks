@@ -28,6 +28,7 @@ namespace Benchmarks
         public Benchmarks()
         {
             _EFCoreRepository = new EFCoreRepository();
+            _zzzProjectRepository = new ZZZProjectsRepository();
             _adressen1 = _EFCoreRepository.GetAdressen("Zottegem");
             _adressen2 = _zzzProjectRepository.GetAdressen("Zottegem");
         }
@@ -36,13 +37,20 @@ namespace Benchmarks
         [Benchmark]
         public void EFBorisDjCreate()
         {
-            _EFCoreRepository.Create1(_adressen1);
+            _EFCoreRepository.EFBorisDjCreate(_adressen1);
         }
 
         [Benchmark]
         public void EFCoreZzzProjectsCreate()
         {
             _zzzProjectRepository.Create1(_adressen2);
+        }
+
+        [IterationCleanup]
+        public void CleanupAfterIteration()
+        {
+
+
         }
     }
 }

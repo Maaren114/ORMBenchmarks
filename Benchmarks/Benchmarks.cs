@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZZZProjectsBenchmarks;
 
 namespace Benchmarks
 {
@@ -14,36 +15,34 @@ namespace Benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [CsvExporter]
-    [MaxIterationCount(10000)]
+    //[MaxIterationCount(10000)]
     //[SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 10, iterationCount: 100, id: "benchmarks")]
     public class Benchmarks
     {
         private static EFCoreRepository _EFCoreRepository;
-        private List<EFCoreBenchmarks.models.Adres> _adressen = new List<EFCoreBenchmarks.models.Adres>();
+        private static ZZZProjectsRepository _zzzProjectRepository;
+
+        private List<EFCoreBenchmarks.models.Adres> _adressen1 = new List<EFCoreBenchmarks.models.Adres>();
+        private List<ZZZProjectsBenchmarks.models.Adres> _adressen2 = new List<ZZZProjectsBenchmarks.models.Adres>();
 
         public Benchmarks()
         {
             _EFCoreRepository = new EFCoreRepository();
-            _adressen = _EFCoreRepository.GetAdressen("Zottegem");
+            _adressen1 = _EFCoreRepository.GetAdressen("Zottegem");
+            _adressen2 = _zzzProjectRepository.GetAdressen("Zottegem");
         }
 
 
         [Benchmark]
-        public void EFCoreCreate1()
+        public void EFBorisDjCreate()
         {
-            _EFCoreRepository.Create1(_adressen);
+            _EFCoreRepository.Create1(_adressen1);
         }
 
         [Benchmark]
-        public void EFCoreCreate2()
+        public void EFCoreZzzProjectsCreate()
         {
-            _EFCoreRepository.Create2(_adressen);
-        }
-
-        [Benchmark]
-        public void EFCoreCreate3()
-        {
-            _EFCoreRepository.Create3(_adressen);
+            _zzzProjectRepository.Create1(_adressen2);
         }
     }
 }

@@ -30,12 +30,13 @@ namespace EFCoreBenchmarks
 
         public void Create2(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
         {
-            _context.BulkInsert(adressen, options => options.BatchSize = 1000);
+
+
         }
 
         public void Create3(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
         {
-            _context.BulkInsert(adressen, options => options.BatchSize = 42);
+
         }
 
 

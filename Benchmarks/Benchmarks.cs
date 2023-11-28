@@ -27,15 +27,15 @@ namespace Benchmarks
     //[SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 10, iterationCount: 100, id: "benchmarks")]
     public class Benchmarks
     {
-        private static EFCoreRepository? _EFCoreRepository;
-        private static ZZZProjectsRepository? _zzzProjectRepository;
-        private static DapperRepository? _dapperRepository;
-        private static LinqToDbRepository? _linqToDbRepository;
-        private static NHibernateRepository? _nhibernateRepository;
-        private static NormNetRepository? _normNetRepository;
-        private static OrmLiteRepository? _ormLiteRepository;
-        private static PetaPocoRepository? _petapocorepository;
-        private static RepoDbRepository? _repoDbRepository;
+        private static EFCoreRepository _EFCoreRepository = null!;
+        private static ZZZProjectsRepository _zzzProjectRepository = null!;
+        private static DapperRepository _dapperRepository = null!;
+        private static LinqToDbRepository _linqToDbRepository = null!;
+        private static NHibernateRepository _nhibernateRepository = null!;
+        private static NormNetRepository _normNetRepository = null!;
+        private static OrmLiteRepository _ormLiteRepository = null!;
+        private static PetaPocoRepository _petapocorepository = null!;
+        private static RepoDbRepository _repoDbRepository = null!;
 
         private List<AdresX> _adressen = new List<AdresX>();
 
@@ -89,7 +89,7 @@ namespace Benchmarks
         [Benchmark]
         public void DapperPlus()
         {
-            _dapperRepository.DapperPlus(_dapperAdressen);
+            _dapperRepository.DapperPlus(_adressen);
         }
         #endregion
 
@@ -97,37 +97,73 @@ namespace Benchmarks
         [Benchmark]
         public void LinqToDbExecute()
         {
-            _linqToDbRepository.CreateExecute(_linqToDbAdressen);
+            _linqToDbRepository.CreateExecute(_adressen);
         }
 
         [Benchmark]
         public void LinqToDbBulkCopy()
         {
-            _linqToDbRepository.CreateBulkCopy(_linqToDbAdressen);
+            _linqToDbRepository.CreateBulkCopy(_adressen);
         }
         #endregion
 
         #region NHibernate
+        [Benchmark]
+        public void NHibernateBatch()
+        {
+            _nhibernateRepository.Batch(_adressen);
+        }
 
+        [Benchmark]
+        public void NHibernateBatchRaw()
+        {
+            _nhibernateRepository.BatchRaw(_adressen);
+        }
         #endregion
 
         #region Norm.NET
-
+        [Benchmark]
+        public void NormNetExecute()
+        {
+            _normNetRepository.CreateExecute(_adressen);
+        }
         #endregion
 
         #region OrmLite
+        [Benchmark]
+        public void OrmLiteBulkInsert()
+        {
+            _ormLiteRepository.BulkInsert(_adressen);
+        }
 
+        [Benchmark]
+        public void OrmLiteBulkInsertRaw()
+        {
+            _ormLiteRepository.BulkInsertRaw(_adressen);
+        }
         #endregion
 
         #region PetaPoco
-
+        [Benchmark]
+        public void PetaPocoExecute()
+        {
+            _petapocorepository.PetaPocoExecute(_adressen);
+        }
         #endregion
 
         #region RepoDB
+        [Benchmark]
+        public void RepoDbInsertAll()
+        {
+            _repoDbRepository.InsertAll(_adressen);
+        }
 
+        [Benchmark]
+        public void RepoDbBulkInsert()
+        {
+            _repoDbRepository.InsertAll(_adressen);
+        }
         #endregion
-
-
 
         [IterationCleanup]
         public void CleanupAfterIteration()
@@ -136,6 +172,8 @@ namespace Benchmarks
         }
     }
 }
+
+
 
 
 

@@ -4,18 +4,18 @@ BenchmarkDotNet v0.13.10, Windows 10 (10.0.19045.3693/22H2/2022Update)
 Intel Core i7-8700 CPU 3.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
 .NET SDK 8.0.100-preview.7.23376.3
   [Host]     : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
-  Job-TGBMRU : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+  Job-QYLAGE : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
 
 InvocationCount=1  MaxIterationCount=100  UnrollFactor=1  
 
 ```
-| Method                  | Mean      | Error    | StdDev    | Median    | Rank | Gen0      | Gen1      | Allocated   |
-|------------------------ |----------:|---------:|----------:|----------:|-----:|----------:|----------:|------------:|
-| LinqToDbBulkCopy        |  38.32 ms | 4.172 ms | 11.903 ms |  34.49 ms |    1 |         - |         - |   380.77 KB |
-| EFCoreZzzProjectsCreate |  48.30 ms | 0.958 ms |  1.652 ms |  48.08 ms |    2 |         - |         - |  1491.23 KB |
-| DapperPlus              |  49.58 ms | 4.180 ms | 11.513 ms |  47.18 ms |    2 |         - |         - |  3114.96 KB |
-| EFBorisDjCreate         |  71.23 ms | 3.721 ms | 10.555 ms |  65.71 ms |    3 | 2000.0000 | 1000.0000 | 14377.82 KB |
-| DapperExecute           | 169.47 ms | 3.370 ms |  8.140 ms | 168.50 ms |    4 |         - |         - |  8161.88 KB |
-| LinqToDbExecute         | 179.62 ms | 3.472 ms |  3.999 ms | 180.22 ms |    5 |         - |         - |  12553.4 KB |
-| EFCoreExecuteSql        | 183.76 ms | 2.362 ms |  1.844 ms | 183.47 ms |    6 |         - |         - | 13214.45 KB |
-| EFCoreExecuteSqlRaw     | 188.03 ms | 3.758 ms |  6.483 ms | 186.19 ms |    6 |         - |         - | 13213.98 KB |
+| Method                  | Mean      | Error    | StdDev   | Median    | Rank | Gen0      | Gen1      | Allocated   |
+|------------------------ |----------:|---------:|---------:|----------:|-----:|----------:|----------:|------------:|
+| LinqToDbBulkCopy        |  26.76 ms | 1.408 ms | 3.948 ms |  24.82 ms |    1 |         - |         - |    381.1 KB |
+| DapperPlus              |  44.39 ms | 1.776 ms | 4.891 ms |  42.03 ms |    2 |         - |         - |   4661.3 KB |
+| EFCoreZzzProjectsCreate |  46.66 ms | 3.075 ms | 8.521 ms |  41.51 ms |    2 |         - |         - |  1372.45 KB |
+| EFBorisDjCreate         |  69.01 ms | 2.961 ms | 8.304 ms |  64.17 ms |    3 | 2000.0000 | 1000.0000 | 14538.98 KB |
+| EFCoreExecuteSql        | 180.80 ms | 2.057 ms | 1.606 ms | 180.91 ms |    4 |         - |         - |  5008.41 KB |
+| DapperExecute           | 182.44 ms | 3.627 ms | 8.689 ms | 179.25 ms |    4 |         - |         - |  5003.18 KB |
+| LinqToDbExecute         | 185.68 ms | 3.671 ms | 5.266 ms | 184.10 ms |    5 |         - |         - |  4996.88 KB |
+| EFCoreExecuteSqlRaw     | 189.13 ms | 3.716 ms | 6.209 ms | 187.85 ms |    5 |         - |         - |  5005.57 KB |

@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var repo = new Repository();
+            var adressen = repo.GetAdressen("Zottegem");
+            repo.BulkInsert(adressen);
         }
     }
 }

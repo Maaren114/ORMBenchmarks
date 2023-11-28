@@ -4,7 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var repo = new NormNetRepository();
+
+            var adressen = repo.GetAdressen("Zottegem");
+
+            repo.CreateExecute(adressen);
         }
     }
 }

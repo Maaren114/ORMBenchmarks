@@ -4,8 +4,11 @@
     {
         static void Main(string[] args)
         {
-            var repo = new Repository();
+            var repo = new OrmLiteRepository();
+            
             var adressen = repo.GetAdressen("Zottegem");
+
+            //repo.BulkInsert(adressen);
             repo.BulkInsertRaw(adressen);
         }
     }

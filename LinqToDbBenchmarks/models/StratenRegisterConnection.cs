@@ -17,10 +17,10 @@ namespace LinqToDbBenchmarks.models
         
         }
 
-        public ITable<Provincie> Provincies => this.GetTable<Provincie>();
-        public ITable<Gemeente> Gemeentes => this.GetTable<Gemeente>();
-        public ITable<Straat> Straten => this.GetTable<Straat>();
-        public ITable<Adres> Adressen => this.GetTable<Adres>();
+        public ITable<ProvincieX> Provincies => this.GetTable<ProvincieX>();
+        public ITable<GemeenteX> Gemeentes => this.GetTable<GemeenteX>();
+        public ITable<StraatX> Straten => this.GetTable<StraatX>();
+        public ITable<AdresX> Adressen => this.GetTable<AdresX>();
     }
 }
 

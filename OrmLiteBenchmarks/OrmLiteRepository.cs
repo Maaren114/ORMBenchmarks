@@ -10,25 +10,25 @@ using System.Text.Json;
 
 namespace OrmLiteBenchmarks
 {
-    public class Repository
+    public class OrmLiteRepository
     {
         private OrmLiteConnectionFactory _factory;
 
-        public Repository()
+        public OrmLiteRepository()
         {
             _factory = new OrmLiteConnectionFactory(Toolkit.GetConnectionString(), SqlServerDialect.Provider);
         }
 
-        public List<Adres> GetAdressen(string gemeentenaam)
+        public List<AdresX> GetAdressen(string gemeentenaam)
         {
             var db = _factory.OpenDbConnection();
 
-            var adressenInZottegem = db.Select<Adres>(
-                                     db.From<Adres>()
-                                       .Join<Adres, Straat>((a, s) => a.StraatID == s.StraatId)
-                                       .Join<Straat, Gemeente>((s, g) => s.GemeenteId == g.GemeenteId)
-                                       .Join<Gemeente, Provincie>((g, p) => g.ProvincieId == p.ProvincieID)
-                                       .Where<Gemeente>(g => g.Gemeentenaam == gemeentenaam)
+            var adressenInZottegem = db.Select<AdresX>(
+                                     db.From<AdresX>()
+                                       .Join<AdresX, StraatX>((a, s) => a.StraatID == s.StraatID)
+                                       .Join<StraatX, GemeenteX>((s, g) => s.GemeenteID == g.GemeenteID)
+                                       .Join<GemeenteX, ProvincieX>((g, p) => g.ProvincieID == p.ProvincieID)
+                                       .Where<GemeenteX>(g => g.Gemeentenaam == gemeentenaam)
                                        .OrderBy(s => s.StraatID)
                                        .Limit(16000));
 
@@ -45,7 +45,7 @@ namespace OrmLiteBenchmarks
             return adressenInZottegem;
         }
 
-        public void BulkInsert(List<Adres> adressen)
+        public void BulkInsert(List<AdresX> adressen)
         {
             var db = _factory.OpenDbConnection();
 
@@ -55,7 +55,7 @@ namespace OrmLiteBenchmarks
             });
         }
 
-        public void BulkInsertRaw(List<Adres> adressen)
+        public void BulkInsertRaw(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 

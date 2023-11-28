@@ -10,15 +10,15 @@ using Tools;
 
 namespace PetaPocoBenchmarks
 {
-    public class Repository
+    public class PetaPocoRepository
     {
         private Database _database;
-        public Repository()
+        public PetaPocoRepository()
         {
             _database = new PetaPoco.Database(new SqlConnection(Toolkit.GetConnectionString()));
         }
 
-        public List<Adres> GetAdressen(string gemeentenaam)
+        public List<AdresX> GetAdressen(string gemeentenaam)
         {
             _database.Connection.Open();
 
@@ -30,14 +30,14 @@ namespace PetaPocoBenchmarks
                             WHERE g.Gemeentenaam = @Gemeentenaam
                             ORDER BY a.StraatID;";
 
-            List<Adres> adressen = _database.Fetch<Adres>(query, new { Gemeentenaam = gemeentenaam }).ToList();
+            List<AdresX> adressen = _database.Fetch<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
 
             _database.Connection.Close();   
 
             return adressen;
         }
 
-        public void PetaPocoExecute(List<Adres> adressen)
+        public void PetaPocoExecute(List<AdresX> adressen)
         {
             _database.Connection.Open();
 
@@ -57,7 +57,7 @@ namespace PetaPocoBenchmarks
             FROM OPENJSON(@adressen)
             WITH
             (
-                StraatId int,
+                StraatID int,
                 Huisnummer nvarchar(80),
                 Appartementnummer nvarchar(80),
                 Busnummer nvarchar(80),

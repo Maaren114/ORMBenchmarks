@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Tools;
 
 namespace LinqToDbBenchmarks
 {
@@ -21,7 +22,7 @@ namespace LinqToDbBenchmarks
             _connection = new StratenRegisterConnection();
         }
 
-        public List<Adres> GetAdressen(string gemeentenaam)
+        public List<AdresX> GetAdressen(string gemeentenaam)
         {
             var query = from a in _connection.Adressen
                         join s in _connection.Straten on a.StraatID equals s.StraatID
@@ -34,12 +35,12 @@ namespace LinqToDbBenchmarks
             return result;
         }
 
-        public void CreateBulkCopy(List<Adres> adressen)
+        public void CreateBulkCopy(List<AdresX> adressen)
         {
             _connection.BulkCopy(adressen);
         }
 
-        public void CreateExecute(List<Adres> adressen)
+        public void CreateExecute(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 

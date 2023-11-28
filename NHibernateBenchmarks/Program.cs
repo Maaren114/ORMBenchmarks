@@ -4,9 +4,13 @@
     {
         static void Main(string[] args)
         {
-            var repo = new Repository();
+            var repo = new NHibernateRepository();
+
             var adressen = repo.GetAdressen("Zottegem");
+
             repo.BatchRaw(adressen);
+            repo.Batch(adressen);
+
         }
     }
 }

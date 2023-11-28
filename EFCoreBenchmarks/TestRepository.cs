@@ -11,6 +11,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Tools;
 
 namespace EFCoreBenchmarks
 {
@@ -22,35 +23,35 @@ namespace EFCoreBenchmarks
             _context = new StratenregisterContext();
         }
 
-        public async void BulkAdd(IEnumerable<Straat> straten)
+        public async void BulkAdd(IEnumerable<StraatX> straten)
         {
-            Provincie oostVlaanderen = _context.Provincies.Single(provincie => provincie.Provincienaam == "Oost-Vlaanderen");
+            ProvincieX oostVlaanderen = _context.Provincies.Single(provincie => provincie.Provincienaam == "Oost-Vlaanderen");
 
 
 
-            Expression<Func<Provincie, bool>> f = provincie => provincie.Provincienaam == "Oost-Vlaanderen";
+            Expression<Func<ProvincieX, bool>> f = provincie => provincie.Provincienaam == "Oost-Vlaanderen";
 
 
 
 
-            List<Provincie> provincies = new List<Provincie>() { new Provincie(), new Provincie() };
+            List<ProvincieX> provincies = new List<ProvincieX>() { new ProvincieX(), new ProvincieX() };
 
             provincies.Single(provincie => provincie.Provincienaam == "Oost-Vlaanderen");
 
 
             _context.Entry(oostVlaanderen).Collection(provincie => provincie.Gemeentes).Load();
 
-            foreach (Gemeente gemeente in oostVlaanderen.Gemeentes)
+            foreach (GemeenteX gemeente in oostVlaanderen.Gemeentes)
             {
                 Console.WriteLine(gemeente);
                 _context.Entry(gemeente).Collection(gem => gem.Straten).Load();
 
-                foreach (Straat straat in gemeente.Straten)
+                foreach (StraatX straat in gemeente.Straten)
                 {
                     Console.WriteLine(gemeente);
                     _context.Entry(straat).Collection(str => str.Adressen).Load();
 
-                    foreach (Adres adres in straat.Adressen)
+                    foreach (AdresX adres in straat.Adressen)
                     {
                         Console.WriteLine(adres);
                     }
@@ -86,7 +87,7 @@ namespace EFCoreBenchmarks
             //_context.SaveChanges();
         }
 
-        public IEnumerable<Straat> GetBulk()
+        public IEnumerable<StraatX> GetBulk()
         {
             var straten = _context.Straten.Where(straat => straat.Gemeente.Gemeentenaam == "Boechout");
 

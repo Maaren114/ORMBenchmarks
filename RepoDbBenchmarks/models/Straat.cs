@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace RepoDbBenchmarks;
 
-[Map("Provincies")]
+[Map("Straten")]
 public class Straat
 {
     public int Id { get; set; }

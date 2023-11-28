@@ -9,20 +9,21 @@ public partial class StratenregisterContext : DbContext
 {
     public StratenregisterContext()
     {
+
     }
 
-    public StratenregisterContext(DbContextOptions<StratenregisterContext> options)
-        : base(options)
+    public StratenregisterContext(DbContextOptions<StratenregisterContext> options) : base(options)
     {
+
     }
 
-    public virtual DbSet<Adres> Adressen { get; set; }
+    public virtual DbSet<AdresX> Adressen { get; set; }
 
-    public virtual DbSet<Gemeente> Gemeentes { get; set; }
+    public virtual DbSet<GemeenteX> Gemeentes { get; set; }
 
-    public virtual DbSet<Provincie> Provincies { get; set; }
+    public virtual DbSet<ProvincieX> Provincies { get; set; }
 
-    public virtual DbSet<Straat> Straten { get; set; }
+    public virtual DbSet<StraatX> Straten { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -31,63 +32,63 @@ public partial class StratenregisterContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Adres>(entity =>
+        modelBuilder.Entity<AdresX>(entity =>
         {
-            entity.HasKey(e => e.AdresId);
+            entity.HasKey(e => e.AdresID);
 
             entity.ToTable("Adressen");
 
-            entity.Property(e => e.AdresId).HasColumnName("AdresID");
+            entity.Property(e => e.AdresID).HasColumnName("AdresID");
             entity.Property(e => e.Appartementnummer).HasMaxLength(80);
             entity.Property(e => e.Busnummer).HasMaxLength(80);
             entity.Property(e => e.Huisnummer).HasMaxLength(80);
-            entity.Property(e => e.Niscode).HasColumnName("NISCode");
+            entity.Property(e => e.NISCode).HasColumnName("NISCode");
             entity.Property(e => e.Status).HasMaxLength(80);
-            entity.Property(e => e.StraatId).HasColumnName("StraatID");
+            entity.Property(e => e.StraatID).HasColumnName("StraatID");
 
             entity.HasOne(d => d.Straat).WithMany(p => p.Adressen)
-                .HasForeignKey(d => d.StraatId)
+                .HasForeignKey(d => d.StraatID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Straten_Adressen");
         });
 
-        modelBuilder.Entity<Gemeente>(entity =>
+        modelBuilder.Entity<GemeenteX>(entity =>
         {
-            entity.HasKey(e => e.GemeenteId).HasName("PK__Gemeente__3214EC2715E8C43A");
+            entity.HasKey(e => e.GemeenteID).HasName("PK__Gemeente__3214EC2715E8C43A");
 
-            entity.HasIndex(e => e.GemeenteId, "Unique_GemeenteID").IsUnique();
+            entity.HasIndex(e => e.GemeenteID, "Unique_GemeenteID").IsUnique();
 
-            entity.Property(e => e.GemeenteId).HasColumnName("GemeenteID");
+            entity.Property(e => e.GemeenteID).HasColumnName("GemeenteID");
             entity.Property(e => e.Gemeentenaam).HasMaxLength(40);
-            entity.Property(e => e.ProvincieId).HasColumnName("ProvincieID");
+            entity.Property(e => e.ProvincieID).HasColumnName("ProvincieID");
 
             entity.HasOne(d => d.Provincie).WithMany(p => p.Gemeentes)
-                .HasForeignKey(d => d.ProvincieId)
+                .HasForeignKey(d => d.ProvincieID)
                 .HasConstraintName("FK_Provincies_Gemeentes");
         });
 
-        modelBuilder.Entity<Provincie>(entity =>
+        modelBuilder.Entity<ProvincieX>(entity =>
         {
-            entity.HasKey(e => e.ProvincieId).HasName("PK__Provinci__F6C386943C77D1F2");
+            entity.HasKey(e => e.ProvincieID).HasName("PK__Provinci__F6C386943C77D1F2");
 
-            entity.Property(e => e.ProvincieId).HasColumnName("ProvincieID");
+            entity.Property(e => e.ProvincieID).HasColumnName("ProvincieID");
             entity.Property(e => e.Provincienaam).HasMaxLength(80);
         });
 
-        modelBuilder.Entity<Straat>(entity =>
+        modelBuilder.Entity<StraatX>(entity =>
         {
-            entity.HasKey(e => e.StraatId).HasName("PK__StratenT__3214EC27D67C67E0");
+            entity.HasKey(e => e.StraatID).HasName("PK__StratenT__3214EC27D67C67E0");
 
             entity.ToTable("Straten");
 
-            entity.HasIndex(e => e.StraatId, "UQ_StraatID").IsUnique();
+            entity.HasIndex(e => e.StraatID, "UQ_StraatID").IsUnique();
 
-            entity.Property(e => e.StraatId).HasColumnName("StraatID");
-            entity.Property(e => e.GemeenteId).HasColumnName("GemeenteID");
+            entity.Property(e => e.StraatID).HasColumnName("StraatID");
+            entity.Property(e => e.GemeenteID).HasColumnName("GemeenteID");
             entity.Property(e => e.Straatnaam).HasMaxLength(80);
 
             entity.HasOne(d => d.Gemeente).WithMany(p => p.Straten)
-                .HasForeignKey(d => d.GemeenteId)
+                .HasForeignKey(d => d.GemeenteID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Gemeentes_Straten");
         });

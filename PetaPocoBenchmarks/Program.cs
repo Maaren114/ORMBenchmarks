@@ -4,11 +4,10 @@
     {
         static void Main(string[] args)
         {
-            var repo = new Repository();
+            var repo = new PetaPocoRepository();
             var adressen = repo.GetAdressen("Zottegem");
 
             repo.PetaPocoExecute(adressen);
-            Console.WriteLine();
 
         }
     }

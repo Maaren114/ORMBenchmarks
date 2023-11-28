@@ -21,7 +21,7 @@ namespace DapperBenchmarks
             _dbConnection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public List<Adres> GetAddressen(string gemeentenaam)
+        public List<AdresX> GetAddressen(string gemeentenaam)
         {
             string query = $@"
                             SELECT TOP 15557 a.*
@@ -31,12 +31,12 @@ namespace DapperBenchmarks
                             WHERE g.Gemeentenaam = @Gemeentenaam
                             ORDER BY a.StraatID;";
 
-            List<Adres> adressen = _dbConnection.Query<Adres>(query, new { Gemeentenaam = gemeentenaam }).ToList();
+            List<AdresX> adressen = _dbConnection.Query<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
             return adressen;
         }
 
 
-        public void DapperExecute(List<Adres> adressen)
+        public void DapperExecute(List<AdresX> adressen)
         {
             string query = $@"
                             INSERT INTO Adressen
@@ -53,7 +53,7 @@ namespace DapperBenchmarks
                             FROM OPENJSON(@adressen)
                             WITH
                             (
-                               StraatId int,
+                               StraatID int,
                                Huisnummer nvarchar(80),
                                Appartementnummer nvarchar(80),
                                Busnummer nvarchar(80),
@@ -66,7 +66,7 @@ namespace DapperBenchmarks
             int result = _dbConnection.Execute(query, new { adressen = adressenJSON });
         }
 
-        public void DapperPlus(List<Adres> adressen)
+        public void DapperPlus(List<AdresX> adressen)
         {
             _dbConnection.UseBulkOptions(options => {
                 options.BatchSize = 16000;

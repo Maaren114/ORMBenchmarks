@@ -7,28 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Tools;
 
 namespace NHibernateBenchmarks
 {
-    public class Repository
+    public class NHibernateRepository
     {
         private ISessionFactory _sessionFactory;
 
-        public Repository()
+        public NHibernateRepository()
         {
             _sessionFactory = NHibernateHelper.ConfigureNHibernate();
         }
 
-        public List<Adres> GetAdressen(string gemeentenaam)
+        public List<AdresX> GetAdressen(string gemeentenaam)
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var adressen = session.Query<Adres>()
+                var adressen = session.Query<AdresX>()
                     .Where(a => a.Straat.Gemeente.Gemeentenaam == gemeentenaam)
-                    .Select(a => new Adres
+                    .Select(a => new AdresX
                     {
-                        AdresId = a.AdresId,
-                        StraatId = a.Straat.StraatId,
+                        AdresID = a.AdresID,
+                        StraatID = a.Straat.StraatID,
                         Huisnummer = a.Huisnummer,
                         Appartementnummer = a.Appartementnummer,
                         Busnummer = a.Busnummer,
@@ -42,7 +43,7 @@ namespace NHibernateBenchmarks
             }
         }
 
-        public void Batch(List<Adres> adressen) // werkt! dit is batch
+        public void Batch(List<AdresX> adressen) // werkt! dit is batch
         {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -55,7 +56,7 @@ namespace NHibernateBenchmarks
             }
         }
 
-        public void BatchRaw(List<Adres> adressen) // werkt! dit is batch
+        public void BatchRaw(List<AdresX> adressen) // werkt! dit is batch
         {
             string query = $@"
                             INSERT INTO Adressen
@@ -72,7 +73,7 @@ namespace NHibernateBenchmarks
                             FROM OPENJSON(:adressen)
                             WITH
                             (
-                               StraatId int,
+                               StraatID int,
                                Huisnummer nvarchar(80),
                                Appartementnummer nvarchar(80),
                                Busnummer nvarchar(80),

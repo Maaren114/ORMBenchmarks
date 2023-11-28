@@ -11,7 +11,7 @@ namespace NHibernateBenchmarks.mappings
     {
         public override bool ShouldMap(System.Type type)
         {
-            return type.Namespace == "NHibernateBenchmarks.models";
+            return type.Namespace == "Tools.models";
         }
     }
 }

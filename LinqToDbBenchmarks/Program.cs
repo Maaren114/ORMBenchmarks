@@ -1,5 +1,6 @@
 ﻿using LinqToDB.Data;
 using LinqToDbBenchmarks.models;
+using Tools;
 
 namespace LinqToDbBenchmarks
 {
@@ -7,12 +8,11 @@ namespace LinqToDbBenchmarks
     {
         static void Main(string[] args)
         {
-            DataConnection.DefaultSettings = new MySettings();
             var repo = new LinqToDbRepository();
             var adressen = repo.GetAdressen("Zottegem");
 
             repo.CreateExecute(adressen);
-            Console.WriteLine();
+            repo.CreateBulkCopy(adressen);
         }
     }
 }

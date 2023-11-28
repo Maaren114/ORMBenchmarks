@@ -1,4 +1,5 @@
 ﻿using DapperBenchmarks.models;
+using Tools;
 
 namespace DapperBenchmarks
 {
@@ -7,10 +8,10 @@ namespace DapperBenchmarks
         static void Main(string[] args)
         {
             var repo = new DapperRepository();
-            List<Adres> adressen = repo.GetAddressen("Zottegem");
-
+            List<AdresX> adressen = repo.GetAddressen("Zottegem");
 
             repo.DapperExecute(adressen);
+            repo.DapperPlus(adressen);
         }
     }
 }

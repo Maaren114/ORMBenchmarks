@@ -18,7 +18,7 @@ namespace Norm.NetBenchmarks
             _connection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public List<Adres> GetAdressen(string gemeentenaam)
+        public List<AdresX> GetAdressen(string gemeentenaam)
         {
             string query = $@"
                             SELECT TOP 15557 a.*
@@ -28,13 +28,11 @@ namespace Norm.NetBenchmarks
                             WHERE g.Gemeentenaam = @Gemeentenaam
                             ORDER BY a.StraatID;";
 
-            List<Adres> adressen = _connection.Read<Adres>(query, new { Gemeentenaam = gemeentenaam }).ToList();
+            List<AdresX> adressen = _connection.Read<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
             return adressen;
         }
 
-
-
-        public void CreateExecute(List<Adres> adressen)
+        public void CreateExecute(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
@@ -53,7 +51,7 @@ namespace Norm.NetBenchmarks
                             FROM OPENJSON(@adressen)
                             WITH
                             (
-                                StraatId int,
+                                StraatID int,
                                 Huisnummer nvarchar(80),
                                 Appartementnummer nvarchar(80),
                                 Busnummer nvarchar(80),

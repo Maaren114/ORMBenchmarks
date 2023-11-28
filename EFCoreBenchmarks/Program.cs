@@ -1,4 +1,5 @@
 ﻿using EFCoreBenchmarks.models;
+using Tools;
 
 namespace EFCoreBenchmarks
 {
@@ -7,13 +8,11 @@ namespace EFCoreBenchmarks
         static void Main(string[] args)
         {
             var repo = new EFCoreRepository();
-            List<Adres> adressen = repo.GetAdressen("Zottegem");
-            
-            adressen.ForEach(adres => adres.AdresId = 0);
+            List<AdresX> adressen = repo.GetAdressen("Zottegem");
 
-            //repo.ExecuteSql(adressen);
+            repo.EFBorisDjCreate(adressen);
             repo.ExecuteSqlRaw(adressen);
-
+            repo.ExecuteSql(adressen);
         }
     }
 }

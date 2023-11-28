@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tools;
 
 namespace NHibernateBenchmarks.mappings
 {
-    public class GemeenteMap : ClassMap<Gemeente>
+    public class GemeenteMap : ClassMap<GemeenteX>
     {
         public GemeenteMap()
         {
             Table("Gemeentes");
-            Id(x => x.GemeenteId);
+            Id(x => x.GemeenteID);
             Map(x => x.Gemeentenaam);
-            Map(x => x.ProvincieId, "ProvincieID");
+            Map(x => x.ProvincieID, "ProvincieID");
             References(x => x.Provincie).Column("ProvincieId");
             HasMany(x => x.Straten);
         }

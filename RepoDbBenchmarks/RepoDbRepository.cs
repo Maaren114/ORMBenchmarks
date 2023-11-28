@@ -7,17 +7,17 @@ using Tools;
 
 namespace RepoDbBenchmarks
 {
-    public class Repository
+    public class RepoDbRepository
     {
         private SqlConnection _connection;
-        public Repository()
+        public RepoDbRepository()
         {
             GlobalConfiguration.Setup().UseSqlServer();
 
             _connection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public List<Adres> GetAdressen(string gemeentenaam)
+        public List<AdresX> GetAdressen(string gemeentenaam)
         {
             _connection.Open();
 
@@ -29,21 +29,21 @@ namespace RepoDbBenchmarks
                             WHERE g.Gemeentenaam = @Gemeentenaam
                             ORDER BY a.StraatID;";
 
-            var adressen = _connection.ExecuteQuery<Adres>(query, new { GemeenteNaam = "Zottegem" }).ToList();
+            var adressen = _connection.ExecuteQuery<AdresX>(query, new { GemeenteNaam = "Zottegem" }).ToList();
 
             _connection.Close();
 
             return adressen;
         }
 
-        public void InsertAll(List<Adres> adressen)
+        public void InsertAll(List<AdresX> adressen)
         {
             _connection.Open();
-            _connection.InsertAll<Adres>(adressen);
+            _connection.InsertAll<AdresX>(adressen);
             _connection.Close();
         }
 
-        public void BulkInsert(List<Adres> adressen)
+        public void BulkInsert(List<AdresX> adressen)
         {
             _connection.Open();
             _connection.BulkInsert(adressen, batchSize: 16000);

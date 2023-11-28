@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tools;
 
 namespace NHibernateBenchmarks.mappings
 {
-    public class StraatMap : ClassMap<Straat>
+    public class StraatMap : ClassMap<StraatX>
     {
         public StraatMap()
         {
             Table("Straten");
-            Id(x => x.StraatId).GeneratedBy.Native();
+            Id(x => x.StraatID).GeneratedBy.Native();
             //Id(x => x.StraatId).Generated.Always();
             //Map(x => x.GemeenteId, "GemeenteID");
             Map(x => x.Straatnaam);

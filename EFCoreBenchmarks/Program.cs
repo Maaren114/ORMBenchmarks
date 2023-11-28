@@ -8,7 +8,12 @@ namespace EFCoreBenchmarks
         {
             var repo = new EFCoreRepository();
             List<Adres> adressen = repo.GetAdressen("Zottegem");
-            repo.Create3(adressen);
+            
+            adressen.ForEach(adres => adres.AdresId = 0);
+
+            //repo.ExecuteSql(adressen);
+            repo.ExecuteSqlRaw(adressen);
+
         }
     }
 }

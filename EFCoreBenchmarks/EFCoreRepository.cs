@@ -3,7 +3,7 @@ using EFCoreBenchmarks.models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -21,7 +21,8 @@ namespace EFCoreBenchmarks
 
         public List<Adres> GetAdressen(string gemeentenaam)
         {
-            List<Adres> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).Take(15557).ToList();
+            List<Adres> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatId).Take(15557).ToList();
+            adressen.ForEach(a => a.AdresId = 0);
             return adressen;
         }
 
@@ -30,90 +31,74 @@ namespace EFCoreBenchmarks
             _context.BulkInsert(adressen, options => options.BatchSize = 16000);
         }
 
-        public void Create2(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void AddRange(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
         {
             _context.Adressen.AddRange(adressen);
+            _context.SaveChanges();
         }
 
-        public void Create3(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void ExecuteSqlRaw(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
-
-            string query = @"
-                            INSERT INTO Straten
+            string query = $@"
+                            INSERT INTO Adressen
                             (
                                 StraatID,
-                                GemeenteID,
-                                Straatnaam
+                                Huisnummer,
+                                Appartementnummer,
+                                Busnummer,
+                                NISCode,
+                                Postcode,
+                                Status
                             )
-                            SELECT StraatID, GemeenteID, Straatnaam
-                            FROM OPENJSON(@adressen) WITH
+                            SELECT StraatID, Huisnummer, Appartementnummer, Busnummer, NISCode, Postcode, Status
+                            FROM OPENJSON(@adressenJSON)
+                            WITH
                             (
-                                StraatID int, 
-                                GemeenteID int, 
-                                Straatnaam nvarchar(80)
-                            );";
+                               StraatId int,
+                               Huisnummer nvarchar(80),
+                               Appartementnummer nvarchar(80),
+                               Busnummer nvarchar(80),
+                               NISCode int,
+                               Postcode int,
+                               Status nvarchar(80)
+                            )";
 
-            _context.Database.ExecuteSqlRaw(query, new SqlParameter("@adressen", adressenJSON));
+
+            _context.Database.ExecuteSqlRaw(query, new SqlParameter("@adressenJSON", adressenJSON));
         }
 
-        public void Create4(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
-        {
-            string adressenJSON = JsonSerializer.Serialize(adressen);
-
-            string query = @"
-                INSERT INTO Straten
-                (
-                    StraatID,
-                    GemeenteID,
-                    Straatnaam
-                )
-                SELECT StraatID, GemeenteID, Straatnaam
-                FROM OPENJSON(@adressen) WITH
-                (
-                    StraatID int, 
-                    GemeenteID int, 
-                    Straatnaam nvarchar(80)
-                );";
-
-            _context.Database.ExecuteSqlRaw(query, new SqlParameter("@adressen", adressenJSON));
-        }
-
-        public void Create5(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void ExecuteSql(List<Adres> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
             FormattableString query = $@"
-                                        INSERT INTO Straten
-                                        (
-                                            StraatID,
-                                            GemeenteID,
-                                            Straatnaam
-                                        )
-                                        SELECT StraatID, GemeenteID, Straatnaam
-                                        FROM OPENJSON({adressenJSON}) WITH
-                                        (
-                                            StraatID int, 
-                                            GemeenteID int, 
-                                            Straatnaam nvarchar(80)
-                                        );";
+                            INSERT INTO Adressen
+                            (
+                                StraatID,
+                                Huisnummer,
+                                Appartementnummer,
+                                Busnummer,
+                                NISCode,
+                                Postcode,
+                                Status
+                            )
+                            SELECT StraatID, Huisnummer, Appartementnummer, Busnummer, NISCode, Postcode, Status
+                            FROM OPENJSON({adressenJSON})
+                            WITH
+                            (
+                               StraatId int,
+                               Huisnummer nvarchar(80),
+                               Appartementnummer nvarchar(80),
+                               Busnummer nvarchar(80),
+                               NISCode int,
+                               Postcode int,
+                               Status nvarchar(80)
+                            )";
 
             _context.Database.ExecuteSql(query);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

@@ -1,6 +1,8 @@
-﻿using Norm.NetBenchmarks.models;
+﻿using LinqToDB.Data;
+using LinqToDbBenchmarks.models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -8,28 +10,34 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Tools;
 
-namespace Norm.NetBenchmarks
+namespace LinqToDbBenchmarks
 {
-    public class NormNetRepository
+    public class CreateLinqToDbRepository
     {
-        private SqlConnection _connection;
-        public NormNetRepository()
+        private StratenRegisterConnection _connection;
+
+        public CreateLinqToDbRepository()
         {
-            _connection = new SqlConnection(Toolkit.GetConnectionString());
+            DataConnection.DefaultSettings = new MySettings();
+            _connection = new StratenRegisterConnection();
         }
 
         public List<AdresX> GetAdressen(string gemeentenaam)
         {
-            string query = $@"
-                            SELECT TOP 15557 a.*
-                            FROM Adressen a
-                            INNER JOIN Straten s ON a.StraatID = s.StraatID
-                            INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID
-                            WHERE g.Gemeentenaam = @Gemeentenaam
-                            ORDER BY a.StraatID;";
+            var query = from a in _connection.Adressen
+                        join s in _connection.Straten on a.StraatID equals s.StraatID
+                        join g in _connection.Gemeentes on s.GemeenteID equals g.GemeenteID
+                        where g.Gemeentenaam == gemeentenaam
+                        orderby a.StraatID
+                        select a;
 
-            List<AdresX> adressen = _connection.Read<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
-            return adressen;
+            var result = query.Take(15557).ToList();
+            return result;
+        }
+
+        public void CreateBulkCopy(List<AdresX> adressen)
+        {
+            _connection.BulkCopy(adressen);
         }
 
         public void CreateExecute(List<AdresX> adressen)

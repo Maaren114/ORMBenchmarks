@@ -8,10 +8,10 @@ using Tools;
 
 namespace ZZZProjectsBenchmarks
 {
-    public class ZZZProjectsRepository
+    public class CreateZZZProjectsRepository
     {
         private StratenregisterContext _context;
-        public ZZZProjectsRepository()
+        public CreateZZZProjectsRepository()
         {
             _context = new StratenregisterContext();
         }

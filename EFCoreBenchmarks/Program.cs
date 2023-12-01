@@ -7,7 +7,7 @@ namespace EFCoreBenchmarks
     {
         static void Main(string[] args)
         {
-            var repo = new EFCoreRepository();
+            var repo = new CreateEFCoreRepository();
             List<AdresX> adressen = repo.GetAdressen("Zottegem");
 
             repo.EFBorisDjCreate(adressen);

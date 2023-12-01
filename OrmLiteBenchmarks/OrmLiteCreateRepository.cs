@@ -10,11 +10,11 @@ using System.Text.Json;
 
 namespace OrmLiteBenchmarks
 {
-    public class OrmLiteRepository
+    public class CreateOrmLiteRepository
     {
         private OrmLiteConnectionFactory _factory;
 
-        public OrmLiteRepository()
+        public CreateOrmLiteRepository()
         {
             _factory = new OrmLiteConnectionFactory(Toolkit.GetConnectionString(), SqlServerDialect.Provider);
         }

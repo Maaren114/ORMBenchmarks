@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            var repo = new ZZZProjectsRepository();
+            var repo = new ZZZProjectsCreateRepository();
 
             var adressen = repo.GetAdressen("Zottegem");
 

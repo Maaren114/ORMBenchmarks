@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            var repo = new OrmLiteRepository();
+            var repo = new OrmLiteCreateRepository();
             
             var adressen = repo.GetAdressen("Zottegem");
 

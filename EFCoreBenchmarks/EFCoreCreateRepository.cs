@@ -12,10 +12,10 @@ using Tools;
 
 namespace EFCoreBenchmarks
 {
-    public class EFCoreRepository
+    public class CreateEFCoreRepository
     {
         private StratenregisterContext _context;
-        public EFCoreRepository()
+        public CreateEFCoreRepository()
         {
             _context = new StratenregisterContext();
         }

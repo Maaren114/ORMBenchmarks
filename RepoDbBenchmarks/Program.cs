@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            var repo = new RepoDbRepository();
+            var repo = new RepoDbCreateRepository();
             var adressen = repo.GetAdressen("Zottegem");
 
             repo.BulkInsert(adressen);

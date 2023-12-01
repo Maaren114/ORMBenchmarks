@@ -8,7 +8,7 @@ namespace LinqToDbBenchmarks
     {
         static void Main(string[] args)
         {
-            var repo = new LinqToDbRepository();
+            var repo = new LinqToDbCreateRepository();
             var adressen = repo.GetAdressen("Zottegem");
 
             repo.CreateExecute(adressen);

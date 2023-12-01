@@ -13,10 +13,10 @@ using Z.Dapper.Plus;
 
 namespace DapperBenchmarks
 {
-    public class DapperRepository
+    public class CreateDapperRepository
     {
         private IDbConnection _dbConnection;
-        public DapperRepository()
+        public CreateDapperRepository()
         {
             _dbConnection = new SqlConnection(Toolkit.GetConnectionString());
         }

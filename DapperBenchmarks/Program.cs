@@ -7,7 +7,7 @@ namespace DapperBenchmarks
     {
         static void Main(string[] args)
         {
-            var repo = new DapperRepository();
+            var repo = new DapperCreateRepository();
             List<AdresX> adressen = repo.GetAddressen("Zottegem");
 
             repo.DapperExecute(adressen);

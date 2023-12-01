@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            var repo = new NHibernateRepository();
+            var repo = new NHibernateCreateRepository();
 
             var adressen = repo.GetAdressen("Zottegem");
 

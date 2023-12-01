@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            var repo = new PetaPocoRepository();
+            var repo = new PetaPocoCreateRepository();
             var adressen = repo.GetAdressen("Zottegem");
 
             repo.PetaPocoExecute(adressen);

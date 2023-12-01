@@ -10,10 +10,10 @@ using Tools;
 
 namespace PetaPocoBenchmarks
 {
-    public class PetaPocoRepository
+    public class CreatePetaPocoRepository
     {
         private Database _database;
-        public PetaPocoRepository()
+        public CreatePetaPocoRepository()
         {
             _database = new PetaPoco.Database(new SqlConnection(Toolkit.GetConnectionString()));
         }

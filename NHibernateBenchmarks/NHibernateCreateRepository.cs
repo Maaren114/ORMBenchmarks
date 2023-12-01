@@ -11,11 +11,11 @@ using Tools;
 
 namespace NHibernateBenchmarks
 {
-    public class NHibernateRepository
+    public class NHibernateCreateRepository
     {
         private ISessionFactory _sessionFactory;
 
-        public NHibernateRepository()
+        public NHibernateCreateRepository()
         {
             _sessionFactory = NHibernateHelper.ConfigureNHibernate();
         }

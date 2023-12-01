@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            var repo = new NormNetRepository();
+            var repo = new NormNetCreateRepository();
 
             var adressen = repo.GetAdressen("Zottegem");
 

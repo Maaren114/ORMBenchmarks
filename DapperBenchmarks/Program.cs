@@ -1,4 +1,5 @@
 ﻿using DapperBenchmarks.models;
+using DapperBenchmarks.repositories;
 using Tools;
 
 namespace DapperBenchmarks
@@ -7,11 +8,17 @@ namespace DapperBenchmarks
     {
         static void Main(string[] args)
         {
-            var repo = new DapperCreateRepository();
-            List<AdresX> adressen = repo.GetAddressen("Zottegem");
+            var updateRepo = new DapperUpdateRepository();
+            var createRepo = new DapperCreateRepository();
+            List<AdresX> adressen = createRepo.GetAddressen("Zottegem");
 
-            repo.DapperExecute(adressen);
-            repo.DapperPlus(adressen);
+            adressen.ForEach(adres =>
+            {
+                adres.Status = "HABIBI <3";
+            });
+
+            updateRepo.DapperPlus(adressen);
+            //createRepo.DapperPlus(adressen);
         }
     }
 }

@@ -12,11 +12,11 @@ using Tools;
 
 namespace LinqToDbBenchmarks
 {
-    public class CreateLinqToDbRepository
+    public class LinqToDbCreateRepository
     {
         private StratenRegisterConnection _connection;
 
-        public CreateLinqToDbRepository()
+        public LinqToDbCreateRepository()
         {
             DataConnection.DefaultSettings = new MySettings();
             _connection = new StratenRegisterConnection();

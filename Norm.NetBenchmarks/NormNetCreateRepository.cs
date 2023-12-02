@@ -10,10 +10,10 @@ using Tools;
 
 namespace Norm.NetBenchmarks
 {
-    public class CreateNormNetRepository
+    public class NormNetCreateRepository
     {
         private SqlConnection _connection;
-        public CreateNormNetRepository()
+        public NormNetCreateRepository()
         {
             _connection = new SqlConnection(Toolkit.GetConnectionString());
         }

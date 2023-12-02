@@ -1,8 +1,8 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Order;
-using DapperBenchmarks;
-using EFCoreBenchmarks;
+using DapperBenchmarks.repositories;
+using EFCoreBenchmarks.repositories;
 using LinqToDbBenchmarks;
 using NHibernateBenchmarks;
 using Norm.NetBenchmarks;
@@ -12,7 +12,7 @@ using RepoDbBenchmarks;
 using Tools;
 using ZZZProjectsBenchmarks;
 
-namespace Benchmarks
+namespace Benchmarks.benchmarks
 {
     [MemoryDiagnoser]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
@@ -20,31 +20,31 @@ namespace Benchmarks
     [CsvExporter]
     [MaxIterationCount(100)]
     //[SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 10, iterationCount: 100, id: "benchmarks")]
-    public class Benchmarks
+    public class CreateBenchmarks
     {
-        private static CreateEFCoreRepository _EFCoreRepository = null!;
-        private static CreateZZZProjectsRepository _zzzProjectRepository = null!;
-        private static CreateDapperRepository _dapperRepository = null!;
-        private static CreateLinqToDbRepository _linqToDbRepository = null!;
-        private static CreateNHibernateRepository _nhibernateRepository = null!;
-        private static CreateNormNetRepository _normNetRepository = null!;
-        private static CreateOrmLiteRepository _ormLiteRepository = null!;
-        private static CreatePetaPocoRepository _petapocorepository = null!;
-        private static CreateRepoDbRepository _repoDbRepository = null!;
+        private static EFCoreCreateRepository _EFCoreRepository = null!;
+        private static ZZZProjectsCreateRepository _zzzProjectRepository = null!;
+        private static DapperCreateRepository _dapperRepository = null!;
+        private static LinqToDbCreateRepository _linqToDbRepository = null!;
+        private static NHibernateCreateRepository _nhibernateRepository = null!;
+        private static NormNetCreateRepository _normNetRepository = null!;
+        private static OrmLiteCreateRepository _ormLiteRepository = null!;
+        private static PetaPocoCreateRepository _petapocorepository = null!;
+        private static RepoDbCreateRepository _repoDbRepository = null!;
 
         private List<AdresX> _adressen = new List<AdresX>();
 
-        public Benchmarks()
+        public CreateBenchmarks()
         {
-            _EFCoreRepository = new CreateEFCoreRepository();
-            _zzzProjectRepository = new CreateZZZProjectsRepository();
-            _dapperRepository = new CreateDapperRepository();
-            _linqToDbRepository = new CreateLinqToDbRepository();
-            _nhibernateRepository = new CreateNHibernateRepository();
-            _normNetRepository = new CreateNormNetRepository();
-            _ormLiteRepository = new CreateOrmLiteRepository();
-            _petapocorepository = new CreatePetaPocoRepository();
-            _repoDbRepository = new CreateRepoDbRepository();
+            _EFCoreRepository = new EFCoreCreateRepository();
+            _zzzProjectRepository = new ZZZProjectsCreateRepository();
+            _dapperRepository = new DapperCreateRepository();
+            _linqToDbRepository = new LinqToDbCreateRepository();
+            _nhibernateRepository = new NHibernateCreateRepository();
+            _normNetRepository = new NormNetCreateRepository();
+            _ormLiteRepository = new OrmLiteCreateRepository();
+            _petapocorepository = new PetaPocoCreateRepository();
+            _repoDbRepository = new RepoDbCreateRepository();
             _adressen = _EFCoreRepository.GetAdressen("Zottegem");
         }
 

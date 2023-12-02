@@ -10,12 +10,12 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Tools;
 
-namespace EFCoreBenchmarks
+namespace EFCoreBenchmarks.repositories
 {
-    public class CreateEFCoreRepository
+    public class EFCoreCreateRepository
     {
         private StratenregisterContext _context;
-        public CreateEFCoreRepository()
+        public EFCoreCreateRepository()
         {
             _context = new StratenregisterContext();
         }

@@ -11,12 +11,12 @@ using Dapper;
 using System.Text.Json;
 using Z.Dapper.Plus;
 
-namespace DapperBenchmarks
+namespace DapperBenchmarks.repositories
 {
-    public class CreateDapperRepository
+    public class DapperCreateRepository
     {
         private IDbConnection _dbConnection;
-        public CreateDapperRepository()
+        public DapperCreateRepository()
         {
             _dbConnection = new SqlConnection(Toolkit.GetConnectionString());
         }
@@ -68,11 +68,12 @@ namespace DapperBenchmarks
 
         public void DapperPlus(List<AdresX> adressen)
         {
-            _dbConnection.UseBulkOptions(options => {
+            _dbConnection.UseBulkOptions(options =>
+            {
                 options.BatchSize = 16000;
                 options.AutoMapOutputDirection = false;
                 options.DestinationTableName = "Adressen";
-            }).BulkInsert(adressen);
+            }).BulkUpdate(adressen);
         }
     }
 }

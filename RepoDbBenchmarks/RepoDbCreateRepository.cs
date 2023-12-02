@@ -7,10 +7,10 @@ using Tools;
 
 namespace RepoDbBenchmarks
 {
-    public class CreateRepoDbRepository
+    public class RepoDbCreateRepository
     {
         private SqlConnection _connection;
-        public CreateRepoDbRepository()
+        public RepoDbCreateRepository()
         {
             GlobalConfiguration.Setup().UseSqlServer();
 

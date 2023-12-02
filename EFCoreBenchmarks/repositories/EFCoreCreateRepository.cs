@@ -23,7 +23,7 @@ namespace EFCoreBenchmarks.repositories
         public List<AdresX> GetAdressen(string gemeentenaam)
         {
             List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(15557).ToList();
-            adressen.ForEach(a => a.AdresID = 0);
+            //adressen.ForEach(a => a.AdresID = 0);
             return adressen;
         }
 

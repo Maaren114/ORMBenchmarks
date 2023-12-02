@@ -3,7 +3,7 @@ using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Order;
 using DapperBenchmarks.repositories;
 using EFCoreBenchmarks.repositories;
-using LinqToDbBenchmarks;
+using LinqToDbBenchmarks.repositories;
 using NHibernateBenchmarks;
 using Norm.NetBenchmarks;
 using OrmLiteBenchmarks;

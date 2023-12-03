@@ -19,21 +19,20 @@ namespace NHibernateBenchmarks.repositories
             _sessionFactory = NHibernateHelper.ConfigureNHibernate();
         }
 
-        public void Batch(List<AdresX> adressen) // werkt! dit is batch
+        public void Batch(List<AdresX> adressen) // werkt enkel wanneer adressen niet initieel werden opgevraagd door NHibnernate.
         {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
                 foreach (var adres in adressen)
                 {
-                    NHibernateUtil.Initialize(adres.Straat.Gemeente);
                     session.Update(adres);
                 }
                 transaction.Commit();
             }
         }
 
-        public void BatchRaw(List<AdresX> updates) // werkt! dit is batch
+        public void BatchRaw(List<AdresX> updates)  // werkt enkel wanneer adressen niet initieel werden opgevraagd door NHibnernate.
         {
             string query = $@"
                             UPDATE adr

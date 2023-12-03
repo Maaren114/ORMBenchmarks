@@ -1,6 +1,7 @@
 ﻿using NHibernate;
 using NHibernateBenchmarks.repositories;
 using ServiceStack;
+using Tools;
 
 namespace NHibernateBenchmarks
 {
@@ -11,16 +12,16 @@ namespace NHibernateBenchmarks
             var updaterepo = new NHibernateUpdateRepository();
             var createrepo = new NHibernateCreateRepository();
 
-            var adressen = createrepo.GetAdressen("Zottegem");
+            //var adressen = createrepo.GetAdressen("Zottegem");
 
-            adressen.ForEach(x =>
+            var adressen = new List<AdresX>();
+
+            for (int i = 0; i < 15000; i++)
             {
-                x.Status = "XDDD";
-            });
+                adressen.Add(new AdresX { AdresID = i + 1, StraatID = 1 });
+            }
 
-
-
-            //updaterepo.Batch(adressen);
+            updaterepo.Batch(adressen);
             updaterepo.BatchRaw(adressen);
         }
     }

@@ -15,13 +15,14 @@ namespace NHibernateBenchmarks.mappings
             Table("Adressen");
             Id(x => x.AdresID);
             Map(x => x.Huisnummer);
-            //Map(x => x.StraatId, "StraatID");
             Map(x => x.Appartementnummer);
             Map(x => x.Busnummer);
             Map(x => x.Status);
             Map(x => x.NISCode);
-            //References(x => x.Straat).Column("StraatId");
-            References(x => x.Straat, "StraatID");
+            Map(x => x.StraatID).Column("StraatID"); // zorg ervoor dat StraatID correct wordt gemapt
+
+            // Als je referentie naar het Straat-object hebt, kun je het hier mappen
+            // References(x => x.Straat, "StraatID");
         }
     }
 }

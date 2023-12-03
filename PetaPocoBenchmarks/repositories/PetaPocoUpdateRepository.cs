@@ -31,7 +31,8 @@ namespace PetaPocoBenchmarks.repositories
 	                            adr.Appartementnummer = adru.Appartementnummer,
 	                            adr.Busnummer = adru.Busnummer,
 	                            adr.Postcode = adru.Postcode,
-	                            adr.Status = adru.Status
+	                            adr.Status = adru.Status,
+                                adr.NISCode = adru.NISCode
                             FROM Adressen adr
                             INNER JOIN OPENJSON(@updates) WITH
                             (
@@ -41,7 +42,8 @@ namespace PetaPocoBenchmarks.repositories
 	                            Appartementnummer nvarchar(80),
 	                            Busnummer nvarchar(80),
 	                            Postcode int,
-	                            Status nvarchar(80)
+	                            Status nvarchar(80),
+                                NISCode nvarchar(80)
                             ) adru
                             ON adr.AdresID = adru.AdresID;";
 

@@ -55,17 +55,12 @@ namespace Norm.NetBenchmarks.repositories
                                 Huisnummer nvarchar(80),
                                 Appartementnummer nvarchar(80),
                                 Busnummer nvarchar(80),
-                                NISCode int,
+                                NISCode nvarchar(80),
                                 Postcode int,
                                 Status nvarchar(80)
                             )";
 
             _connection.Execute(query, new { adressen = adressenJSON });
         }
-
-
-
-
-
     }
 }

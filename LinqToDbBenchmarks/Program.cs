@@ -11,9 +11,11 @@ namespace LinqToDbBenchmarks
         {
             var updaterepo = new LinqToDbUpdateRepository();
             var createrepo = new LinqToDbCreateRepository();
+            var deleterepo = new LinqToDbDeleteRepository();
+
             var adressen = createrepo.GetAdressen("Zottegem");
 
-            updaterepo.LinqToDbExecute(adressen);
+            deleterepo.LinqToDbExecute(adressen);
         }
     }
 }

@@ -20,6 +20,20 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
+        public void ChangeNISCode()
+        {
+            List<AdresX> adressen = _context.Adressen.ToList();
+
+            adressen.ForEach(x =>
+            {
+                string guid = Guid.NewGuid().ToString();
+                Console.WriteLine(guid);
+                x.NISCode = guid;
+            });
+
+            _context.SaveChanges();
+        }
+
         public List<AdresX> GetAdressen(string gemeentenaam, int aantal)
         {
             List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(aantal).ToList();
@@ -61,7 +75,7 @@ namespace EFCoreBenchmarks.repositories
                                Huisnummer nvarchar(80),
                                Appartementnummer nvarchar(80),
                                Busnummer nvarchar(80),
-                               NISCode int,
+                               NISCode nvarchar(80),
                                Postcode int,
                                Status nvarchar(80)
                             )";
@@ -93,7 +107,7 @@ namespace EFCoreBenchmarks.repositories
                                Huisnummer nvarchar(80),
                                Appartementnummer nvarchar(80),
                                Busnummer nvarchar(80),
-                               NISCode int,
+                               NISCode nvarchar(80),
                                Postcode int,
                                Status nvarchar(80)
                             )";

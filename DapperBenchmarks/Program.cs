@@ -10,14 +10,17 @@ namespace DapperBenchmarks
         {
             var updateRepo = new DapperUpdateRepository();
             var createRepo = new DapperCreateRepository();
+            var deleterepo = new DapperDeleteRepository();
+
             List<AdresX> adressen = createRepo.GetAddressen("Zottegem");
 
-            adressen.ForEach(adres =>
-            {
-                adres.Status = "HABIBI <3";
-            });
 
-            updateRepo.DapperPlus(adressen);
+            deleterepo.DapperExecute(adressen);
+
+
+            
+            
+            //updateRepo.DapperPlus(adressen);
             //createRepo.DapperPlus(adressen);
         }
     }

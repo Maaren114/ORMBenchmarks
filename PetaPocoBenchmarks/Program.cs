@@ -8,10 +8,15 @@ namespace PetaPocoBenchmarks
         {
             var updaterepo = new PetaPocoUpdateRepository();
             var createrepo = new PetaPocoCreateRepository();
+            var deleterepo = new PetaPocoDeleteRepository();
+
             var adressen = createrepo.GetAdressen("Zottegem");
 
+
+            deleterepo.PetaPocoExecute(adressen);
+
             //createrepo.PetaPocoExecute(adressen);
-            updaterepo.PetaPocoExecute(adressen);
+            //updaterepo.PetaPocoExecute(adressen);
         }
     }
 }

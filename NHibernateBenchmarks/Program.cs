@@ -11,6 +11,7 @@ namespace NHibernateBenchmarks
         {
             var updaterepo = new NHibernateUpdateRepository();
             var createrepo = new NHibernateCreateRepository();
+            var deleterepo = new NHibernateDeleteRepository();
 
             //var adressen = createrepo.GetAdressen("Zottegem");
 
@@ -21,8 +22,8 @@ namespace NHibernateBenchmarks
                 adressen.Add(new AdresX { AdresID = i + 1, StraatID = 1 });
             }
 
-            updaterepo.Batch(adressen);
-            updaterepo.BatchRaw(adressen);
+            //deleterepo.Batch(adressen);
+            deleterepo.BatchRaw(adressen);
         }
     }
 }

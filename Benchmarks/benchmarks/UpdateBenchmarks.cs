@@ -35,25 +35,7 @@ namespace Benchmarks.benchmarks
         private static PetaPocoUpdateRepository _petapocorepository = null!;
         private static RepoDbUpdateRepository _repodbrepository = null!;
         private static ZZZProjectsUpdateRepository _zzzprojectsrepository = null!;
-
-
-
         private List<AdresX> _AdressenZottegem = new List<AdresX>();
-        private List<AdresX> _adressenAntwerpen = new List<AdresX>();
-        private List<AdresX> _adressenGent = new List<AdresX>();
-        private List<AdresX> _adressenLeuven = new List<AdresX>();
-        private List<AdresX> _adressenBrugge = new List<AdresX>();
-        private List<AdresX> _adressenOostende = new List<AdresX>();
-        private List<AdresX> _adressenKnokkeHeist = new List<AdresX>();
-        private List<AdresX> _adressenHasselt = new List<AdresX>();
-        private List<AdresX> _adressenAalst = new List<AdresX>();
-        private List<AdresX> _adressenMechelen = new List<AdresX>();
-        private List<AdresX> _adressenKortrijk = new List<AdresX>();
-        private List<AdresX> _adressenSintNiklaas = new List<AdresX>();
-        private List<AdresX> _adressenRoeselare = new List<AdresX>();
-        private List<AdresX> _adressenGenk = new List<AdresX>();
-
-
 
         public UpdateBenchmarks()
         {
@@ -70,23 +52,6 @@ namespace Benchmarks.benchmarks
             var efcorerepo = new EFCoreCreateRepository();
 
             _AdressenZottegem = efcorerepo.GetAdressen("Zottegem", 15557);
-            //_adressenAntwerpen = efcorerepo.GetAdressen("Antwerpen", 15557);
-            //_adressenGent = efcorerepo.GetAdressen("Gent", 15557);
-            //_adressenLeuven = efcorerepo.GetAdressen("Leuven", 15557);
-            //_adressenBrugge = efcorerepo.GetAdressen("Brugge", 15557);
-            //_adressenOostende = efcorerepo.GetAdressen("Oostende", 15557);
-            //_adressenKnokkeHeist = efcorerepo.GetAdressen("Knokke-Heist", 15557);
-            //_adressenHasselt = efcorerepo.GetAdressen("Hasselt", 15557);
-            //_adressenAalst = efcorerepo.GetAdressen("Aalst", 15557);
-
-
-            //_adressenMechelen = efcorerepo.GetAdressen("Mechelen", 15557);
-            //_adressenKortrijk = efcorerepo.GetAdressen("Kortrijk", 15557);
-            //_adressenSintNiklaas = efcorerepo.GetAdressen("Sint-Niklaas", 15557);
-            //_adressenRoeselare = efcorerepo.GetAdressen("Roeselare", 15557);
-            //_adressenGenk = efcorerepo.GetAdressen("Genk", 15557);
-
-
 
             _AdressenZottegem.ForEach(a =>
             {

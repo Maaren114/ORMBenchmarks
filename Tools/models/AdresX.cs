@@ -23,7 +23,7 @@ public class AdresX
     public virtual string? Appartementnummer { get; set; }
     public virtual string? Busnummer { get; set; }
     public virtual string Status { get; set; }
-    public virtual int? NISCode { get; set; }
+    public virtual string? NISCode { get; set; }
     public virtual int? Postcode { get; set; }
     [ServiceStack.DataAnnotations.Ignore]
     public virtual StraatX Straat { get; set; }

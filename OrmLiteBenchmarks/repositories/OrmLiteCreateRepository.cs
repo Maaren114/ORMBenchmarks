@@ -80,7 +80,7 @@ namespace OrmLiteBenchmarks.repositories
                                     Huisnummer nvarchar(80),
                                     Appartementnummer nvarchar(80),
                                     Busnummer nvarchar(80),
-                                    NISCode int,
+                                    NISCode nvarchar(80),
                                     Postcode int,
                                     Status nvarchar(80)
                                 )";

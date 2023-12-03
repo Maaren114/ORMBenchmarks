@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PetaPocoBenchmarks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d60d81bf837f99a943301425c0af5042e98de47f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f57767150ea639c21d314429e69f33487ca6525e")]
 [assembly: System.Reflection.AssemblyProductAttribute("PetaPocoBenchmarks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PetaPocoBenchmarks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -27,28 +27,28 @@ namespace LinqToDbBenchmarks.repositories
             string adressenJSON = JsonSerializer.Serialize(updates);
 
             string query = $@"
-                            INSERT INTO Adressen
+                            UPDATE adr
+                            SET
+	                            adr.StraatID = adru.StraatID,
+	                            adr.Huisnummer = adru.Huisnummer,
+	                            adr.Appartementnummer = adru.Appartementnummer,
+	                            adr.Busnummer = adru.Busnummer,
+	                            adr.Postcode = adru.Postcode,
+	                            adr.Status = adru.Status,
+                                adr.NISCode = adru.NISCode
+                            FROM Adressen adr
+                            INNER JOIN OPENJSON(@updates) WITH
                             (
-                                StraatID,
-                                Huisnummer,
-                                Appartementnummer,
-                                Busnummer,
-                                NISCode,
-                                Postcode,
-                                Status
-                            )
-                            SELECT StraatID, Huisnummer, Appartementnummer, Busnummer, NISCode, Postcode, Status
-                            FROM OPENJSON(@updates)
-                            WITH
-                            (
-                                StraatID int,
-                                Huisnummer nvarchar(80),
-                                Appartementnummer nvarchar(80),
-                                Busnummer nvarchar(80),
-                                NISCode int,
-                                Postcode int,
-                                Status nvarchar(80)
-                            )";
+	                            AdresID int,
+	                            StraatID int,
+	                            Huisnummer nvarchar(80),
+	                            Appartementnummer nvarchar(80),
+	                            Busnummer nvarchar(80),
+	                            Postcode int,
+                                NISCode nvarchar(80),
+	                            Status nvarchar(80)
+                            ) adru
+                            ON adr.AdresID = adru.AdresID;";
 
             _connection.Execute(query, new { updates = adressenJSON });
         }

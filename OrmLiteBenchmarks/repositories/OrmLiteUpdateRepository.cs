@@ -25,32 +25,31 @@ namespace OrmLiteBenchmarks.repositories
             using (var db = _factory.OpenDbConnection())
             {
                 string query = $@"
-                                INSERT INTO Adressen
-                                (
-                                    StraatID,
-                                    Huisnummer,
-                                    Appartementnummer,
-                                    Busnummer,
-                                    NISCode,
-                                    Postcode,
-                                    Status
-                                )
-                                SELECT StraatId, Huisnummer, Appartementnummer, Busnummer, NISCode, Postcode, Status
-                                FROM OPENJSON(@adressen)
-                                WITH
-                                (
-                                    StraatID int,
-                                    Huisnummer nvarchar(80),
-                                    Appartementnummer nvarchar(80),
-                                    Busnummer nvarchar(80),
-                                    NISCode int,
-                                    Postcode int,
-                                    Status nvarchar(80)
-                                )";
+                            UPDATE adr
+                            SET
+	                            adr.StraatID = adru.StraatID,
+	                            adr.Huisnummer = adru.Huisnummer,
+	                            adr.Appartementnummer = adru.Appartementnummer,
+	                            adr.Busnummer = adru.Busnummer,
+	                            adr.Postcode = adru.Postcode,
+	                            adr.Status = adru.Status,
+                                adr.NISCode = adru.NISCode
+                            FROM Adressen adr
+                            INNER JOIN OPENJSON(@adressen) WITH
+                            (
+	                            AdresID int,
+	                            StraatID int,
+	                            Huisnummer nvarchar(80),
+	                            Appartementnummer nvarchar(80),
+	                            Busnummer nvarchar(80),
+	                            Postcode int,
+                                NISCode nvarchar(80),
+	                            Status nvarchar(80)
+                            ) adru
+                            ON adr.AdresID = adru.AdresID;";
 
                 db.ExecuteSql(query, new { adressen = adressenJSON });
             }
         }
     }
-
 }

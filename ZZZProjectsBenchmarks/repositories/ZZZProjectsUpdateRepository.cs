@@ -24,15 +24,5 @@ namespace ZZZProjectsBenchmarks.repositories
                 options.AutoMapOutputDirection = false;
             });
         }
-
-
-
-
-
-
-
-
-
-
     }
 }

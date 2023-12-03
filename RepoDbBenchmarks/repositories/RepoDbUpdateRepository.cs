@@ -16,7 +16,6 @@ namespace RepoDbBenchmarks.repositories
         public RepoDbUpdateRepository()
         {
             GlobalConfiguration.Setup().UseSqlServer();
-
             _connection = new SqlConnection(Toolkit.GetConnectionString());
         }
 

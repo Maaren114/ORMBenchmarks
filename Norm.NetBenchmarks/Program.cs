@@ -8,10 +8,14 @@ namespace Norm.NetBenchmarks
         {
             var repoupdate = new NormNetUpdateRepository();
             var repocreate = new NormNetCreateRepository();
+            var repodelete = new NormNetCreateRepository();
 
             var adressen = repocreate.GetAdressen("Zottegem");
 
-            repoupdate.UpdateExecute(adressen);
+
+            repodelete.CreateExecute(adressen);
+
+            //repoupdate.UpdateExecute(adressen);
             //repocreate.CreateExecute(adressen);
         }
     }

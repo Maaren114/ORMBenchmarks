@@ -14,7 +14,10 @@ namespace RepoDbBenchmarks
             //repoupdate.UpdateAll(adressen);
 
             //repocreate.BulkInsert(adressen);
-            repocreate.InsertAll(adressen);
+            //repocreate.InsertAll(adressen);
+
+
+
         }
     }
 }

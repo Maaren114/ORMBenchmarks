@@ -8,12 +8,15 @@ namespace OrmLiteBenchmarks
         {
             var repoupdate = new OrmLiteUpdateRepository();
             var repocreate = new OrmLiteCreateRepository();
+            var repodelete = new OrmLiteDeleteRepository();
             
             var adressen = repocreate.GetAdressen("Zottegem");
 
-            repoupdate.ExecuteUpdateRaw(adressen);
+            repodelete.ExecuteDeleteRaw(adressen);
+
+            //repoupdate.ExecuteUpdateRaw(adressen);
             //repo.BulkInsert(adressen);
-            repocreate.BulkInsertRaw(adressen);
+            //repocreate.BulkInsertRaw(adressen);
         }
     }
 }

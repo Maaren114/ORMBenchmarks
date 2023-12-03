@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>Benchmarks.benchmarks.UpdateBenchmarks-20231203-021703</title>
+<title>Benchmarks.benchmarks.UpdateBenchmarks-20231203-033834</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -17,28 +17,29 @@ BenchmarkDotNet v0.13.10, Windows 10 (10.0.19045.3693/22H2/2022Update)
 Intel Core i7-8700 CPU 3.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
 .NET SDK 8.0.100-preview.7.23376.3
   [Host]     : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
-  Job-SVAARL : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+  Job-LJKQUG : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>MaxIterationCount=100  
 </code></pre>
 
 <table>
-<thead><tr><th>Method           </th><th>Mean         </th><th>Error      </th><th>StdDev     </th><th>Median       </th><th>Rank</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
+<thead><tr><th>Method           </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Rank</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>ZZZProjectsBulkUpdate</td><td>51.78 ns</td><td>1.129 ns</td><td>3.329 ns</td><td>51.00 ns</td><td>1</td><td>0.0166</td><td>-</td><td>-</td><td>104 B</td>
-</tr><tr><td>RepoDbBulkUpdate</td><td>10,810.67 ns</td><td>211.885 ns</td><td>392.743 ns</td><td>10,841.40 ns</td><td>2</td><td>0.1678</td><td>-</td><td>-</td><td>1096 B</td>
-</tr><tr><td>RepoDbUpdateAll</td><td>11,166.26 ns</td><td>221.022 ns</td><td>206.744 ns</td><td>11,140.62 ns</td><td>3</td><td>0.2136</td><td>0.0153</td><td>-</td><td>1424 B</td>
-</tr><tr><td>NHibernateBatch</td><td>160,155.83 ns</td><td>2,627.257 ns</td><td>2,328.995 ns</td><td>159,973.83 ns</td><td>4</td><td>1.7090</td><td>-</td><td>-</td><td>12225 B</td>
-</tr><tr><td>PetaPocoExecute</td><td>162,560.36 ns</td><td>3,041.661 ns</td><td>2,845.172 ns</td><td>162,922.19 ns</td><td>4</td><td>0.7324</td><td>0.2441</td><td>-</td><td>5423 B</td>
-</tr><tr><td>DapperPlus</td><td>69,575,276.38 ns</td><td>7,661,190.424 ns</td><td>21,857,807.371 ns</td><td>61,657,895.00 ns</td><td>5</td><td>700.0000</td><td>-</td><td>-</td><td>4689210 B</td>
-</tr><tr><td>NHibernateBatchRaw</td><td>213,883,891.93 ns</td><td>4,259,339.622 ns</td><td>12,220,843.816 ns</td><td>212,729,400.00 ns</td><td>6</td><td>-</td><td>-</td><td>-</td><td>7858400 B</td>
-</tr><tr><td>DapperExecute</td><td>216,694,317.69 ns</td><td>4,790,152.468 ns</td><td>13,973,099.587 ns</td><td>215,025,150.00 ns</td><td>6</td><td>-</td><td>-</td><td>-</td><td>7808211 B</td>
-</tr><tr><td>EFCoreExecuteSql</td><td>217,751,440.74 ns</td><td>4,302,429.831 ns</td><td>7,188,393.725 ns</td><td>216,874,416.67 ns</td><td>6</td><td>-</td><td>-</td><td>-</td><td>7816888 B</td>
-</tr><tr><td>EFCoreExecuteRaw</td><td>220,507,448.15 ns</td><td>3,957,963.210 ns</td><td>6,612,867.385 ns</td><td>221,408,450.00 ns</td><td>6</td><td>-</td><td>-</td><td>-</td><td>7816784 B</td>
-</tr><tr><td>NormNetUpdateExecute</td><td>230,624,534.55 ns</td><td>6,560,173.344 ns</td><td>17,396,649.077 ns</td><td>229,890,633.33 ns</td><td>7</td><td>-</td><td>-</td><td>-</td><td>7815672 B</td>
-</tr><tr><td>ormliteexecuteupdateraw</td><td>240,223,379.17 ns</td><td>4,765,137.941 ns</td><td>9,405,917.405 ns</td><td>239,541,450.00 ns</td><td>8</td><td>500.0000</td><td>500.0000</td><td>500.0000</td><td>25956036 B</td>
-</tr><tr><td>EFCoreBorisDjUpdate</td><td>857,051,480.00 ns</td><td>16,883,207.096 ns</td><td>15,792,562.393 ns</td><td>854,698,400.00 ns</td><td>9</td><td>2000.0000</td><td>1000.0000</td><td>-</td><td>16076720 B</td>
-</tr><tr><td>EFCoreUpdateRange</td><td>1,295,598,701.32 ns</td><td>25,681,805.428 ns</td><td>65,368,394.660 ns</td><td>1,282,654,900.00 ns</td><td>10</td><td>33000.0000</td><td>10000.0000</td><td>4000.0000</td><td>186701792 B</td>
+</thead><tbody><tr><td>ZZZProjectsBulkUpdate</td><td>141.7 ms</td><td>3.92 ms</td><td>11.30 ms</td><td>138.5 ms</td><td>1</td><td>-</td><td>-</td><td>-</td><td>1.99 MB</td>
+</tr><tr><td>RepoDbBulkUpdate</td><td>154.7 ms</td><td>3.02 ms</td><td>3.59 ms</td><td>154.5 ms</td><td>2</td><td>-</td><td>-</td><td>-</td><td>1.23 MB</td>
+</tr><tr><td>DapperPlus</td><td>162.7 ms</td><td>3.23 ms</td><td>3.72 ms</td><td>162.4 ms</td><td>3</td><td>750.0000</td><td>-</td><td>-</td><td>5.69 MB</td>
+</tr><tr><td>NHibernateBatchRaw</td><td>195.5 ms</td><td>3.78 ms</td><td>5.55 ms</td><td>194.6 ms</td><td>4</td><td>-</td><td>-</td><td>-</td><td>7.48 MB</td>
+</tr><tr><td>PetaPocoExecute</td><td>197.2 ms</td><td>3.58 ms</td><td>3.35 ms</td><td>196.9 ms</td><td>4</td><td>-</td><td>-</td><td>-</td><td>7.46 MB</td>
+</tr><tr><td>DapperExecute</td><td>198.2 ms</td><td>3.90 ms</td><td>4.79 ms</td><td>197.3 ms</td><td>4</td><td>-</td><td>-</td><td>-</td><td>7.45 MB</td>
+</tr><tr><td>EFCoreExecuteSql</td><td>199.5 ms</td><td>3.91 ms</td><td>3.65 ms</td><td>200.3 ms</td><td>4</td><td>-</td><td>-</td><td>-</td><td>7.45 MB</td>
+</tr><tr><td>EFCoreExecuteRaw</td><td>201.7 ms</td><td>4.01 ms</td><td>4.62 ms</td><td>201.0 ms</td><td>4</td><td>-</td><td>-</td><td>-</td><td>7.45 MB</td>
+</tr><tr><td>NormNetUpdateExecute</td><td>213.9 ms</td><td>3.98 ms</td><td>8.39 ms</td><td>212.6 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>7.45 MB</td>
+</tr><tr><td>LinqToDbExecute</td><td>218.6 ms</td><td>4.27 ms</td><td>4.75 ms</td><td>218.6 ms</td><td>6</td><td>-</td><td>-</td><td>-</td><td>7.44 MB</td>
+</tr><tr><td>ormliteexecuteupdateraw</td><td>231.4 ms</td><td>4.62 ms</td><td>8.68 ms</td><td>229.6 ms</td><td>7</td><td>500.0000</td><td>500.0000</td><td>500.0000</td><td>24.75 MB</td>
+</tr><tr><td>EFCoreBorisDjUpdate</td><td>822.3 ms</td><td>16.44 ms</td><td>38.10 ms</td><td>823.4 ms</td><td>8</td><td>2000.0000</td><td>1000.0000</td><td>-</td><td>15.33 MB</td>
+</tr><tr><td>EFCoreUpdateRange</td><td>1,112.3 ms</td><td>10.91 ms</td><td>9.11 ms</td><td>1,110.9 ms</td><td>9</td><td>29000.0000</td><td>7000.0000</td><td>-</td><td>178.04 MB</td>
+</tr><tr><td>NHibernateBatch</td><td>2,273.9 ms</td><td>27.52 ms</td><td>25.75 ms</td><td>2,271.9 ms</td><td>10</td><td>19000.0000</td><td>7000.0000</td><td>1000.0000</td><td>123.65 MB</td>
+</tr><tr><td>RepoDbUpdateAll</td><td>2,783.3 ms</td><td>55.16 ms</td><td>69.77 ms</td><td>2,793.6 ms</td><td>11</td><td>4000.0000</td><td>2000.0000</td><td>-</td><td>33.04 MB</td>
 </tr></tbody></table>
 </body>
 </html>

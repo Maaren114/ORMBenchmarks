@@ -55,7 +55,7 @@ namespace DapperBenchmarks.repositories
                 options.BatchSize = 16000;
                 options.AutoMapOutputDirection = false;
                 options.DestinationTableName = "Adressen";
-            }).BulkInsert(adressen);
+            }).BulkUpdate(adressen);
         }
     }
 }

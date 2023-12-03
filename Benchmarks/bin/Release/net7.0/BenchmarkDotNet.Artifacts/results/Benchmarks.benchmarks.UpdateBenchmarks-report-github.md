@@ -4,24 +4,25 @@ BenchmarkDotNet v0.13.10, Windows 10 (10.0.19045.3693/22H2/2022Update)
 Intel Core i7-8700 CPU 3.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
 .NET SDK 8.0.100-preview.7.23376.3
   [Host]     : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
-  Job-SVAARL : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+  Job-LJKQUG : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
 
 MaxIterationCount=100  
 
 ```
-| Method                  | Mean                | Error             | StdDev            | Median              | Rank | Gen0       | Gen1       | Gen2      | Allocated   |
-|------------------------ |--------------------:|------------------:|------------------:|--------------------:|-----:|-----------:|-----------:|----------:|------------:|
-| ZZZProjectsBulkUpdate   |            51.78 ns |          1.129 ns |          3.329 ns |            51.00 ns |    1 |     0.0166 |          - |         - |       104 B |
-| RepoDbBulkUpdate        |        10,810.67 ns |        211.885 ns |        392.743 ns |        10,841.40 ns |    2 |     0.1678 |          - |         - |      1096 B |
-| RepoDbUpdateAll         |        11,166.26 ns |        221.022 ns |        206.744 ns |        11,140.62 ns |    3 |     0.2136 |     0.0153 |         - |      1424 B |
-| NHibernateBatch         |       160,155.83 ns |      2,627.257 ns |      2,328.995 ns |       159,973.83 ns |    4 |     1.7090 |          - |         - |     12225 B |
-| PetaPocoExecute         |       162,560.36 ns |      3,041.661 ns |      2,845.172 ns |       162,922.19 ns |    4 |     0.7324 |     0.2441 |         - |      5423 B |
-| DapperPlus              |    69,575,276.38 ns |  7,661,190.424 ns | 21,857,807.371 ns |    61,657,895.00 ns |    5 |   700.0000 |          - |         - |   4689210 B |
-| NHibernateBatchRaw      |   213,883,891.93 ns |  4,259,339.622 ns | 12,220,843.816 ns |   212,729,400.00 ns |    6 |          - |          - |         - |   7858400 B |
-| DapperExecute           |   216,694,317.69 ns |  4,790,152.468 ns | 13,973,099.587 ns |   215,025,150.00 ns |    6 |          - |          - |         - |   7808211 B |
-| EFCoreExecuteSql        |   217,751,440.74 ns |  4,302,429.831 ns |  7,188,393.725 ns |   216,874,416.67 ns |    6 |          - |          - |         - |   7816888 B |
-| EFCoreExecuteRaw        |   220,507,448.15 ns |  3,957,963.210 ns |  6,612,867.385 ns |   221,408,450.00 ns |    6 |          - |          - |         - |   7816784 B |
-| NormNetUpdateExecute    |   230,624,534.55 ns |  6,560,173.344 ns | 17,396,649.077 ns |   229,890,633.33 ns |    7 |          - |          - |         - |   7815672 B |
-| ormliteexecuteupdateraw |   240,223,379.17 ns |  4,765,137.941 ns |  9,405,917.405 ns |   239,541,450.00 ns |    8 |   500.0000 |   500.0000 |  500.0000 |  25956036 B |
-| EFCoreBorisDjUpdate     |   857,051,480.00 ns | 16,883,207.096 ns | 15,792,562.393 ns |   854,698,400.00 ns |    9 |  2000.0000 |  1000.0000 |         - |  16076720 B |
-| EFCoreUpdateRange       | 1,295,598,701.32 ns | 25,681,805.428 ns | 65,368,394.660 ns | 1,282,654,900.00 ns |   10 | 33000.0000 | 10000.0000 | 4000.0000 | 186701792 B |
+| Method                  | Mean       | Error    | StdDev   | Median     | Rank | Gen0       | Gen1      | Gen2      | Allocated |
+|------------------------ |-----------:|---------:|---------:|-----------:|-----:|-----------:|----------:|----------:|----------:|
+| ZZZProjectsBulkUpdate   |   141.7 ms |  3.92 ms | 11.30 ms |   138.5 ms |    1 |          - |         - |         - |   1.99 MB |
+| RepoDbBulkUpdate        |   154.7 ms |  3.02 ms |  3.59 ms |   154.5 ms |    2 |          - |         - |         - |   1.23 MB |
+| DapperPlus              |   162.7 ms |  3.23 ms |  3.72 ms |   162.4 ms |    3 |   750.0000 |         - |         - |   5.69 MB |
+| NHibernateBatchRaw      |   195.5 ms |  3.78 ms |  5.55 ms |   194.6 ms |    4 |          - |         - |         - |   7.48 MB |
+| PetaPocoExecute         |   197.2 ms |  3.58 ms |  3.35 ms |   196.9 ms |    4 |          - |         - |         - |   7.46 MB |
+| DapperExecute           |   198.2 ms |  3.90 ms |  4.79 ms |   197.3 ms |    4 |          - |         - |         - |   7.45 MB |
+| EFCoreExecuteSql        |   199.5 ms |  3.91 ms |  3.65 ms |   200.3 ms |    4 |          - |         - |         - |   7.45 MB |
+| EFCoreExecuteRaw        |   201.7 ms |  4.01 ms |  4.62 ms |   201.0 ms |    4 |          - |         - |         - |   7.45 MB |
+| NormNetUpdateExecute    |   213.9 ms |  3.98 ms |  8.39 ms |   212.6 ms |    5 |          - |         - |         - |   7.45 MB |
+| LinqToDbExecute         |   218.6 ms |  4.27 ms |  4.75 ms |   218.6 ms |    6 |          - |         - |         - |   7.44 MB |
+| ormliteexecuteupdateraw |   231.4 ms |  4.62 ms |  8.68 ms |   229.6 ms |    7 |   500.0000 |  500.0000 |  500.0000 |  24.75 MB |
+| EFCoreBorisDjUpdate     |   822.3 ms | 16.44 ms | 38.10 ms |   823.4 ms |    8 |  2000.0000 | 1000.0000 |         - |  15.33 MB |
+| EFCoreUpdateRange       | 1,112.3 ms | 10.91 ms |  9.11 ms | 1,110.9 ms |    9 | 29000.0000 | 7000.0000 |         - | 178.04 MB |
+| NHibernateBatch         | 2,273.9 ms | 27.52 ms | 25.75 ms | 2,271.9 ms |   10 | 19000.0000 | 7000.0000 | 1000.0000 | 123.65 MB |
+| RepoDbUpdateAll         | 2,783.3 ms | 55.16 ms | 69.77 ms | 2,793.6 ms |   11 |  4000.0000 | 2000.0000 |         - |  33.04 MB |

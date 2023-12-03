@@ -92,10 +92,6 @@ namespace Benchmarks.benchmarks
             {
                 a.Status = "CHANGED";
             });
-
-
-
-
         }
 
         #region EF Core
@@ -139,7 +135,7 @@ namespace Benchmarks.benchmarks
         #endregion
 
         #region LINQ to DB
-        //[Benchmark]
+        [Benchmark]
         public void LinqToDbExecute()
         {
             _linqToDbRepository.LinqToDbExecute(_AdressenZottegem);
@@ -150,7 +146,7 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void NHibernateBatch()
         {
-            _nhibernateRepository.Batch(_adressenHasselt);
+            _nhibernateRepository.Batch(_AdressenZottegem);
         }
 
         [Benchmark]
@@ -180,7 +176,7 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void PetaPocoExecute()
         {
-            _petapocorepository.PetaPocoExecute(_adressenKortrijk);
+            _petapocorepository.PetaPocoExecute(_AdressenZottegem);
         }
         #endregion
 
@@ -188,13 +184,13 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void RepoDbUpdateAll()
         {
-            _repodbrepository.UpdateAll(_adressenSintNiklaas);
+            _repodbrepository.UpdateAll(_AdressenZottegem);
         }
 
         [Benchmark]
         public void RepoDbBulkUpdate()
         {
-            _repodbrepository.BulkUpdate(_adressenRoeselare);
+            _repodbrepository.BulkUpdate(_AdressenZottegem);
         }
         #endregion
 
@@ -202,7 +198,7 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void ZZZProjectsBulkUpdate()
         {
-            _zzzprojectsrepository.ZZZProjectsBulkUpdate(_adressenGenk);
+            _zzzprojectsrepository.ZZZProjectsBulkUpdate(_AdressenZottegem);
         }
         #endregion
 

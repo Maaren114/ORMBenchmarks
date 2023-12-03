@@ -20,9 +20,9 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public List<AdresX> GetAdressen(string gemeentenaam)
+        public List<AdresX> GetAdressen(string gemeentenaam, int aantal)
         {
-            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(15557).ToList();
+            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(aantal).ToList();
             //adressen.ForEach(a => a.AdresID = 0);
             return adressen;
         }

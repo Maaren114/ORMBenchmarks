@@ -1,14 +1,18 @@
-﻿namespace Norm.NetBenchmarks
+﻿using Norm.NetBenchmarks.repositories;
+
+namespace Norm.NetBenchmarks
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var repo = new NormNetCreateRepository();
+            var repoupdate = new NormNetUpdateRepository();
+            var repocreate = new NormNetCreateRepository();
 
-            var adressen = repo.GetAdressen("Zottegem");
+            var adressen = repocreate.GetAdressen("Zottegem");
 
-            repo.CreateExecute(adressen);
+            repoupdate.UpdateExecute(adressen);
+            //repocreate.CreateExecute(adressen);
         }
     }
 }

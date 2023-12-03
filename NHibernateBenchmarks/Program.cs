@@ -1,16 +1,27 @@
-﻿namespace NHibernateBenchmarks
+﻿using NHibernate;
+using NHibernateBenchmarks.repositories;
+using ServiceStack;
+
+namespace NHibernateBenchmarks
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var repo = new NHibernateCreateRepository();
+            var updaterepo = new NHibernateUpdateRepository();
+            var createrepo = new NHibernateCreateRepository();
 
-            var adressen = repo.GetAdressen("Zottegem");
+            var adressen = createrepo.GetAdressen("Zottegem");
 
-            repo.BatchRaw(adressen);
-            repo.Batch(adressen);
+            adressen.ForEach(x =>
+            {
+                x.Status = "XDDD";
+            });
 
+
+
+            //updaterepo.Batch(adressen);
+            updaterepo.BatchRaw(adressen);
         }
     }
 }

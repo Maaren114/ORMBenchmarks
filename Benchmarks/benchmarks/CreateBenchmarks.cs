@@ -5,12 +5,13 @@ using DapperBenchmarks.repositories;
 using EFCoreBenchmarks.repositories;
 using LinqToDbBenchmarks.repositories;
 using NHibernateBenchmarks;
-using Norm.NetBenchmarks;
-using OrmLiteBenchmarks;
-using PetaPocoBenchmarks;
-using RepoDbBenchmarks;
+using NHibernateBenchmarks.repositories;
+using Norm.NetBenchmarks.repositories;
+using OrmLiteBenchmarks.repositories;
+using PetaPocoBenchmarks.repositories;
+using RepoDbBenchmarks.repositories;
 using Tools;
-using ZZZProjectsBenchmarks;
+using ZZZProjectsBenchmarks.repositories;
 
 namespace Benchmarks.benchmarks
 {
@@ -45,7 +46,7 @@ namespace Benchmarks.benchmarks
             _ormLiteRepository = new OrmLiteCreateRepository();
             _petapocorepository = new PetaPocoCreateRepository();
             _repoDbRepository = new RepoDbCreateRepository();
-            _adressen = _EFCoreRepository.GetAdressen("Zottegem");
+            _adressen = _EFCoreRepository.GetAdressen("Zottegem", 15557);
         }
 
         #region EF Core
@@ -70,7 +71,7 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void EFCoreZzzProjectsCreate()
         {
-            _zzzProjectRepository.Create1(_adressen);
+            _zzzProjectRepository.ZZZProjectsBulkInsert(_adressen);
         }
         #endregion
 

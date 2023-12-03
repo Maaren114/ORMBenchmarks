@@ -1,5 +1,6 @@
 ﻿using LinqToDB.Data;
 using LinqToDbBenchmarks.models;
+using LinqToDbBenchmarks.repositories;
 using Tools;
 
 namespace LinqToDbBenchmarks
@@ -8,11 +9,11 @@ namespace LinqToDbBenchmarks
     {
         static void Main(string[] args)
         {
-            var repo = new LinqToDbCreateRepository();
-            var adressen = repo.GetAdressen("Zottegem");
+            var updaterepo = new LinqToDbUpdateRepository();
+            var createrepo = new LinqToDbCreateRepository();
+            var adressen = createrepo.GetAdressen("Zottegem");
 
-            repo.CreateExecute(adressen);
-            repo.CreateBulkCopy(adressen);
+            updaterepo.LinqToDbExecute(adressen);
         }
     }
 }

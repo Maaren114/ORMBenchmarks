@@ -1,14 +1,25 @@
-﻿namespace ZZZProjectsBenchmarks
+﻿using ZZZProjectsBenchmarks.repositories;
+
+namespace ZZZProjectsBenchmarks
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var repo = new ZZZProjectsCreateRepository();
 
-            var adressen = repo.GetAdressen("Zottegem");
+            var repoupdate = new ZZZProjectsUpdateRepository();
+            var repocreate = new ZZZProjectsCreateRepository();
 
-            repo.Create1(adressen);
+            var adressen = repocreate.GetAdressen("Zottegem");
+
+            adressen.ForEach(x =>
+            {
+                x.Status = ":)";
+            
+            });
+
+            repoupdate.ZZZProjectsBulkUpdate(adressen);
+            //repocreate.ZZZProjectsBulkInsert(adressen);
         }
     }
 }

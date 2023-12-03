@@ -10,7 +10,13 @@ namespace EFCoreBenchmarks
         {
             var updateRepo = new EFCoreUpdateRepository();
             var createRepo = new EFCoreCreateRepository();
-            List<AdresX> adressen = createRepo.GetAdressen("Zottegem");
+            List<AdresX> adressen = createRepo.GetAdressen("Zottegem", 15557);
+
+            adressen.ForEach(x =>
+            {
+                x.Status = "XDDD";
+            });
+
 
             updateRepo.ExecuteSqlRaw(adressen); 
             //updateRepo.UpdateRange(adressen);

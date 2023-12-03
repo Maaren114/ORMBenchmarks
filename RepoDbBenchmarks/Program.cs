@@ -1,14 +1,20 @@
-﻿namespace RepoDbBenchmarks
+﻿using RepoDbBenchmarks.repositories;
+
+namespace RepoDbBenchmarks
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var repo = new RepoDbCreateRepository();
-            var adressen = repo.GetAdressen("Zottegem");
+            var repoupdate = new RepoDbUpdateRepository();
+            var repocreate = new RepoDbCreateRepository();
+            var adressen = repocreate.GetAdressen("Zottegem");
 
-            repo.BulkInsert(adressen);
-            repo.InsertAll(adressen);
+            //repoupdate.BulkUpdate(adressen);
+            //repoupdate.UpdateAll(adressen);
+
+            //repocreate.BulkInsert(adressen);
+            repocreate.InsertAll(adressen);
         }
     }
 }

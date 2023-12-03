@@ -1,14 +1,17 @@
-﻿namespace PetaPocoBenchmarks
+﻿using PetaPocoBenchmarks.repositories;
+
+namespace PetaPocoBenchmarks
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var repo = new PetaPocoCreateRepository();
-            var adressen = repo.GetAdressen("Zottegem");
+            var updaterepo = new PetaPocoUpdateRepository();
+            var createrepo = new PetaPocoCreateRepository();
+            var adressen = createrepo.GetAdressen("Zottegem");
 
-            repo.PetaPocoExecute(adressen);
-
+            //createrepo.PetaPocoExecute(adressen);
+            updaterepo.PetaPocoExecute(adressen);
         }
     }
 }

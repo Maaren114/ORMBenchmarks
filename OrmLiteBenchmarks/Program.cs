@@ -1,15 +1,19 @@
-﻿namespace OrmLiteBenchmarks
+﻿using OrmLiteBenchmarks.repositories;
+
+namespace OrmLiteBenchmarks
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var repo = new OrmLiteCreateRepository();
+            var repoupdate = new OrmLiteUpdateRepository();
+            var repocreate = new OrmLiteCreateRepository();
             
-            var adressen = repo.GetAdressen("Zottegem");
+            var adressen = repocreate.GetAdressen("Zottegem");
 
+            repoupdate.ExecuteUpdateRaw(adressen);
             //repo.BulkInsert(adressen);
-            repo.BulkInsertRaw(adressen);
+            repocreate.BulkInsertRaw(adressen);
         }
     }
 }

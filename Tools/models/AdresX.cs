@@ -23,6 +23,7 @@ public class AdresX
     public virtual string? Appartementnummer { get; set; }
     public virtual string? Busnummer { get; set; }
     public virtual string Status { get; set; }
+    [Column(Name = "NISCode")]
     public virtual string? NISCode { get; set; }
     public virtual int? Postcode { get; set; }
     [ServiceStack.DataAnnotations.Ignore]

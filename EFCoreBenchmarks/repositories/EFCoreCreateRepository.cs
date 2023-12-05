@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Tools;
+using ServiceStack;
 
 namespace EFCoreBenchmarks.repositories
 {
@@ -20,18 +21,14 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public void ChangeNISCode()
+        public List<string> GetNISCodes(int amount)
         {
-            List<AdresX> adressen = _context.Adressen.ToList();
+            return _context.Adressen.Map(a => a.NISCode).Take(amount).ToList();
+        }
 
-            adressen.ForEach(x =>
-            {
-                string guid = Guid.NewGuid().ToString();
-                Console.WriteLine(guid);
-                x.NISCode = guid;
-            });
-
-            _context.SaveChanges();
+        public void TestMethode(List<string> niscodes)
+        {
+            List<AdresX> adressen = _context.Adressen.Where(a => niscodes.Contains(a.NISCode)).ToList();
         }
 
         public List<AdresX> GetAdressen(string gemeentenaam, int aantal)

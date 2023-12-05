@@ -15,7 +15,6 @@ namespace LinqToDbBenchmarks.repositories
     public class LinqToDbCreateRepository
     {
         private StratenRegisterConnection _connection;
-
         public LinqToDbCreateRepository()
         {
             DataConnection.DefaultSettings = new MySettings();
@@ -70,6 +69,7 @@ namespace LinqToDbBenchmarks.repositories
 
             _connection.Execute(query, new { adressen = adressenJSON });
         }
+
 
 
 

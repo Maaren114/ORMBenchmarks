@@ -17,7 +17,7 @@ namespace Norm.NetBenchmarks.repositories
             _connection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public void UpdateExecute(List<AdresX> updates)
+        public void DeleteExecute(List<AdresX> updates)
         {
             string adressenJSON = JsonSerializer.Serialize(updates);
 

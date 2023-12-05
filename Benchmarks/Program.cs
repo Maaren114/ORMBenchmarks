@@ -8,7 +8,7 @@ namespace Benchmarks
     {
         static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<UpdateBenchmarks>();
+            var summary = BenchmarkRunner.Run<SelectBenchmarks>();
 
             //// Iteraties per testmethode weergeven
             //foreach (var report in summary.Reports)

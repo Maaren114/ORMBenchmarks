@@ -24,7 +24,7 @@ namespace DapperBenchmarks.repositories
         public List<AdresX> GetAddressen(string gemeentenaam)
         {
             string query = $@"
-                            SELECT a.*
+                            SELECT TOP 1550 a.*
                             FROM Adressen a
                             INNER JOIN Straten s ON a.StraatID = s.StraatID
                             INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID

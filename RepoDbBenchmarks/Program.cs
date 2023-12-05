@@ -28,7 +28,7 @@ namespace RepoDbBenchmarks
             niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
             niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
 
-            List<AdresX> adressen = reposelect.ExecuteQuery(niscodes);
+            List<AdresX> adressen = reposelect.Query(niscodes);
 
         }
     }

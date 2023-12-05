@@ -22,7 +22,16 @@ namespace RepoDbBenchmarks.repositories
         public List<AdresX> Query(List<string> niscodes)
         {
             _connection.Open();
-            List<AdresX> adressen = _connection.Query<AdresX>(a => niscodes.Contains(a.NISCode)).ToList();
+
+            List<AdresX> adressen = new List<AdresX>();
+            List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+
+            foreach (var niscodebatch in niscodebatches)
+            {
+                List<AdresX> adressenFromBatch = _connection.Query<AdresX>(a => niscodebatch.Contains(a.NISCode)).ToList();
+                adressen.AddRange(adressenFromBatch);
+            }
+            
             _connection.Close();
             return adressen;
         }
@@ -44,8 +53,25 @@ namespace RepoDbBenchmarks.repositories
 
             return adressen;
         }
+
+        #region helper methods
+        public List<List<string>> SplitListIntoBatches(List<string> sourceList, int batchSize)
+        {
+            List<List<string>> batches = new List<List<string>>();
+
+            for (int i = 0; i < sourceList.Count; i += batchSize)
+            {
+                List<string> batch = sourceList.Skip(i).Take(batchSize).ToList();
+                batches.Add(batch);
+            }
+
+            return batches;
+        }
+        #endregion
     }
 }
+
+
 
 
 

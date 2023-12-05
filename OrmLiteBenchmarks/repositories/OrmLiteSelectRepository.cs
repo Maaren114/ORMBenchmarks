@@ -25,9 +25,9 @@ namespace OrmLiteBenchmarks.repositories
             using (var db = _factory.OpenDbConnection())
             {
                 string query = @"SELECT *
-	                             FROM Adressen
-		                         WHERE NIScode IN (SELECT CONVERT(nvarchar(80), value)
-	     		                                   FROM OPENJSON(@niscodes));";
+                         FROM Adressen
+                         WHERE NIScode IN (SELECT CONVERT(nvarchar(80), value)
+                                           FROM OPENJSON(@niscodes))";
 
                 var adressen = db.SqlList<AdresX>(query, new { niscodes = niscodesJSON });
                 return adressen;
@@ -38,10 +38,32 @@ namespace OrmLiteBenchmarks.repositories
         {
             using (var db = _factory.OpenDbConnection())
             {
-                List<AdresX> adressen = db.Select<AdresX>(a => niscodes.Contains(a.NISCode));
+                List<AdresX> adressen = new List<AdresX>();
+                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+
+                foreach (var niscodebatch in niscodebatches)
+                {
+                    List<AdresX> adressenFromBatch = db.Select<AdresX>(a => niscodebatch.Contains(a.NISCode));
+                    adressen.AddRange(adressenFromBatch);
+                }
                 return adressen;
             }
         }
+
+        #region helper methods
+        public List<List<string>> SplitListIntoBatches(List<string> sourceList, int batchSize)
+        {
+            List<List<string>> batches = new List<List<string>>();
+
+            for (int i = 0; i < sourceList.Count; i += batchSize)
+            {
+                List<string> batch = sourceList.Skip(i).Take(batchSize).ToList();
+                batches.Add(batch);
+            }
+
+            return batches;
+        }
+        #endregion
     }
 }
 

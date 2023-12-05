@@ -27,7 +27,6 @@ namespace PetaPocoBenchmarks
             niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
             niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
 
-            var adressen = selectrepo.ExecuteQuery(niscodes);
 
         }
     }

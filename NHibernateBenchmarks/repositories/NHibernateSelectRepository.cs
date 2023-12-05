@@ -26,23 +26,42 @@ namespace NHibernateBenchmarks.repositories
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                string hql = "FROM AdresX a WHERE a.NISCode IN (:niscodes)";
-                List<AdresX> adressen = session.CreateQuery(hql)
-                                               .SetParameterList("niscodes", niscodes)
-                                               .List<AdresX>()
-                                               .ToList();
+                List<AdresX> adressen = new List<AdresX>();
+
+                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+
+                foreach (var niscodebatch in niscodebatches)
+                {
+                    string hql = "FROM AdresX a WHERE a.NISCode IN (:niscodes)";
+                    List<AdresX> adressenFrombatch = session.CreateQuery(hql)
+                                                   .SetParameterList("niscodes", niscodebatch)
+                                                   .List<AdresX>()
+                                                   .ToList();
+
+                    adressen.AddRange(adressenFrombatch);
+                }
                 return adressen;
             }
         }
+
 
         public List<AdresX> QueryLinq(List<string> niscodes)
         {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var adressen = session.Query<AdresX>()
-                                      .Where(a => niscodes.Contains(a.NISCode))
-                                      .ToList();
+                List<AdresX> adressen = new List<AdresX>();
+
+                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+
+                foreach (var niscodebatch in niscodebatches)
+                {
+                    var adressenFrombatch = session.Query<AdresX>()
+                                                   .Where(a => niscodebatch.Contains(a.NISCode))
+                                                   .ToList();
+
+                    adressen.AddRange(adressenFrombatch);
+                }
                 return adressen;
             }
         }
@@ -52,9 +71,17 @@ namespace NHibernateBenchmarks.repositories
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var criteria = session.CreateCriteria<AdresX>();
-                criteria.Add(Restrictions.In("NISCode", niscodes.ToArray()));
-                return criteria.List<AdresX>().ToList();
+                List<AdresX> adressen = new List<AdresX>();
+                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+
+                foreach (var niscodebatch in niscodebatches)
+                {
+                    var criteria = session.CreateCriteria<AdresX>();
+                    criteria.Add(Restrictions.In("NISCode", niscodebatch.ToArray()));
+                    List<AdresX> adressenFromBatch = criteria.List<AdresX>().ToList();
+                    adressen.AddRange(adressenFromBatch);
+                }
+                return adressen;
             }
         }
 
@@ -75,5 +102,21 @@ namespace NHibernateBenchmarks.repositories
                 return adressen;
             }
         }
+
+
+        #region helper methods
+        public List<List<string>> SplitListIntoBatches(List<string> sourceList, int batchSize)
+        {
+            List<List<string>> batches = new List<List<string>>();
+
+            for (int i = 0; i < sourceList.Count; i += batchSize)
+            {
+                List<string> batch = sourceList.Skip(i).Take(batchSize).ToList();
+                batches.Add(batch);
+            }
+
+            return batches;
+        }
+        #endregion
     }
 }

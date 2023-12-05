@@ -1,6 +1,11 @@
 ﻿using BenchmarkDotNet.Running;
 using Benchmarks.benchmarks;
+using EFCoreBenchmarks.repositories;
+using NHibernateBenchmarks.repositories;
+using OrmLiteBenchmarks.repositories;
+using RepoDbBenchmarks.repositories;
 using System.Reflection;
+using Tools;
 
 namespace Benchmarks
 {
@@ -8,16 +13,23 @@ namespace Benchmarks
     {
         static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<SelectBenchmarks>();
+            var summary1 = BenchmarkRunner.Run<CreateBenchmarks>();
 
-            //// Iteraties per testmethode weergeven
-            //foreach (var report in summary.Reports)
-            //{
-            //    var benchmarkCase = report.BenchmarkCase;
-            //    var methodName = benchmarkCase.Descriptor.WorkloadMethod.Name;
-            //    var iterationCount = report.GetResultRuns().Count;
-            //    Console.WriteLine($"{methodName} werd {iterationCount} keer uitgevoerd.");
-            //}
+
+            //var repo = new EFCoreCreateRepository();
+            //List<string> niscodes = repo.GetNISCodes(15557);
+
+
+            //var ormliterepo = new OrmLiteSelectRepository();
+
+            //List<AdresX> a1 = ormliterepo.SqlList(niscodes);
+
+
+
+            //var repodbquery = new RepoDbSelectRepository();
+
+            //List<AdresX> adressen = repodbquery.Query(niscodes);
+
         }
     }
 }

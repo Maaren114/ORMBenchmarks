@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrmLiteBenchmarks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d8e96d350f2ced44fe5aa6b38ae38bfc9e651c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3c87ead12f679f9310e3f200462cb4c4276532a")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrmLiteBenchmarks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrmLiteBenchmarks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

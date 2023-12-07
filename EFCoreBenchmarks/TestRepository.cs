@@ -1,10 +1,12 @@
 ﻿
 using EFCore.BulkExtensions;
 using EFCoreBenchmarks.models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection.Metadata;
@@ -17,93 +19,56 @@ namespace EFCoreBenchmarks
 {
     public class TestRepository
     {
-        private StratenregisterContext _context;
+
         public TestRepository()
         {
-            _context = new StratenregisterContext();
+            this.Connectie = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public async void BulkAdd(IEnumerable<StraatX> straten)
+        private SqlConnection Connectie { get; set; }
+
+        public void SqlBulkCopy(List<AdresX> adressen)
         {
-            ProvincieX oostVlaanderen = _context.Provincies.Single(provincie => provincie.Provincienaam == "Oost-Vlaanderen");
+            Connectie.Open();
 
+            DataTable adressentabel = MaakDataTable(adressen);
+            string doeltabel = "Adressen";
 
-
-            Expression<Func<ProvincieX, bool>> f = provincie => provincie.Provincienaam == "Oost-Vlaanderen";
-
-
-
-
-            List<ProvincieX> provincies = new List<ProvincieX>() { new ProvincieX(), new ProvincieX() };
-
-            provincies.Single(provincie => provincie.Provincienaam == "Oost-Vlaanderen");
-
-
-            _context.Entry(oostVlaanderen).Collection(provincie => provincie.Gemeentes).Load();
-
-            foreach (GemeenteX gemeente in oostVlaanderen.Gemeentes)
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(Connectie))
             {
-                Console.WriteLine(gemeente);
-                _context.Entry(gemeente).Collection(gem => gem.Straten).Load();
-
-                foreach (StraatX straat in gemeente.Straten)
-                {
-                    Console.WriteLine(gemeente);
-                    _context.Entry(straat).Collection(str => str.Adressen).Load();
-
-                    foreach (AdresX adres in straat.Adressen)
-                    {
-                        Console.WriteLine(adres);
-                    }
-                }
+                bulkCopy.DestinationTableName = doeltabel;
+                bulkCopy.WriteToServer(adressentabel);
             }
 
-            Console.WriteLine();
-
-
-            //    .Single(b => b.Url == "http://someblog.microsoft.com");
-            //blog.Url = "http://someotherblog.microsoft.com";
-            //context.Add(new Blog { Url = "http://newblog1.microsoft.com" });
-            //context.Add(new Blog { Url = "http://newblog2.microsoft.com" });
-            //context.SaveChanges();
-
-
-
-
-            //foreach (Straat s in straten)
-            //{
-            //    _context.Straten.Add(s);
-            //}
-
-            //_context.SaveChanges();
-
-
-            //_context.BulkInsert(straten);
-            //_context.BulkUpdate(straten);
-            //_context.BulkDeleteAsync(straten);
-            //_context.Straten.Where(straat => straat.Gemeente.Gemeentenaam == "Zottegem").ExecuteDeleteAsync();
-
-            //_context.BulkUpdate(straten);
-            //_context.SaveChanges();
+            Connectie.Close();
         }
 
-        public IEnumerable<StraatX> GetBulk()
+        private DataTable MaakDataTable(List<AdresX> adressen)
         {
-            var straten = _context.Straten.Where(straat => straat.Gemeente.Gemeentenaam == "Boechout");
+            DataTable table = new DataTable();
 
-            foreach (var straat in straten)
+            table.Columns.Add("AdresID", typeof(int));
+            table.Columns.Add("StraatID", typeof(int));
+            table.Columns.Add("Huisnummer", typeof(string));
+            table.Columns.Add("Appartementnummer", typeof(string));
+            table.Columns.Add("Busnummer", typeof(string));
+            table.Columns.Add("NISCode", typeof(string));
+            table.Columns.Add("Postcode", typeof(int));
+            table.Columns.Add("Status", typeof(string));
+
+            foreach (AdresX adres in adressen)
             {
-                Console.WriteLine(straat.Straatnaam);
-                //straat.Id = 0;
+                table.Rows.Add(adres.AdresID,
+                               adres.StraatID,
+                               adres.Huisnummer,
+                               adres.Appartementnummer,
+                               adres.Busnummer,
+                               adres.NISCode,
+                               adres.Postcode,
+                               adres.Status);
             }
 
-            return straten;
-        }
-
-        public void MethodeA()
-        {
-            //var aantalInwoners = _context.Gemeentes.Where(g => g.Provincie.Provincienaam == "Oost-Vlaanderen").Sum(e => e.AantalInwoners);
-            //Console.WriteLine(aantalInwoners);
+            return table;
         }
     }
 }

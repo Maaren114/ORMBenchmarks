@@ -10,6 +10,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Tools;
 using ServiceStack;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace EFCoreBenchmarks.repositories
 {
@@ -21,20 +22,48 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
+        public void Test()
+        {
+            StraatX straat = _context.Straten.First(s => s.Straatnaam == "Boomsesteenweg");
+            straat.Straatnaam = "CHANGED!";
+            _context.SaveChanges();
+        }
+
         public List<string> GetNISCodes(int amount)
         {
             return _context.Adressen.Map(a => a.NISCode).Take(amount).ToList();
         }
 
-        public void TestMethode(List<string> niscodes)
+        public async void TestMethode(List<string> niscodes)
         {
-            List<AdresX> adressen = _context.Adressen.Where(a => niscodes.Contains(a.NISCode)).ToList();
+            IExecutionStrategy strategie = _context.Database.CreateExecutionStrategy();
+
+            await strategie.ExecuteAsync(async delegate
+            {
+                using var transactie = _context.Database.BeginTransaction();
+
+                ProvincieX oostVlaanderen = new ProvincieX { Provincienaam = "Voorbeeldprovincie" };
+                _context.Provincies.Add(oostVlaanderen);
+
+                GemeenteX zottegem = new GemeenteX { Gemeentenaam = "Zottegem", Provincie = oostVlaanderen };
+                _context.Gemeentes.Add(zottegem);
+
+                transactie.Commit();
+            });
+        }
+
+        public void Klassieke1per1Methode(List<AdresX> adressen)
+        {
+            foreach (var adres in adressen)
+            {
+                _context.Adressen.Add(adres);
+            }
+            _context.SaveChanges();
         }
 
         public List<AdresX> GetAdressen(string gemeentenaam, int aantal)
         {
-            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(aantal).ToList();
-            //adressen.ForEach(a => a.AdresID = 0);
+            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(aantal).AsNoTracking().ToList();
             return adressen;
         }
 
@@ -43,11 +72,11 @@ namespace EFCoreBenchmarks.repositories
             _context.BulkInsert(adressen, options => options.BatchSize = 16000);
         }
 
-        //public void AddRange(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
-        //{
-        //    _context.Adressen.AddRange(adressen);
-        //    _context.SaveChanges();
-        //}
+        public void AddRange(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        {
+            _context.Adressen.AddRange(adressen);
+            _context.SaveChanges();
+        }
 
         public void ExecuteSqlRaw(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
         {
@@ -64,7 +93,7 @@ namespace EFCoreBenchmarks.repositories
                                 Postcode,
                                 Status
                             )
-                            SELECT StraatID, Huisnummer, Appartementnummer, Busnummer, NISCode, Postcode, Status
+                            SELECT *
                             FROM OPENJSON(@adressenJSON)
                             WITH
                             (
@@ -76,7 +105,6 @@ namespace EFCoreBenchmarks.repositories
                                Postcode int,
                                Status nvarchar(80)
                             )";
-
 
             _context.Database.ExecuteSqlRaw(query, new SqlParameter("@adressenJSON", adressenJSON));
         }

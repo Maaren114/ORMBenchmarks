@@ -19,7 +19,7 @@ namespace Benchmarks.benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [CsvExporter]
-    [MaxIterationCount(100)]
+    [MaxIterationCount(50)]
     //[SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 10, iterationCount: 100, id: "benchmarks")]
     public class CreateBenchmarks
     {
@@ -47,9 +47,16 @@ namespace Benchmarks.benchmarks
             _petapocorepository = new PetaPocoCreateRepository();
             _repoDbRepository = new RepoDbCreateRepository();
             _adressen = _EFCoreRepository.GetAdressen("Zottegem", 15557);
+            _adressen.ForEach(a => a.AdresID = 0);
         }
 
         #region EF Core
+        //[Benchmark]
+        public void Klassieke1per1Methode()
+        {
+            _EFCoreRepository.Klassieke1per1Methode(_adressen);
+        }
+
         [Benchmark]
         public void EFBorisDjCreate()
         {
@@ -158,7 +165,9 @@ namespace Benchmarks.benchmarks
         [IterationCleanup]
         public void CleanupAfterIteration()
         {
-
+            _EFCoreRepository = new EFCoreCreateRepository();
+            _adressen = _EFCoreRepository.GetAdressen("Zottegem", 15557);
+            _adressen.ForEach(a => a.AdresID = 0);
         }
     }
 }

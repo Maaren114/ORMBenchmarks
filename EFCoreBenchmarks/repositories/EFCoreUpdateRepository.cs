@@ -22,7 +22,7 @@ namespace EFCoreBenchmarks.repositories
 
         public void EFBorisDjUpdate(List<AdresX> updates)
         {
-            _context.BulkUpdate(updates);
+            _context.BulkUpdate(updates, options => options.BatchSize = 15000);
         }
 
         public void ExecuteSqlRaw(List<AdresX> updates)

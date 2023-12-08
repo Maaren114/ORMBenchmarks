@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZZZProjectsBenchmarks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3c87ead12f679f9310e3f200462cb4c4276532a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7611f82abeeef23416f2d5f91a1f6077b79792b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZZZProjectsBenchmarks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZZZProjectsBenchmarks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -42,5 +42,20 @@ namespace DapperBenchmarks.repositories
                 options.DestinationTableName = "Adressen";
             }).BulkDelete(adressen);
         }
+
+        public void Test(List<string> nisCodes)
+        {
+            //DapperPlusManager.Entity<AdresX>().Key(order => order.NISCode);
+
+
+            //_dbConnection.UseBulkOptions(options =>
+            //{
+            //    options.BatchSize = 16000;
+            //    options.AutoMapOutputDirection = false;
+            //    options.DestinationTableName = "Adressen";
+            //}).BulkDelete<AdresX>(adressen => nisCodes.Contains(adressen.NisCode));
+        }
+
+
     }
 }

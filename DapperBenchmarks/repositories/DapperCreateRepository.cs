@@ -24,7 +24,7 @@ namespace DapperBenchmarks.repositories
         public List<AdresX> GetAddressen(string gemeentenaam)
         {
             string query = $@"
-                            SELECT TOP 1550 a.*
+                            SELECT TOP 15000 a.*
                             FROM Adressen a
                             INNER JOIN Straten s ON a.StraatID = s.StraatID
                             INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID
@@ -33,6 +33,13 @@ namespace DapperBenchmarks.repositories
 
             List<AdresX> adressen = _dbConnection.Query<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
             return adressen;
+        }
+
+        public void Test()
+        {
+            string query = $@"SELECT TOP 10 * FROM Adressen;";
+
+            IEnumerable<AdresX> adressen = _dbConnection.Query<AdresX>(query).Where(a => a.Huisnummer == "1");
         }
 
 
@@ -70,10 +77,9 @@ namespace DapperBenchmarks.repositories
         {
             _dbConnection.UseBulkOptions(options =>
             {
-                options.BatchSize = 16000;
-                options.AutoMapOutputDirection = false;
+                options.BatchSize = 15000;
                 options.DestinationTableName = "Adressen";
-            }).BulkUpdate(adressen);
+            }).BulkInsert(adressen);
         }
     }
 }

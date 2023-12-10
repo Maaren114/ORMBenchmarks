@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tools;
-using ServiceStack.OrmLite;
 
 namespace RepoDbBenchmarks.repositories
 {
@@ -23,6 +22,13 @@ namespace RepoDbBenchmarks.repositories
         {
             _connection.Open();
             _connection.UpdateAll(adressen, batchSize: 262); // 262 gaat wel nog. 263 niet meer!!! (teveel parameters)
+            _connection.Close();
+        }
+
+        public void UpdateAllStratenBouzekenBlous(List<StraatX> straten)
+        {
+            _connection.Open();
+            _connection.UpdateAll(straten, batchSize: 699); // 699 gaat wel nog. 700 niet meer!!! (teveel parameters)
             _connection.Close();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using RepoDb;
+using RepoDb.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,11 +44,28 @@ namespace RepoDbBenchmarks.repositories
             string query = @"SELECT *
 	                             FROM Adressen
 		                         WHERE NIScode IN (SELECT CONVERT(nvarchar(80), value)
-	     		                                   FROM OPENJSON(@niscodes));";
+	     		                                   FROM OPENJSON(@Niscodes));";
 
             string niscodesJSON = JsonSerializer.Serialize(niscodes);
 
-            var adressen = _connection.ExecuteQuery<AdresX>(query, new { niscodes = niscodesJSON }).ToList();
+            var adressen = _connection.ExecuteQuery<AdresX>(query, new { Niscodes = niscodesJSON }).ToList();
+
+            _connection.Close();
+
+            return adressen;
+        }
+
+        public List<AdresX> Pfff(List<string> niscodes)
+        {
+            _connection.Open();
+
+            var orderBy = OrderField.Parse(new { DateInsertedUtc = Order.Descending });
+            var page = 0;
+            var rowsPerBatch = 20000;
+            var adressen = _connection.BatchQuery<AdresX>(page: page,
+                rowsPerBatch: rowsPerBatch,
+                orderBy: orderBy,
+                where: a => niscodes.Contains(a.NISCode)).ToList();
 
             _connection.Close();
 
@@ -68,6 +86,7 @@ namespace RepoDbBenchmarks.repositories
             return batches;
         }
         #endregion
+
     }
 }
 

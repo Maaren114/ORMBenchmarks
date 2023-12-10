@@ -28,13 +28,15 @@ namespace RepoDbBenchmarks.repositories
         public void BulkDelete(List<AdresX> adressen)
         {
             _connection.Open();
-            _connection.BulkDelete(adressen, batchSize: 16000);
+            _connection.BulkDelete(adressen, batchSize: 20000);
             _connection.Close();
         }
 
-
-
-
-
+        //public void BulkDeleteBouzekenBlous(List<StraatX> straten)
+        //{
+        //    _connection.Open();
+        //    _connection.DeleteAll(straten);
+        //    _connection.Close();
+        //}
     }
 }

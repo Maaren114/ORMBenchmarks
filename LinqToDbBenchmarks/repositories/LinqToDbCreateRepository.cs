@@ -30,7 +30,7 @@ namespace LinqToDbBenchmarks.repositories
                         orderby a.StraatID
                         select a;
 
-            var result = query.Take(15557).ToList();
+            var result = query.Take(15000).ToList();
             return result;
         }
 
@@ -69,11 +69,8 @@ namespace LinqToDbBenchmarks.repositories
 
             _connection.Execute(query, new { adressen = adressenJSON });
         }
-
-
-
-
-
-
     }
 }
+
+
+

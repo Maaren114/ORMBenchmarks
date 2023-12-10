@@ -14,9 +14,9 @@ public class StraatX
     [LinqToDB.Mapping.PrimaryKey, LinqToDB.Mapping.Identity]
     [Column(Name = "StraatID")]
     public virtual int StraatID { get; set; }
-
     [Column(Name = "GemeenteID")]
     public virtual int GemeenteID { get; set; }
+    [Column(Name = "Straatnaam")]
     public virtual string? Straatnaam { get; set; }
     [Reference]
     public virtual GemeenteX? Gemeente { get; set; }

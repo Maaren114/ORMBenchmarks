@@ -14,7 +14,19 @@ namespace LinqToDbBenchmarks
             var deleterepo = new LinqToDbDeleteRepository();
             var selectrepo = new LinqToDbSelectRepository();
 
-            //var adressen = createrepo.GetAdressen("Zottegem");
+            var adressen = createrepo.GetAdressen("Zottegem");
+            adressen.ForEach(a => {
+                a.StraatID = 2;
+                a.Huisnummer = "changed";
+                a.Appartementnummer = "changed";
+                a.Busnummer = "changed";
+                a.NISCode = "changed";
+                a.Postcode = 9000;
+                a.Status = "changed";
+            });
+            
+
+            createrepo.CreateBulkCopy(adressen);
 
             //List<string> niscodes = new List<string>();
             //niscodes.Add("2c4140d4-cff7-49be-a8c4-2375783344ee");

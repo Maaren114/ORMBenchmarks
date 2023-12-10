@@ -19,12 +19,17 @@ public class AdresX
     public virtual int AdresID { get; set; }
     [Column(Name = "StraatID")]
     public virtual int StraatID { get; set; }
+    [Column(Name = "Huisnummer")]
     public virtual string? Huisnummer { get; set; }
+    [Column(Name = "Appartementnummer")]
     public virtual string? Appartementnummer { get; set; }
+    [Column(Name = "Busnummer")]
     public virtual string? Busnummer { get; set; }
+    [Column(Name = "Status")]
     public virtual string Status { get; set; }
     [Column(Name = "NISCode")]
     public virtual string? NISCode { get; set; }
+    [Column(Name = "Postcode")]
     public virtual int? Postcode { get; set; }
     [ServiceStack.DataAnnotations.Ignore]
     public virtual StraatX Straat { get; set; }

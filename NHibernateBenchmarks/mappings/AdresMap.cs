@@ -19,10 +19,8 @@ namespace NHibernateBenchmarks.mappings
             Map(x => x.Busnummer);
             Map(x => x.Status);
             Map(x => x.NISCode);
-            Map(x => x.StraatID).Column("StraatID"); // zorg ervoor dat StraatID correct wordt gemapt
-
-            // Als je referentie naar het Straat-object hebt, kun je het hier mappen
-            // References(x => x.Straat, "StraatID");
+            Map(x => x.StraatID).Column("StraatID");
+            //References(x => x.Straat, "StraatID");
         }
     }
 }

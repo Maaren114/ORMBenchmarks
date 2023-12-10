@@ -2,6 +2,7 @@
 using NHibernateBenchmarks.mappings;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -49,6 +50,11 @@ namespace NHibernateBenchmarks.repositories
                 statelessSession.CreateSQLQuery(query).SetParameter("adressen", adressenJSON).ExecuteUpdate();
                 transaction.Commit();
             }
+        }
+
+        public void Weg()
+        {
+
         }
     }
 }

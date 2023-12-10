@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using NHibernateBenchmarks.mappings;
 using FluentNHibernate.Automapping;
 using FluentNHibernate.Conventions;
+using Tools;
 
 namespace NHibernateBenchmarks.mappings
 {
@@ -17,8 +18,8 @@ namespace NHibernateBenchmarks.mappings
         public static ISessionFactory ConfigureNHibernate()
         {
             return Fluently.Configure()
-                .ExposeConfiguration(cfg => cfg.SetProperty("adonet.batch_size", "16000"))
-                .Database(MsSqlConfiguration.MsSql2012.ConnectionString("Data Source=DESKTOP-PK0VPN9;Initial Catalog=Stratenregister;Integrated Security=True; TrustServerCertificate=True;"))
+                .ExposeConfiguration(cfg => cfg.SetProperty("adonet.batch_size", "2100"))
+                .Database(MsSqlConfiguration.MsSql2012.ConnectionString(Toolkit.GetConnectionString()))
                 .Mappings(m =>
                 {
                     m.FluentMappings.AddFromAssemblyOf<AdresMap>();

@@ -98,7 +98,11 @@ namespace NHibernateBenchmarks.repositories
             using (var statelessSession = _sessionFactory.OpenStatelessSession())
             using (var transaction = statelessSession.BeginTransaction())
             {
-                List<AdresX> adressen = statelessSession.CreateSQLQuery(query).AddEntity(typeof(AdresX)).SetParameter("niscodes", niscodesJSON).List<AdresX>().ToList();
+                List<AdresX> adressen = statelessSession.CreateSQLQuery(query)
+                                                        .AddEntity(typeof(AdresX))
+                                                        .SetParameter("niscodes", niscodesJSON)
+                                                        .List<AdresX>()
+                                                        .ToList();
                 return adressen;
             }
         }

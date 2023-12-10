@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrmLiteBenchmarks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81f9b2de6b615a3ef499f0abeea90213c75d6d12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84d40819d652dbed2593723be4bf1d9a8098b11e")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrmLiteBenchmarks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrmLiteBenchmarks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

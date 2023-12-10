@@ -30,7 +30,7 @@ namespace OrmLiteBenchmarks.repositories
                                        .Join<GemeenteX, ProvincieX>((g, p) => g.ProvincieID == p.ProvincieID)
                                        .Where<GemeenteX>(g => g.Gemeentenaam == gemeentenaam)
                                        .OrderBy(s => s.StraatID)
-                                       .Limit(16000));
+                                       .Limit(15000));
 
 
             // Eager loading (beperkt tot 1 niveau diep?)
@@ -51,7 +51,7 @@ namespace OrmLiteBenchmarks.repositories
 
             db.BulkInsert(adressen, new BulkInsertConfig
             {
-                BatchSize = 16000
+                BatchSize = 15000
             });
         }
 

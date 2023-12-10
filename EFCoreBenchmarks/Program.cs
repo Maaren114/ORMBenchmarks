@@ -14,11 +14,11 @@ namespace EFCoreBenchmarks
             var selectrepo = new EFCoreSelectRepository();
             var testrepo = new TestRepository();
 
-            List<AdresX> adressen = createRepo.GetAdressen("Zottegem", 15000);
+            //List<AdresX> adressen = createRepo.GetAdressen("Zottegem", 15000);
             //adressen.ForEach(a => a.AdresID = 0);
 
 
-            updateRepo.EFBorisDjUpdate(adressen);
+            //updateRepo.EFBorisDjUpdate(adressen);
 
 
             //deleterepo.EFBorisDjDelete(adressen);
@@ -77,6 +77,9 @@ namespace EFCoreBenchmarks
             //repo.EFBorisDjCreate(adressen);
             //repo.ExecuteSqlRaw(adressen);
             //repo.ExecuteSql(adressen);
+
+            var niscodes = createRepo.GetNISCodes(2200);
+            var adressen = selectrepo.EFCoreSelect(niscodes);
         }
     }
 }

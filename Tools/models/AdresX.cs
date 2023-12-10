@@ -15,6 +15,8 @@ public class AdresX
 {
     public AdresX() { }
 
+    [ServiceStack.DataAnnotations.PrimaryKey]
+    [AutoIncrement]
     [LinqToDB.Mapping.PrimaryKey, LinqToDB.Mapping.Identity]
     public virtual int AdresID { get; set; }
     [Column(Name = "StraatID")]

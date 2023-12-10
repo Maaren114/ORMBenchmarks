@@ -36,6 +36,7 @@ namespace RepoDbBenchmarks.repositories
         {
             _connection.Open();
             _connection.BulkUpdate(adressen, batchSize: 16000);
+            _connection.ExecuteNonQuery("");
             _connection.Close();
         }
     }

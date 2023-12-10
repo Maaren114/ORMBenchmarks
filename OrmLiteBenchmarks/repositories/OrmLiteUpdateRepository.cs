@@ -1,4 +1,5 @@
-﻿using ServiceStack.OrmLite;
+﻿using RepoDb;
+using ServiceStack.OrmLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,13 @@ namespace OrmLiteBenchmarks.repositories
             _factory = new OrmLiteConnectionFactory(Toolkit.GetConnectionString(), SqlServerDialect.Provider);
         }
 
+        public void Test(List<AdresX> adressen)
+        {
+            using (var db = _factory.OpenDbConnection())
+            {
+            }
+        }
+
         public void ExecuteUpdateRaw(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
@@ -35,7 +43,7 @@ namespace OrmLiteBenchmarks.repositories
 	                            adr.Status = adru.Status,
                                 adr.NISCode = adru.NISCode
                             FROM Adressen adr
-                            INNER JOIN OPENJSON(@adressen) WITH
+                            INNER JOIN OPENJSON(@Adressen) WITH
                             (
 	                            AdresID int,
 	                            StraatID int,
@@ -48,7 +56,7 @@ namespace OrmLiteBenchmarks.repositories
                             ) adru
                             ON adr.AdresID = adru.AdresID;";
 
-                db.ExecuteSql(query, new { adressen = adressenJSON });
+                db.ExecuteNonQuery(query, new { Adressen = adressenJSON });
             }
         }
     }

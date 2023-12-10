@@ -34,7 +34,33 @@ namespace OrmLiteBenchmarks.repositories
             }
         }
 
+        public void DeleteAll(List<AdresX> adressen)
+        {
+            using (var db = _factory.OpenDbConnection())
+            {
+                List<List<AdresX>> adressenbatches = SplitListIntoBatches<AdresX>(adressen, 2098);
 
+                foreach (var adressenbatch in adressenbatches)
+                {
+                    db.DeleteAll(adressenbatch);
+                }
+            }
+        }
+
+        #region helper methods
+        public List<List<T>> SplitListIntoBatches<T>(List<T> sourceList, int batchSize)
+        {
+            List<List<T>> batches = new List<List<T>>();
+
+            for (int i = 0; i < sourceList.Count; i += batchSize)
+            {
+                List<T> batch = sourceList.Skip(i).Take(batchSize).ToList();
+                batches.Add(batch);
+            }
+
+            return batches;
+        }
+        #endregion
 
 
 

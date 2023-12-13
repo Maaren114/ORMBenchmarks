@@ -18,13 +18,14 @@ namespace LinqToDbBenchmarks.repositories
             _connection = new StratenRegisterConnection();
         }
 
-        public List<AdresX> Select(List<string> niscodes)
+        public List<AdresX> LinqToDbSelect(List<string> niscodes)
         {
             List<AdresX> adressen = _connection.Adressen.Where(a => niscodes.Contains(a.NISCode)).ToList();
             return adressen;
         }
 
-        public List<AdresX> Select2(List<string> niscodes)
+        #region Helper methods
+        public List<AdresX> LinqToDbSelect2(List<string> niscodes)
         {
             List<AdresX> adressen = (from a in _connection.Adressen
                                      join n in niscodes on a.NISCode equals n
@@ -32,8 +33,16 @@ namespace LinqToDbBenchmarks.repositories
 
             return adressen;
         }
+
+        public List<string> GetNisCodes(int aantal)
+        {
+            return _connection.Adressen.Select(a => a.NISCode).Take(aantal).ToList();
+        }
+        #endregion
     }
 }
+
+
 
 
 

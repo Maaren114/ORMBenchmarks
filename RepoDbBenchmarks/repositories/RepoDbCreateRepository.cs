@@ -3,6 +3,7 @@ using RepoDb;
 using System;
 using System.Data;
 using System.Data.Common;
+using System.Text.Json;
 using Tools;
 
 namespace RepoDbBenchmarks.repositories
@@ -17,57 +18,75 @@ namespace RepoDbBenchmarks.repositories
             _connection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public List<AdresX> GetAdressen(string gemeentenaam)
+        public void RepoDbInsertAll(List<AdresX> adressen)
         {
             _connection.Open();
-
-            string query = $@"
-                            SELECT TOP 20000 a.AdresID, a.StraatID, a.Huisnummer, a.Postcode, a.Appartementnummer, a.Busnummer, a.NISCode, a.Status
-                            FROM Adressen a
-                            INNER JOIN Straten s ON a.StraatID = s.StraatID
-                            INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID
-                            WHERE g.Gemeentenaam = @Gemeentenaam
-                            ORDER BY a.StraatID;";
-
-            var adressen = _connection.ExecuteQuery<AdresX>(query, new { GemeenteNaam = gemeentenaam }).ToList();
-
-            _connection.Close();
-
-            return adressen;
-        }
-
-        public List<StraatX> GetStraten(string provincienaam, int aantal)
-        {
-            _connection.Open();
-            string query = @"SELECT TOP " + aantal + @" s.* FROM Straten s
-                             INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID
-                             INNER JOIN Provincies p ON p.ProvincieID = g.ProvincieID
-                             WHERE p.Provincienaam = @Provincienaam;";
-
-            var straten = _connection.ExecuteQuery<StraatX>(query, new { Provincienaam = provincienaam }).ToList();
-            _connection.Close();
-            return straten;
-        }
-
-        public void InsertAll(List<AdresX> adressen)
-        {
-            _connection.Open();
-            _connection.InsertAll(adressen, batchSize: 262); // 262 gaat wel nog. 263 niet meer!!! (teveel parameters)
+            List<List<AdresX>> adressenbatches = SplitListIntoBatches(adressen, 2098);
+            foreach (var adressenbatch in adressenbatches)
+            {
+                _connection.InsertAll(adressenbatch, batchSize: 262); // 262 gaat wel nog. 263 niet meer!!! (teveel parameters)
+            }
             _connection.Close();
         }
 
-        public void InsertAllStratenBouzekenBlous(List<StraatX> straten)
-        {
-            _connection.Open();
-            _connection.InsertAll(straten, batchSize: 699); // 262 gaat wel nog. 263 niet meer!!! (teveel parameters)
-            _connection.Close();
-        }
-
-        public void BulkInsert(List<AdresX> adressen)
+        public void RepoDbBulkInsert(List<AdresX> adressen)
         {
             _connection.Open();
             _connection.BulkInsert(adressen, batchSize: 15000);
             _connection.Close();
         }
+
+        public void RepoDbExecuteNonQuery(List<AdresX> adressen)
+        {
+            _connection.Open();
+
+            string query = $@"
+                            INSERT INTO Adressen
+                            (
+                                StraatID,
+                                Huisnummer,
+                                Appartementnummer,
+                                Busnummer,
+                                NISCode,
+                                Postcode,
+                                Status
+                            )
+                            SELECT StraatID, Huisnummer, Appartementnummer, Busnummer, NISCode, Postcode, Status
+                            FROM OPENJSON(@Adressen)
+                            WITH
+                            (
+                               StraatID int,
+                               Huisnummer nvarchar(80),
+                               Appartementnummer nvarchar(80),
+                               Busnummer nvarchar(80),
+                               NISCode nvarchar(80),
+                               Postcode int,
+                               Status nvarchar(80)
+                            )";
+
+            string adressenJSON = JsonSerializer.Serialize(adressen);
+
+            _connection.ExecuteNonQuery(query, new { Adressen = adressenJSON });
+            _connection.Close();
+        }
+
+        #region helper methods
+        public List<List<T>> SplitListIntoBatches<T>(List<T> sourceList, int batchSize)
+        {
+            List<List<T>> batches = new List<List<T>>();
+
+            for (int i = 0; i < sourceList.Count; i += batchSize)
+            {
+                List<T> batch = sourceList.Skip(i).Take(batchSize).ToList();
+                batches.Add(batch);
+            }
+            return batches;
+        }
+        #endregion
     }
 }
+
+
+
+
+

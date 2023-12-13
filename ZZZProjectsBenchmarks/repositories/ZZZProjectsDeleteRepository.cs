@@ -17,7 +17,7 @@ namespace ZZZProjectsBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public void ZZZProjectsBulkDelete(List<AdresX> adressen)
+        public void EFCoreBulkDelete_ZZZProjects(List<AdresX> adressen)
         {
             _context.BulkDelete(adressen, options =>
             {

@@ -1,5 +1,4 @@
-﻿using RepoDb;
-using ServiceStack.OrmLite;
+﻿using ServiceStack.OrmLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +18,7 @@ namespace OrmLiteBenchmarks.repositories
             _factory = new OrmLiteConnectionFactory(Toolkit.GetConnectionString(), SqlServerDialect.Provider);
         }
 
-        public void Test(List<AdresX> adressen)
-        {
-            using (var db = _factory.OpenDbConnection())
-            {
-            }
-        }
-
-        public void ExecuteUpdateRaw(List<AdresX> adressen)
+        public void OrmLiteExecuteNonQuery(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
@@ -59,5 +51,26 @@ namespace OrmLiteBenchmarks.repositories
                 db.ExecuteNonQuery(query, new { Adressen = adressenJSON });
             }
         }
+
+        #region 1 per 1
+        public void OrmLiteUpdateAll(List<AdresX> adressen) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in thesis.
+        {
+            using (var db = _factory.OpenDbConnection())
+            {
+                db.UpdateAll(adressen);
+            }
+        }
+
+        public void OrmLiteUpdate(List<AdresX> adressen) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in thesis.
+        {
+            using (var db = _factory.OpenDbConnection())
+            {
+                foreach (var adres in adressen)
+                {
+                    db.Update(adres);
+                }
+            }
+        }
+        #endregion
     }
 }

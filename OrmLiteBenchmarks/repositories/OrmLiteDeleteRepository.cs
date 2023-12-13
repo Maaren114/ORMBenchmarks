@@ -18,7 +18,7 @@ namespace OrmLiteBenchmarks.repositories
             _factory = new OrmLiteConnectionFactory(Toolkit.GetConnectionString(), SqlServerDialect.Provider);
         }
 
-        public void ExecuteDeleteRaw(List<AdresX> adressen)
+        public void OrmLiteExecuteNonQuery(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
@@ -30,11 +30,11 @@ namespace OrmLiteBenchmarks.repositories
                                                FROM OPENJSON(@adressen)
                                                WITH (AdresID int));";
 
-                db.ExecuteSql(query, new { adressen = adressenJSON });
+                db.ExecuteNonQuery(query, new { adressen = adressenJSON });
             }
         }
 
-        public void DeleteAll(List<AdresX> adressen)
+        public void OrmLiteDeleteAll(List<AdresX> adressen)
         {
             using (var db = _factory.OpenDbConnection())
             {
@@ -61,12 +61,5 @@ namespace OrmLiteBenchmarks.repositories
             return batches;
         }
         #endregion
-
-
-
-
-
-
-
     }
 }

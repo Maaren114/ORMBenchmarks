@@ -61,41 +61,47 @@ namespace Benchmarks.benchmarks
 
         #region EF Core
         [Benchmark]
-        public void EFCoreBorisDjUpdate()
+        public void EFCore_Update()
         {
-            _EFCoreRepository.EFBorisDjUpdate(_AdressenZottegem);
+            _EFCoreRepository.EFCoreUpdate(_AdressenZottegem);
         }
 
         [Benchmark]
-        public void EFCoreExecuteRaw()
+        public void EFCore_UpdateRange()
         {
-            _EFCoreRepository.ExecuteSqlRaw(_AdressenZottegem);
+            _EFCoreRepository.EFCoreUpdateRange(_AdressenZottegem);
         }
 
         [Benchmark]
-        public void EFCoreExecuteSql()
+        public void EFCore_BulkUpdate_BorisDj()
         {
-            _EFCoreRepository.ExecuteSql(_AdressenZottegem);
+            _EFCoreRepository.EFCoreBulkUpdate_BorisDj(_AdressenZottegem);
         }
 
         [Benchmark]
-        public void EFCoreUpdateRange()
+        public void EFCore_ExecuteRaw()
         {
-            _EFCoreRepository.UpdateRange(_AdressenZottegem);
+            _EFCoreRepository.EFCoreExecuteSqlRaw(_AdressenZottegem);
         }
+
+        //[Benchmark]
+        //public void EFCore_ExecuteSql()
+        //{
+        //    _EFCoreRepository.EFCoreExecuteSql(_AdressenZottegem);
+        //}
         #endregion
 
         #region Dapper
         [Benchmark]
-        public void DapperExecute()
+        public void Dapper_Execute()
         {
             _dapperRepository.DapperExecute(_AdressenZottegem);
         }
 
         [Benchmark]
-        public void DapperPlus()
+        public void Dapper_BulkUpdate_DapperPlus()
         {
-            _dapperRepository.DapperPlus(_AdressenZottegem);
+            _dapperRepository.DapperBulkUpdate_DapperPlus(_AdressenZottegem);
         }
         #endregion
 
@@ -109,15 +115,15 @@ namespace Benchmarks.benchmarks
 
         #region NHibernate
         [Benchmark]
-        public void NHibernateBatch()
+        public void NHibernate_Update()
         {
-            _nhibernateRepository.Batch(_AdressenZottegem);
+            _nhibernateRepository.NHibernate_Update(_AdressenZottegem);
         }
 
         [Benchmark]
-        public void NHibernateBatchRaw()
+        public void NHibernate_CreateSqlQuery()
         {
-            _nhibernateRepository.BatchRaw(_AdressenZottegem);
+            _nhibernateRepository.NHibernate_CreateSqlQuery(_AdressenZottegem);
         }
         #endregion
 
@@ -131,9 +137,9 @@ namespace Benchmarks.benchmarks
 
         #region ormlite
         [Benchmark]
-        public void ormliteexecuteupdateraw()
+        public void OrmLite_ExecuteNonQuery()
         {
-            _ormLiteRepository.ExecuteUpdateRaw(_AdressenZottegem);
+            _ormLiteRepository.OrmLiteExecuteNonQuery(_AdressenZottegem);
         }
         #endregion
 
@@ -147,15 +153,21 @@ namespace Benchmarks.benchmarks
 
         #region RepoDB
         [Benchmark]
-        public void RepoDbUpdateAll()
+        public void RepoDb_UpdateAll()
         {
-            _repodbrepository.UpdateAll(_AdressenZottegem);
+            _repodbrepository.RepoDbUpdateAll(_AdressenZottegem);
         }
 
         [Benchmark]
-        public void RepoDbBulkUpdate()
+        public void RepoDb_BulkUpdate()
         {
-            _repodbrepository.BulkUpdate(_AdressenZottegem);
+            _repodbrepository.RepoDbBulkUpdate(_AdressenZottegem);
+        }
+
+        [Benchmark]
+        public void RepoDb_ExecuteNonQuery()
+        {
+            _repodbrepository.RepoDbExecuteNonQuery(_AdressenZottegem);
         }
         #endregion
 

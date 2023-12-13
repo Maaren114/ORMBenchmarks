@@ -1,4 +1,5 @@
-﻿using EFCoreBenchmarks.models;
+﻿using Bogus;
+using EFCoreBenchmarks.models;
 using EFCoreBenchmarks.repositories;
 using Tools;
 
@@ -67,7 +68,7 @@ namespace EFCoreBenchmarks
 
             //adressen.ForEach(x =>
             //{
-            //    x.Status = "XDDD";
+            //    x.Status = "x";
             //});
 
 
@@ -78,9 +79,42 @@ namespace EFCoreBenchmarks
             //repo.ExecuteSqlRaw(adressen);
             //repo.ExecuteSql(adressen);
 
-            var niscodes = createRepo.GetNISCodes(2200);
-            var adressen = selectrepo.EFCoreSelect(niscodes);
+            //var niscodes = createRepo.GetNISCodes(2200);
+            //var adressen = selectrepo.EFCoreSelect(niscodes);
+
+            //createRepo.EFCoreBulkInsert_BorisDj(adressen);
+
+
+
+            //List<StraatX> straten = selectrepo.SelectStraten(15000);
+            //updateRepo.Update(straten);
+
+
+            var niscodes = selectrepo.GetNISCodes(5);
+
+            var adressen = selectrepo.EFCoreWhere(niscodes);
+
+
+
+            //deleterepo.Remove(adressen);
+        }
+        public static List<AdresX> GetBogusAdressen()
+        {
+            var faker = new Faker<AdresX>()
+           .RuleFor(a => a.StraatID, f => 1)
+           .RuleFor(a => a.Huisnummer, f => f.Address.BuildingNumber())
+           .RuleFor(a => a.Appartementnummer, f => f.Random.AlphaNumeric(3))
+           .RuleFor(a => a.Busnummer, f => f.Random.AlphaNumeric(3))
+           .RuleFor(a => a.Status, f => f.PickRandomParam("Actief", "Inactief"))
+           .RuleFor(a => a.NISCode, f => f.Random.Guid().ToString())
+           .RuleFor(a => a.Postcode, f => 9620);
+           //.RuleFor(a => a.Straat, (f, a) => new StraatX { StraatID = a.StraatID, Straatnaam = "Kerkstraat" });
+            return faker.Generate(10);
         }
     }
 }
+
+
+
+
 

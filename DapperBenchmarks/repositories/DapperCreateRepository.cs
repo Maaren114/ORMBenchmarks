@@ -35,13 +35,22 @@ namespace DapperBenchmarks.repositories
             return adressen;
         }
 
+        public List<string> GetNisCodes()
+        {
+            string query = $@"
+                            SELECT TOP 15000 a.NisCode
+                            FROM Adressen a;";
+
+            List<string> niscodes = _dbConnection.Query<string>(query).ToList();
+            return niscodes;
+        }
+
         public void Test()
         {
             string query = $@"SELECT TOP 10 * FROM Adressen;";
 
             IEnumerable<AdresX> adressen = _dbConnection.Query<AdresX>(query).Where(a => a.Huisnummer == "1");
         }
-
 
         public void DapperExecute(List<AdresX> adressen)
         {
@@ -73,7 +82,7 @@ namespace DapperBenchmarks.repositories
             int result = _dbConnection.Execute(query, new { adressen = adressenJSON });
         }
 
-        public void DapperPlus(List<AdresX> adressen)
+        public void DapperBulkInsert_DapperPlus(List<AdresX> adressen)
         {
             _dbConnection.UseBulkOptions(options =>
             {

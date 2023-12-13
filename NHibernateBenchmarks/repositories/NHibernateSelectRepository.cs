@@ -21,7 +21,7 @@ namespace NHibernateBenchmarks.repositories
             _sessionFactory = NHibernateHelper.ConfigureNHibernate();
         }
 
-        public List<AdresX> CreateQueryHql(List<string> niscodes)
+        public List<AdresX> NHibernate_CreateQuery_Hql(List<string> niscodes)
         {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -44,8 +44,7 @@ namespace NHibernateBenchmarks.repositories
             }
         }
 
-
-        public List<AdresX> QueryLinq(List<string> niscodes)
+        public List<AdresX> NHibernate_Query_Linq(List<string> niscodes)
         {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -66,7 +65,7 @@ namespace NHibernateBenchmarks.repositories
             }
         }
 
-        public List<AdresX> CreateCriteria(List<string> niscodes)
+        public List<AdresX> NHibernate_CreateCriteria(List<string> niscodes)
         {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -85,7 +84,7 @@ namespace NHibernateBenchmarks.repositories
             }
         }
 
-        public List<AdresX> RawSql(List<string> niscodes) // werkt! dit is batch
+        public List<AdresX> NHibernateCreateSqlQuery(List<string> niscodes) // werkt! dit is batch
         {
             string query = @"SELECT *
 	                         FROM Adressen
@@ -96,7 +95,6 @@ namespace NHibernateBenchmarks.repositories
             string niscodesJSON = JsonSerializer.Serialize(niscodes);
 
             using (var statelessSession = _sessionFactory.OpenStatelessSession())
-            using (var transaction = statelessSession.BeginTransaction())
             {
                 List<AdresX> adressen = statelessSession.CreateSQLQuery(query)
                                                         .AddEntity(typeof(AdresX))
@@ -109,6 +107,29 @@ namespace NHibernateBenchmarks.repositories
 
 
         #region helper methods
+        public List<AdresX> GetAdressen(string gemeentenaam)
+        {
+            using (var session = _sessionFactory.OpenStatelessSession())
+            {
+                var adressen = session.Query<AdresX>()
+                    .Where(a => a.Straat.Gemeente.Gemeentenaam == gemeentenaam)
+                    .Select(a => new AdresX
+                    {
+                        AdresID = a.AdresID,
+                        StraatID = a.Straat.StraatID,
+                        Huisnummer = a.Huisnummer,
+                        Appartementnummer = a.Appartementnummer,
+                        Busnummer = a.Busnummer,
+                        NISCode = a.NISCode,
+                        Postcode = a.Postcode,
+                        Status = a.Status
+                    })
+                    .Take(15557)
+                    .ToList();
+                return adressen;
+            }
+        }
+
         public List<List<string>> SplitListIntoBatches(List<string> sourceList, int batchSize)
         {
             List<List<string>> batches = new List<List<string>>();

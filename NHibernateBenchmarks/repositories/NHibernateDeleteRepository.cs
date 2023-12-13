@@ -20,7 +20,7 @@ namespace NHibernateBenchmarks.repositories
             _sessionFactory = NHibernateHelper.ConfigureNHibernate();
         }
 
-        public void Batch(List<AdresX> adressen) // werkt! dit is batch
+        public void NHibernateDelete(List<AdresX> adressen)
         {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -33,7 +33,7 @@ namespace NHibernateBenchmarks.repositories
             }
         }
 
-        public void BatchRaw(List<AdresX> adressen) // werkt! dit is batch
+        public void NHibernateCreateSqlQuery(List<AdresX> adressen)
         {
             string query = $@"
                              DELETE FROM Adressen
@@ -50,11 +50,6 @@ namespace NHibernateBenchmarks.repositories
                 statelessSession.CreateSQLQuery(query).SetParameter("adressen", adressenJSON).ExecuteUpdate();
                 transaction.Commit();
             }
-        }
-
-        public void Weg()
-        {
-
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ZZZProjectsBenchmarks
 
             var adressen = repocreate.GetAdressen("Zottegem");
 
-            repocreate.ZZZProjectsBulkInsert(adressen);
+            repocreate.EFCoreBulkInsert_ZZZProjects(adressen);
 
 
             repodelete.Test(adressen);

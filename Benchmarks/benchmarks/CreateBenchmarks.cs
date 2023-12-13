@@ -51,70 +51,82 @@ namespace Benchmarks.benchmarks
         }
 
         #region EF Core
+        [Benchmark]
+        public void EFCore_Add()
+        {
+            _EFCoreRepository.EFCoreAdd(_adressen);
+        }
+
+        [Benchmark]
+        public void EFCore_AddRange()
+        {
+            _EFCoreRepository.EFCoreAddRange(_adressen);
+        }
+
+        [Benchmark]
+        public void EFCore_BulkInsert_BorisDj()
+        {
+            _EFCoreRepository.EFCoreBulkInsert_BorisDj(_adressen);
+        }
+
+        [Benchmark]
+        public void EFCore_ExecuteSqlRaw()
+        {
+            _EFCoreRepository.EFCoreExecuteSqlRaw(_adressen);
+        }
+
         //[Benchmark]
-        public void Klassieke1per1Methode()
-        {
-            _EFCoreRepository.Klassieke1per1Methode(_adressen);
-        }
+        //public void EFCore_ExecuteSql()
+        //{
+        //    _EFCoreRepository.EFCoreExecuteSql(_adressen);
+        //}
 
         [Benchmark]
-        public void EFBorisDjCreate()
+        public void EFCore_BulkInsert_ZZZProjects()
         {
-            _EFCoreRepository.EFBorisDjCreate(_adressen);
-        }
-
-        [Benchmark]
-        public void EFCoreExecuteSqlRaw()
-        {
-            _EFCoreRepository.ExecuteSqlRaw(_adressen);
-        }
-
-        [Benchmark]
-        public void EFCoreExecuteSql()
-        {
-            _EFCoreRepository.ExecuteSql(_adressen);
-        }
-
-        [Benchmark]
-        public void EFCoreZzzProjectsCreate()
-        {
-            _zzzProjectRepository.ZZZProjectsBulkInsert(_adressen);
+            _zzzProjectRepository.EFCoreBulkInsert_ZZZProjects(_adressen);
         }
         #endregion
 
         #region Dapper
         [Benchmark]
-        public void DapperExecute()
+        public void Dapper_Execute()
         {
             _dapperRepository.DapperExecute(_adressen);
         }
 
         [Benchmark]
-        public void DapperPlus()
+        public void Dapper_BulkInsert_DapperPlus()
         {
-            _dapperRepository.DapperPlus(_adressen);
+            _dapperRepository.DapperBulkInsert_DapperPlus(_adressen);
         }
         #endregion
 
         #region Linq to DB
         [Benchmark]
-        public void LinqToDbExecute()
+        public void LinqToDb_Execute()
         {
-            _linqToDbRepository.CreateExecute(_adressen);
+            _linqToDbRepository.LinqToDbExecute(_adressen);
         }
 
         [Benchmark]
-        public void LinqToDbBulkCopy()
+        public void LinqToDb_BulkCopy()
         {
-            _linqToDbRepository.CreateBulkCopy(_adressen);
+            _linqToDbRepository.LinqToDbBulkCopy(_adressen);
         }
         #endregion
 
         #region NHibernate
         [Benchmark]
-        public void NHibernateBatchRaw()
+        public void NHibernate_Save()
         {
-            _nhibernateRepository.BatchRaw(_adressen);
+            _nhibernateRepository.NHibernateSave(_adressen);
+        }
+
+        [Benchmark]
+        public void NHibernate_CreateSqlQuery()
+        {
+            _nhibernateRepository.NHibernateCreateSqlQuery(_adressen);
         }
         #endregion
 
@@ -128,15 +140,15 @@ namespace Benchmarks.benchmarks
 
         #region OrmLite
         [Benchmark]
-        public void OrmLiteBulkInsert()
+        public void OrmLite_BulkInsert()
         {
-            _ormLiteRepository.BulkInsert(_adressen);
+            _ormLiteRepository.OrmLiteBulkInsert(_adressen);
         }
 
         [Benchmark]
-        public void OrmLiteBulkInsertRaw()
+        public void OrmLite_ExecuteNonQuery()
         {
-            _ormLiteRepository.BulkInsertRaw(_adressen);
+            _ormLiteRepository.OrmLiteExecuteNonQuery(_adressen);
         }
         #endregion
 
@@ -150,15 +162,21 @@ namespace Benchmarks.benchmarks
 
         #region RepoDB
         [Benchmark]
-        public void RepoDbInsertAll()
+        public void RepoDb_InsertAll()
         {
-            _repoDbRepository.InsertAll(_adressen);
+            _repoDbRepository.RepoDbInsertAll(_adressen);
         }
 
         [Benchmark]
-        public void RepoDbBulkInsert()
+        public void RepoDb_BulkInsert()
         {
-            _repoDbRepository.InsertAll(_adressen);
+            _repoDbRepository.RepoDbBulkInsert(_adressen);
+        }
+
+        [Benchmark]
+        public void RepoDb_ExecuteNonQuery()
+        {
+            _repoDbRepository.RepoDbExecuteNonQuery(_adressen);
         }
         #endregion
 

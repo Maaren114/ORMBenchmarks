@@ -50,7 +50,7 @@ namespace DapperBenchmarks.repositories
             int result = _dbConnection.Execute(query, new { updates = adresUpdatesJSON });
         }
 
-        public void DapperPlus(List<AdresX> adressen)
+        public void DapperBulkUpdate_DapperPlus(List<AdresX> adressen)
         {
             _dbConnection.UseBulkOptions(options =>
             {
@@ -61,3 +61,5 @@ namespace DapperBenchmarks.repositories
         }
     }
 }
+
+

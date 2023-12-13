@@ -19,33 +19,7 @@ namespace OrmLiteBenchmarks.repositories
             _factory = new OrmLiteConnectionFactory(Toolkit.GetConnectionString(), SqlServerDialect.Provider);
         }
 
-        public List<AdresX> GetAdressen(string gemeentenaam)
-        {
-            var db = _factory.OpenDbConnection();
-
-            var adressenInZottegem = db.Select(
-                                     db.From<AdresX>()
-                                       .Join<AdresX, StraatX>((a, s) => a.StraatID == s.StraatID)
-                                       .Join<StraatX, GemeenteX>((s, g) => s.GemeenteID == g.GemeenteID)
-                                       .Join<GemeenteX, ProvincieX>((g, p) => g.ProvincieID == p.ProvincieID)
-                                       .Where<GemeenteX>(g => g.Gemeentenaam == gemeentenaam)
-                                       .OrderBy(s => s.StraatID)
-                                       .Limit(15000));
-
-
-            // Eager loading (beperkt tot 1 niveau diep?)
-            //var adressenInZottegem = db.LoadSelect<Adres>(
-            //                         db.From<Adres>()
-            //                        .Join<Adres, Straat>((a, s) => a.StraatId == s.StraatId)
-            //                        .Join<Straat, Gemeente>((s, g) => s.GemeenteId == g.GemeenteId)
-            //                        .Join<Gemeente, Provincie>((g, p) => g.ProvincieId == p.ProvincieID)
-            //                        .Where<Gemeente>(g => g.Gemeentenaam == "Zottegem"));
-
-            db.Dispose();
-            return adressenInZottegem;
-        }
-
-        public void BulkInsert(List<AdresX> adressen)
+        public void OrmLiteBulkInsert(List<AdresX> adressen)
         {
             var db = _factory.OpenDbConnection();
 
@@ -55,7 +29,7 @@ namespace OrmLiteBenchmarks.repositories
             });
         }
 
-        public void BulkInsertRaw(List<AdresX> adressen)
+        public void OrmLiteExecuteNonQuery(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
@@ -85,8 +59,27 @@ namespace OrmLiteBenchmarks.repositories
                                     Status nvarchar(80)
                                 )";
 
-                db.ExecuteSql(query, new { adressen = adressenJSON });
+                db.ExecuteNonQuery(query, new { adressen = adressenJSON });
             }
         }
+
+        #region 1 per 1
+        public void InsertAll(List<StraatX> straten) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in thesis.
+        {
+            var db = _factory.OpenDbConnection();
+            db.InsertAll(straten);
+        }
+
+        public void Insert(List<StraatX> straten) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in thesis.
+        {
+            var db = _factory.OpenDbConnection();
+
+            foreach (var straat in straten)
+            {
+                db.Insert(straat);
+
+            }
+        }
+        #endregion
     }
 }

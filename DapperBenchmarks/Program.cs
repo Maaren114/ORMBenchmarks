@@ -15,12 +15,12 @@ namespace DapperBenchmarks
             var deleterepo = new DapperDeleteRepository();
             var selectrepo = new DapperSelectRepository();
 
-            //List<AdresX> adressen = createRepo.GetAddressen("Zottegem");
+            List<AdresX> adressen = createRepo.GetAddressen("Zottegem");
 
-            var adressen = new List<AdresX>();
-            adressen.Add(new AdresX { StraatID = 1 });
-            int teller = 0;
-            adressen.ForEach(a => a.NISCode = $"VERANDERD!!!");
+            //var adressen = new List<AdresX>();
+            //adressen.Add(new AdresX { StraatID = 1 });
+            //int teller = 0;
+            //adressen.ForEach(a => a.NISCode = $"VERANDERD!!!");
             //List<string> niscodes = new List<string>();
             //niscodes.Add("2c4140d4-cff7-49be-a8c4-2375783344ee");
             //niscodes.Add("2c4140d4-cff7-49be-a8c4-2375783344ee");
@@ -40,7 +40,17 @@ namespace DapperBenchmarks
             //createRepo.DapperPlus(adressen);
 
 
-            createRepo.Test();
+            //createRepo.Test();
+
+
+
+
+            createRepo.DapperBulkInsert_DapperPlus(adressen);
+
+
+
+            createRepo.DapperExecute(adressen);
+
         }
     }
 }

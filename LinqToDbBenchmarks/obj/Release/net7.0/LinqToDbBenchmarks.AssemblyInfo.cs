@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinqToDbBenchmarks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3c87ead12f679f9310e3f200462cb4c4276532a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6937a56197215ef72647107b20371c48f925fee5")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinqToDbBenchmarks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinqToDbBenchmarks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

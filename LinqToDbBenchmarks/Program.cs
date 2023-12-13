@@ -14,19 +14,9 @@ namespace LinqToDbBenchmarks
             var deleterepo = new LinqToDbDeleteRepository();
             var selectrepo = new LinqToDbSelectRepository();
 
-            var adressen = createrepo.GetAdressen("Zottegem");
-            adressen.ForEach(a => {
-                a.StraatID = 2;
-                a.Huisnummer = "changed";
-                a.Appartementnummer = "changed";
-                a.Busnummer = "changed";
-                a.NISCode = "changed";
-                a.Postcode = 9000;
-                a.Status = "changed";
-            });
-            
+            //var adressen = createrepo.GetAdressen("Zottegem").Take(10).ToList();
 
-            createrepo.CreateBulkCopy(adressen);
+            //deleterepo.LinqToDbDelete(adressen);
 
             //List<string> niscodes = new List<string>();
             //niscodes.Add("2c4140d4-cff7-49be-a8c4-2375783344ee");
@@ -36,6 +26,39 @@ namespace LinqToDbBenchmarks
             //niscodes.Add("6772fad9-c6ad-4943-9e40-06b99e335792");
             //niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
             //niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
+
+
+
+            var niscodes = selectrepo.GetNisCodes(5000);
+
+            var adressen = selectrepo.LinqToDbSelect(niscodes);
+
+
+
+
+
+
+
+
+
+
+            //deleterepo.Select(adressen.Select(a => a.NISCode).ToList());
+
+
+            //adressen.ForEach(a => {
+            //    a.StraatID = 2;
+            //    a.Huisnummer = "changed";
+            //    a.Appartementnummer = "changed";
+            //    a.Busnummer = "changed";
+            //    a.NISCode = "changed";
+            //    a.Postcode = 9000;
+            //    a.Status = "changed";
+            //});
+
+
+            //createrepo.CreateBulkCopy(adressen);
+
+
 
             //var adressen = selectrepo.Select1(niscodes);
             //var adressen = selectrepo.Select2(niscodes);

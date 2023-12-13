@@ -1,4 +1,5 @@
-﻿using ServiceStack.OrmLite;
+﻿using RepoDb;
+using ServiceStack.OrmLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace OrmLiteBenchmarks.repositories
             _factory = new OrmLiteConnectionFactory(Toolkit.GetConnectionString(), SqlServerDialect.Provider);
         }
 
-        public List<AdresX> SqlList(List<string> niscodes)
+        public List<AdresX> OrmLiteSqlList(List<string> niscodes)
         {
             string niscodesJSON = JsonSerializer.Serialize(niscodes);
 
@@ -34,7 +35,7 @@ namespace OrmLiteBenchmarks.repositories
             }
         }
 
-        public List<AdresX> Select(List<string> niscodes)
+        public List<AdresX> OrmLiteSelect(List<string> niscodes)
         {
             using (var db = _factory.OpenDbConnection())
             {
@@ -62,6 +63,54 @@ namespace OrmLiteBenchmarks.repositories
             }
 
             return batches;
+        }
+
+        public List<StraatX> GetStraten(int aantal)
+        {
+            var db = _factory.OpenDbConnection();
+
+            var straten = db.Select(
+                                     db.From<StraatX>()
+                                       .Join<StraatX, GemeenteX>((s, g) => s.GemeenteID == g.GemeenteID)
+                                       .Join<GemeenteX, ProvincieX>((g, p) => g.ProvincieID == p.ProvincieID)
+                                       .Where<ProvincieX>(p => p.Provincienaam == "Oost-Vlaanderen")
+                                       .OrderBy(s => s.StraatID)
+                                       .Limit(aantal));
+
+            return straten;
+        }
+
+        public List<string> GetNisCodes(int aantal)
+        {
+            var db = _factory.OpenDbConnection();
+            var niscodes = db.Select(db.From<AdresX>().Limit(aantal)).Select(a => a.NISCode).ToList();
+            return niscodes;
+        }
+
+        public List<AdresX> GetAdressen(string gemeentenaam)
+        {
+            var db = _factory.OpenDbConnection();
+
+            var adressenInZottegem = db.Select(
+                                     db.From<AdresX>()
+                                       .Join<AdresX, StraatX>((a, s) => a.StraatID == s.StraatID)
+                                       .Join<StraatX, GemeenteX>((s, g) => s.GemeenteID == g.GemeenteID)
+                                       .Join<GemeenteX, ProvincieX>((g, p) => g.ProvincieID == p.ProvincieID)
+                                       .Where<GemeenteX>(g => g.Gemeentenaam == gemeentenaam)
+                                       .OrderBy(s => s.StraatID)
+                                       .Limit(15000));
+
+
+            // Eager loading (beperkt tot 1 niveau diep?)
+            //var adressenInZottegem = db.LoadSelect<Adres>(
+            //                         db.From<Adres>()
+            //                        .Join<Adres, Straat>((a, s) => a.StraatId == s.StraatId)
+            //                        .Join<Straat, Gemeente>((s, g) => s.GemeenteId == g.GemeenteId)
+            //                        .Join<Gemeente, Provincie>((g, p) => g.ProvincieId == p.ProvincieID)
+            //                        .Where<Gemeente>(g => g.Gemeentenaam == "Zottegem"));
+
+            db.Dispose();
+            return adressenInZottegem;
         }
         #endregion
     }

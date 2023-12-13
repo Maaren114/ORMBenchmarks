@@ -13,7 +13,7 @@ namespace Benchmarks
     {
         static void Main(string[] args)
         {
-            var summary1 = BenchmarkRunner.Run<CreateBenchmarks>();
+            var summary1 = BenchmarkRunner.Run<SelectBenchmarks>();
 
 
             //var repo = new EFCoreCreateRepository();

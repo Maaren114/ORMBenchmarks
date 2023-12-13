@@ -20,12 +20,27 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public void EFBorisDjUpdate(List<AdresX> updates)
+        public void EFCoreUpdate(List<AdresX> adressen)
+        {
+            foreach (AdresX adres in adressen)
+            {
+                _context.Adressen.Update(adres);
+            }
+            _context.SaveChanges();
+        }
+
+        public void EFCoreUpdateRange(List<AdresX> updates)
+        {
+            _context.Adressen.UpdateRange(updates);
+            _context.SaveChanges();
+        }
+
+        public void EFCoreBulkUpdate_BorisDj(List<AdresX> updates)
         {
             _context.BulkUpdate(updates, options => options.BatchSize = 15000);
         }
 
-        public void ExecuteSqlRaw(List<AdresX> updates)
+        public void EFCoreExecuteSqlRaw(List<AdresX> updates)
         {
             string updatesJSON = JsonSerializer.Serialize(updates);
 
@@ -56,8 +71,7 @@ namespace EFCoreBenchmarks.repositories
             _context.Database.ExecuteSqlRaw(query, new SqlParameter("@updates", updatesJSON));
         }
 
-
-        public void ExecuteSql(List<AdresX> updates)
+        public void EFCoreExecuteSql(List<AdresX> updates)
         {
             string updatesJSON = JsonSerializer.Serialize(updates);
 
@@ -87,11 +101,13 @@ namespace EFCoreBenchmarks.repositories
 
             _context.Database.ExecuteSql(query);
         }
-
-        public void UpdateRange(List<AdresX> updates)
-        {
-            _context.Adressen.UpdateRange(updates);
-            _context.SaveChanges();
-        }
     }
 }
+
+
+
+
+
+
+
+

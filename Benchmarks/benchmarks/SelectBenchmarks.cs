@@ -47,33 +47,32 @@ namespace Benchmarks.benchmarks
             _ormLiteRepository = new OrmLiteSelectRepository();
             _petapocorepository = new PetaPocoSelectRepository();
             _repoDbRepository = new RepoDbSelectRepository();
-            var repo = new EFCoreCreateRepository();
-            _niscodes = repo.GetNISCodes(15557);
+            _niscodes = _EFCoreRepository.GetNISCodes(15557);
         }
 
         #region EF Core
+        //[Benchmark]
+        //public void EFCore_FromSql()
+        //{
+        //    _EFCoreRepository.EFCoreFromSql(_niscodes);
+        //}
+
         [Benchmark]
-        public void EFCoreSelect()
+        public void EFCore_FromSqlRaw()
         {
-            _EFCoreRepository.EFCoreSelect(_niscodes);
+            _EFCoreRepository.EFCoreFromSqlRaw(_niscodes);
         }
 
         [Benchmark]
-        public void EFCoreFromSql()
+        public void EFCore_Where()
         {
-            _EFCoreRepository.FromSql(_niscodes);
-        }
-
-        [Benchmark]
-        public void EFCoreFromSqlRaw()
-        {
-            _EFCoreRepository.FromSqlRaw(_niscodes);
+            _EFCoreRepository.EFCoreWhere(_niscodes);
         }
         #endregion
 
         #region Dapper
         [Benchmark]
-        public void DapperExecute()
+        public void Dapper_Execute()
         {
             _dapperRepository.DapperExecute(_niscodes);
         }
@@ -83,33 +82,33 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void LinqToDbSelect()
         {
-            _linqToDbRepository.Select(_niscodes);
+            _linqToDbRepository.LinqToDbSelect(_niscodes);
         }
         #endregion
 
         #region NHibernate
         [Benchmark]
-        public void NHibernateCreateQueryHql()
+        public void NHibernate_CreateQuery_Hql()
         {
-            _nhibernateRepository.CreateQueryHql(_niscodes);
+            _nhibernateRepository.NHibernate_CreateQuery_Hql(_niscodes);
         }
 
         [Benchmark]
-        public void NHibernateQueryLinq()
+        public void NHibernate_Query_Linq()
         {
-            _nhibernateRepository.QueryLinq(_niscodes);
+            _nhibernateRepository.NHibernate_Query_Linq(_niscodes);
         }
 
         [Benchmark]
-        public void NHibernateCreateCriteria()
+        public void NHibernate_CreateCriteria()
         {
-            _nhibernateRepository.CreateCriteria(_niscodes);
+            _nhibernateRepository.NHibernate_CreateCriteria(_niscodes);
         }
 
         [Benchmark]
-        public void NHibernateRawSql()
+        public void NHibernate_CreateSqlQuery()
         {
-            _nhibernateRepository.RawSql(_niscodes);
+            _nhibernateRepository.NHibernateCreateSqlQuery(_niscodes);
         }
         #endregion
 
@@ -124,15 +123,15 @@ namespace Benchmarks.benchmarks
 
         #region OrmLite
         [Benchmark]
-        public void OrmLiteSqlList()
+        public void OrmLite_SqlList()
         {
-            _ormLiteRepository.SqlList(_niscodes);
+            _ormLiteRepository.OrmLiteSqlList(_niscodes);
         }
 
         [Benchmark]
-        public void OrmLiteSelect()
+        public void OrmLite_Select()
         {
-            _ormLiteRepository.Select(_niscodes);
+            _ormLiteRepository.OrmLiteSelect(_niscodes);
         }
         #endregion
 
@@ -146,16 +145,25 @@ namespace Benchmarks.benchmarks
 
         #region RepoDB
         [Benchmark]
-        public void RepoDbQuery()
+        public void RepoDb_Query()
         {
-            _repoDbRepository.Query(_niscodes);
+            _repoDbRepository.RepoDbQuery(_niscodes);
+        }
+        [Benchmark]
+        public void RepoDb_BatchQuery()
+        {
+            _repoDbRepository.RepoDbBatchQuery(_niscodes);
         }
 
         [Benchmark]
-        public void RepoDbExecuteQuery()
+        public void RepoDb_ExecuteQuery()
         {
-            _repoDbRepository.ExecuteQuery(_niscodes);
+            _repoDbRepository.RepoDbExecuteQuery(_niscodes);
         }
         #endregion
     }
 }
+
+
+
+

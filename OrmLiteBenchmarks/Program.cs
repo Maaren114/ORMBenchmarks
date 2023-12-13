@@ -12,11 +12,12 @@ namespace OrmLiteBenchmarks
             var repodelete = new OrmLiteDeleteRepository();
             var reposelect = new OrmLiteSelectRepository();
 
-            var adressen = repocreate.GetAdressen("Zottegem").Take(10).ToList();
+            var adressen = reposelect.GetAdressen("Zottegem").Take(10).ToList();
 
+            //var straten = reposelect.GetStraten(50);
 
+            repoupdate.OrmLiteUpdateAll(adressen);
 
-            repodelete.DeleteAll(adressen);
 
             //repocreate.BulkInsert(adressen);
 

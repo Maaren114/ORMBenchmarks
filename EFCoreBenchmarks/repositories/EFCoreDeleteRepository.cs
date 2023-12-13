@@ -19,14 +19,25 @@ namespace EFCoreBenchmarks.repositories
         {
             _context = new StratenregisterContext();
         }
-        public void EFBorisDjDelete(List<AdresX> adressen)
+
+        public void EFCoreRemove(List<AdresX> deletes)
         {
-            _context.BulkDelete(adressen, options => options.BatchSize = 16000);
+            foreach (var adres in deletes)
+            {
+                _context.Adressen.Remove(adres);
+            }
+            _context.SaveChanges();
         }
 
-        public void RemoveRange(List<AdresX> deletes)
+        public void EFCoreRemoveRange(List<AdresX> deletes)
         {
             _context.Adressen.RemoveRange(deletes);
+            _context.SaveChanges();
+        }
+
+        public void EFCoreBulkDelete_BorisDj(List<AdresX> adressen)
+        {
+            _context.BulkDelete(adressen, options => options.BatchSize = 16000);
         }
 
         public void ExecuteSqlRaw(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
@@ -43,7 +54,7 @@ namespace EFCoreBenchmarks.repositories
             _context.Database.ExecuteSqlRaw(query, new SqlParameter("@adressenJSON", adressenJSON));
         }
 
-        public void ExecuteSql(List<AdresX> adressen)
+        public void EFCoreExecuteSql(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 

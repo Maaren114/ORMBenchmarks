@@ -55,47 +55,65 @@ namespace Benchmarks.benchmarks
 
         #region EF Core
         [Benchmark]
-        public void EFBorisDjCreate()
+        public void EFCore_Remove()
         {
-            _EFCoreRepository.EFBorisDjDelete(_adressen);
+            _EFCoreRepository.EFCoreRemove(_adressen);
         }
 
         [Benchmark]
-        public void EFCoreExecuteSqlRaw()
+        public void EFCore_RemoveRange()
+        {
+            _EFCoreRepository.EFCoreRemoveRange(_adressen);
+        }
+
+        [Benchmark]
+        public void EFCore_BulkDelete_BorisDj()
+        {
+            _EFCoreRepository.EFCoreBulkDelete_BorisDj(_adressen);
+        }
+
+        [Benchmark]
+        public void EFCore_ExecuteSqlRaw()
         {
             _EFCoreRepository.ExecuteSqlRaw(_adressen);
         }
 
-        [Benchmark]
-        public void EFCoreExecuteSql()
-        {
-            _EFCoreRepository.ExecuteSql(_adressen);
-        }
+        //[Benchmark]
+        //public void EFCore_ExecuteSql()
+        //{
+        //    _EFCoreRepository.EFCoreExecuteSql(_adressen);
+        //}
 
         [Benchmark]
-        public void EFCoreZzzProjectsCreate()
+        public void EFCore_BulkDelete_ZZZProjects()
         {
-            _zzzProjectRepository.ZZZProjectsBulkDelete(_adressen);
+            _zzzProjectRepository.EFCoreBulkDelete_ZZZProjects(_adressen);
         }
         #endregion
 
         #region Dapper
         [Benchmark]
-        public void DapperExecute()
+        public void Dapper_Execute()
         {
             _dapperRepository.DapperExecute(_adressen);
         }
 
         [Benchmark]
-        public void DapperPlus()
+        public void Dapper_BulkDelete_DapperPlus()
         {
-            _dapperRepository.DapperPlus(_adressen);
+            _dapperRepository.DapperBulkDelete_DapperPlus(_adressen);
         }
         #endregion
 
         #region Linq to DB
         [Benchmark]
-        public void LinqToDbExecute()
+        public void LinqToDb_Delete()
+        {
+            _linqToDbRepository.LinqToDbDelete(_adressen);
+        }
+
+        [Benchmark]
+        public void LinqToDb_Execute()
         {
             _linqToDbRepository.LinqToDbExecute(_adressen);
         }
@@ -103,9 +121,15 @@ namespace Benchmarks.benchmarks
 
         #region NHibernate
         [Benchmark]
-        public void NHibernateBatchRaw()
+        public void NHibernate_Delete()
         {
-            _nhibernateRepository.BatchRaw(_adressen);
+            _nhibernateRepository.NHibernateDelete(_adressen);
+        }
+
+        [Benchmark]
+        public void NHibernate_CreateSqlQuery()
+        {
+            _nhibernateRepository.NHibernateCreateSqlQuery(_adressen);
         }
         #endregion
 
@@ -120,9 +144,15 @@ namespace Benchmarks.benchmarks
 
         #region OrmLite
         [Benchmark]
-        public void OrmLiteBulkDelete()
+        public void OrmLite_DeleteAll()
         {
-            _ormLiteRepository.ExecuteDeleteRaw(_adressen);
+            _ormLiteRepository.OrmLiteDeleteAll(_adressen);
+        }
+
+        [Benchmark]
+        public void OrmLite_ExecuteNonQuery()
+        {
+            _ormLiteRepository.OrmLiteExecuteNonQuery(_adressen);
         }
         #endregion
 
@@ -136,15 +166,21 @@ namespace Benchmarks.benchmarks
 
         #region RepoDB
         [Benchmark]
-        public void RepoDbDeleteAll()
+        public void RepoDb_DeleteAll()
         {
-            _repoDbRepository.DeleteAll(_adressen);
+            _repoDbRepository.RepoDbDeleteAll(_adressen);
         }
 
         [Benchmark]
-        public void RepoDbBulkDelete()
+        public void RepoDb_BulkDelete()
         {
-            _repoDbRepository.BulkDelete(_adressen);
+            _repoDbRepository.RepoDbBulkDelete(_adressen);
+        }
+
+        [Benchmark]
+        public void RepoDb_ExecuteNonQuery()
+        {
+            _repoDbRepository.RepoDbExecuteNonQuery(_adressen);
         }
         #endregion
     }

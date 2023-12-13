@@ -22,7 +22,7 @@ namespace ZZZProjectsBenchmarks.repositories
             return adressen;
         }
 
-        public void ZZZProjectsBulkInsert(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void EFCoreBulkInsert_ZZZProjects(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
         {
             _context.BulkInsert(adressen, options =>
             {

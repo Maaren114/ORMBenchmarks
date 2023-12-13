@@ -33,7 +33,7 @@ namespace DapperBenchmarks.repositories
             _dbConnection.Execute(query, new { adressen = deletesJSON });
         }
 
-        public void DapperPlus(List<AdresX> adressen)
+        public void DapperBulkDelete_DapperPlus(List<AdresX> adressen)
         {
             _dbConnection.UseBulkOptions(options =>
             {

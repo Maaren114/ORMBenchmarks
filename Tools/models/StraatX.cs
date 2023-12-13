@@ -11,6 +11,8 @@ namespace Tools;
 [Map("Straten")]
 public class StraatX
 {
+    [ServiceStack.DataAnnotations.PrimaryKey]
+    [AutoIncrement]
     [LinqToDB.Mapping.PrimaryKey, LinqToDB.Mapping.Identity]
     [Column(Name = "StraatID")]
     public virtual int StraatID { get; set; }

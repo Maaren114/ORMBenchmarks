@@ -1,5 +1,6 @@
 ﻿using LinqToDB;
 using LinqToDB.Data;
+using LinqToDB.DataProvider.SQLite;
 using LinqToDbBenchmarks.models;
 using System;
 using System.Collections.Generic;
@@ -21,17 +22,26 @@ namespace LinqToDbBenchmarks.repositories
             _connection = new StratenRegisterConnection();
         }
 
-        public void LinqToDbExecute(List<AdresX> updates)
+        public void LinqToDbExecute(List<AdresX> deletes)
         {
-            string adressenJSON = JsonSerializer.Serialize(updates);
+            string adressenJSON = JsonSerializer.Serialize(deletes);
 
             string query = $@"
                              DELETE FROM Adressen
                              WHERE AdresID IN (SELECT AdresID
-                                               FROM OPENJSON(@adressen)
+                                               FROM OPENJSON(@Adressen)
                                                WITH (AdresID int));";
 
-            _connection.Execute(query, new { adressen = adressenJSON });
+            _connection.Execute(query, new { Adressen = adressenJSON });
+        }
+
+        public void LinqToDbDelete(List<AdresX> deletes)
+        {
+            _connection.Adressen.Where(adres => deletes.Contains(adres)).Delete();
         }
     }
 }
+
+
+
+

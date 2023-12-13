@@ -21,25 +21,12 @@ namespace LinqToDbBenchmarks.repositories
             _connection = new StratenRegisterConnection();
         }
 
-        public List<AdresX> GetAdressen(string gemeentenaam)
-        {
-            var query = from a in _connection.Adressen
-                        join s in _connection.Straten on a.StraatID equals s.StraatID
-                        join g in _connection.Gemeentes on s.GemeenteID equals g.GemeenteID
-                        where g.Gemeentenaam == gemeentenaam
-                        orderby a.StraatID
-                        select a;
-
-            var result = query.Take(15000).ToList();
-            return result;
-        }
-
-        public void CreateBulkCopy(List<AdresX> adressen)
+        public void LinqToDbBulkCopy(List<AdresX> adressen)
         {
             _connection.BulkCopy(adressen);
         }
 
-        public void CreateExecute(List<AdresX> adressen)
+        public void LinqToDbExecute(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
@@ -69,6 +56,21 @@ namespace LinqToDbBenchmarks.repositories
 
             _connection.Execute(query, new { adressen = adressenJSON });
         }
+
+        #region Helper methods
+        public List<AdresX> GetAdressen(string gemeentenaam)
+        {
+            var query = from a in _connection.Adressen
+                        join s in _connection.Straten on a.StraatID equals s.StraatID
+                        join g in _connection.Gemeentes on s.GemeenteID equals g.GemeenteID
+                        where g.Gemeentenaam == gemeentenaam
+                        orderby a.StraatID
+                        select a;
+
+            var result = query.Take(15000).ToList();
+            return result;
+        }
+        #endregion
     }
 }
 

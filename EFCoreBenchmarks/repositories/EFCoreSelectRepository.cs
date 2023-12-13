@@ -1,6 +1,7 @@
 ﻿using EFCoreBenchmarks.models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +20,13 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public List<AdresX> EFCoreSelect(List<string> niscodes)
+        public List<AdresX> EFCoreWhere(List<string> niscodes) // wel opgenomen in thesis
         {
             List<AdresX> adressen = _context.Adressen.Where(a => niscodes.Contains(a.NISCode)).ToList();
             return adressen;
         }
 
-        public List<AdresX> FromSql(List<string> niscodes)
+        public List<AdresX> EFCoreFromSql(List<string> niscodes)
         {
             string niscodesJSON = JsonSerializer.Serialize(niscodes);
 
@@ -38,7 +39,7 @@ namespace EFCoreBenchmarks.repositories
             return adressen;
         }
 
-        public List<AdresX> FromSqlRaw(List<string> niscodes)
+        public List<AdresX> EFCoreFromSqlRaw(List<string> niscodes)
         {
             string niscodesJSON = JsonSerializer.Serialize(niscodes);
 
@@ -50,6 +51,18 @@ namespace EFCoreBenchmarks.repositories
             List<AdresX> adressen = _context.Adressen.FromSqlRaw(query, new SqlParameter("@niscodes", niscodesJSON)).ToList();
             return adressen;
         }
+
+        #region Helper methods
+        public List<StraatX> SelectStraten(int amount)
+        {
+            return _context.Straten.Where(s => s.Gemeente.Provincie.Provincienaam == "Oost-Vlaanderen").Take(amount).ToList();
+        }
+
+        public List<string> GetNISCodes(int amount)
+        {
+            return _context.Adressen.Map(a => a.NISCode).Take(amount).ToList();
+        }
+        #endregion
     }
 }
 

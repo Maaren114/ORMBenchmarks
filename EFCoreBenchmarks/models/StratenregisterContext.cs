@@ -27,7 +27,7 @@ public partial class StratenregisterContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(Toolkit.GetConnectionString());
+        optionsBuilder.UseSqlServer(Toolkit.GetConnectionString(), options => options.MaxBatchSize(5));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

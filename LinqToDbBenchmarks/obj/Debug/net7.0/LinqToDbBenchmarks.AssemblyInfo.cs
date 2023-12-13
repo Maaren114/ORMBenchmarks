@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinqToDbBenchmarks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81f9b2de6b615a3ef499f0abeea90213c75d6d12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6937a56197215ef72647107b20371c48f925fee5")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinqToDbBenchmarks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinqToDbBenchmarks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

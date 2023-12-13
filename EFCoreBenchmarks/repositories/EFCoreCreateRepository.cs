@@ -22,37 +22,7 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public void Test()
-        {
-            StraatX straat = _context.Straten.First(s => s.Straatnaam == "Boomsesteenweg");
-            straat.Straatnaam = "CHANGED!";
-            _context.SaveChanges();
-        }
-
-        public List<string> GetNISCodes(int amount)
-        {
-            return _context.Adressen.Map(a => a.NISCode).Take(amount).ToList();
-        }
-
-        public async void TestMethode(List<string> niscodes)
-        {
-            IExecutionStrategy strategie = _context.Database.CreateExecutionStrategy();
-
-            await strategie.ExecuteAsync(async delegate
-            {
-                using var transactie = _context.Database.BeginTransaction();
-
-                ProvincieX oostVlaanderen = new ProvincieX { Provincienaam = "Voorbeeldprovincie" };
-                _context.Provincies.Add(oostVlaanderen);
-
-                GemeenteX zottegem = new GemeenteX { Gemeentenaam = "Zottegem", Provincie = oostVlaanderen };
-                _context.Gemeentes.Add(zottegem);
-
-                transactie.Commit();
-            });
-        }
-
-        public void Klassieke1per1Methode(List<AdresX> adressen)
+        public void EFCoreAdd(List<AdresX> adressen) // OPGENOMEN IN THESIS :)
         {
             foreach (var adres in adressen)
             {
@@ -61,24 +31,18 @@ namespace EFCoreBenchmarks.repositories
             _context.SaveChanges();
         }
 
-        public List<AdresX> GetAdressen(string gemeentenaam, int aantal)
-        {
-            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(aantal).AsNoTracking().ToList();
-            return adressen;
-        }
-
-        public void EFBorisDjCreate(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
-        {
-            _context.BulkInsert(adressen, options => options.BatchSize = 16000);
-        }
-
-        public void AddRange(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void EFCoreAddRange(List<AdresX> adressen) // OPGENOMEN IN THESIS :)
         {
             _context.Adressen.AddRange(adressen);
             _context.SaveChanges();
         }
 
-        public void ExecuteSqlRaw(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void EFCoreBulkInsert_BorisDj(List<AdresX> adressen)
+        {
+            _context.BulkInsert(adressen, options => options.BatchSize = 16000);
+        }
+
+        public void EFCoreExecuteSqlRaw(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
@@ -109,7 +73,7 @@ namespace EFCoreBenchmarks.repositories
             _context.Database.ExecuteSqlRaw(query, new SqlParameter("@adressenJSON", adressenJSON));
         }
 
-        public void ExecuteSql(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void EFCoreExecuteSql(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
@@ -140,10 +104,37 @@ namespace EFCoreBenchmarks.repositories
             _context.Database.ExecuteSql(query);
         }
 
+        #region Helper methods
+        public void Test()
+        {
+            StraatX straat = _context.Straten.First(s => s.Straatnaam == "Boomsesteenweg");
+            straat.Straatnaam = "CHANGED!";
+            _context.SaveChanges();
+        }
 
+        public async void TestMethode(List<string> niscodes)
+        {
+            IExecutionStrategy strategie = _context.Database.CreateExecutionStrategy();
 
+            await strategie.ExecuteAsync(async delegate
+            {
+                using var transactie = _context.Database.BeginTransaction();
 
+                ProvincieX oostVlaanderen = new ProvincieX { Provincienaam = "Voorbeeldprovincie" };
+                _context.Provincies.Add(oostVlaanderen);
 
+                GemeenteX zottegem = new GemeenteX { Gemeentenaam = "Zottegem", Provincie = oostVlaanderen };
+                _context.Gemeentes.Add(zottegem);
 
+                transactie.Commit();
+            });
+        }
+
+        public List<AdresX> GetAdressen(string gemeentenaam, int aantal)
+        {
+            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(aantal).AsNoTracking().ToList();
+            return adressen;
+        }
+        #endregion
     }
 }

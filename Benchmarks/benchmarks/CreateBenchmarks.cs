@@ -19,7 +19,7 @@ namespace Benchmarks.benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [CsvExporter]
-    [MaxIterationCount(50)]
+    [MaxIterationCount(100)]
     //[SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 10, iterationCount: 100, id: "benchmarks")]
     public class CreateBenchmarks
     {

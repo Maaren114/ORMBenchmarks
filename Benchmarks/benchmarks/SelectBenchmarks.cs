@@ -2,21 +2,13 @@
 using BenchmarkDotNet.Order;
 using DapperBenchmarks.repositories;
 using EFCoreBenchmarks.repositories;
-using LinqToDB.Data;
-using LinqToDbBenchmarks.models;
 using LinqToDbBenchmarks.repositories;
 using NHibernateBenchmarks.repositories;
 using Norm.NetBenchmarks.repositories;
 using OrmLiteBenchmarks.repositories;
 using PetaPocoBenchmarks.repositories;
 using RepoDbBenchmarks.repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tools;
-using ZZZProjectsBenchmarks.repositories;
+
 
 namespace Benchmarks.benchmarks
 {
@@ -24,7 +16,7 @@ namespace Benchmarks.benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [CsvExporter]
-    [MaxIterationCount(100)]
+    [MaxIterationCount(1000)]
     public class SelectBenchmarks
     {
         private static EFCoreSelectRepository _EFCoreRepository = null!;
@@ -47,16 +39,10 @@ namespace Benchmarks.benchmarks
             _ormLiteRepository = new OrmLiteSelectRepository();
             _petapocorepository = new PetaPocoSelectRepository();
             _repoDbRepository = new RepoDbSelectRepository();
-            _niscodes = _EFCoreRepository.GetNISCodes(15557);
+            _niscodes = _EFCoreRepository.GetNISCodes(15000);
         }
 
         #region EF Core
-        //[Benchmark]
-        //public void EFCore_FromSql()
-        //{
-        //    _EFCoreRepository.EFCoreFromSql(_niscodes);
-        //}
-
         [Benchmark]
         public void EFCore_FromSqlRaw()
         {
@@ -72,17 +58,17 @@ namespace Benchmarks.benchmarks
 
         #region Dapper
         [Benchmark]
-        public void Dapper_Execute()
+        public void Dapper_Query()
         {
-            _dapperRepository.DapperExecute(_niscodes);
+            _dapperRepository.DapperQuery(_niscodes);
         }
         #endregion
 
         #region Linq to DB
         [Benchmark]
-        public void LinqToDbSelect()
+        public void LinqToDb_Where()
         {
-            _linqToDbRepository.LinqToDbSelect(_niscodes);
+            _linqToDbRepository.LinqToDb_Where(_niscodes);
         }
         #endregion
 
@@ -114,19 +100,19 @@ namespace Benchmarks.benchmarks
 
         #region Norm.NET
         [Benchmark]
-        public void NormNetRead()
+        public void NormNet_Read()
         {
-            _normNetRepository.Read(_niscodes);
+            _normNetRepository.NormNetRead(_niscodes);
 
         }
         #endregion
 
         #region OrmLite
-        [Benchmark]
-        public void OrmLite_SqlList()
-        {
-            _ormLiteRepository.OrmLiteSqlList(_niscodes);
-        }
+        //[Benchmark]
+        //public void OrmLite_SqlList()
+        //{
+        //    _ormLiteRepository.OrmLiteSqlList(_niscodes);
+        //}
 
         [Benchmark]
         public void OrmLite_Select()
@@ -137,9 +123,9 @@ namespace Benchmarks.benchmarks
 
         #region PetaPoco
         [Benchmark]
-        public void PetaPocoFetch()
+        public void PetaPoco_Fetch()
         {
-            _petapocorepository.Fetch(_niscodes);
+            _petapocorepository.PetaPoco_Fetch(_niscodes);
         }
         #endregion
 

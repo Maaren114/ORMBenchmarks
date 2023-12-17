@@ -18,7 +18,7 @@ namespace Norm.NetBenchmarks.repositories
             _connection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public List<AdresX> Read(List<string> niscodes)
+        public List<AdresX> NormNetRead(List<string> niscodes)
         {
             string niscodesJSON = JsonSerializer.Serialize(niscodes);
 

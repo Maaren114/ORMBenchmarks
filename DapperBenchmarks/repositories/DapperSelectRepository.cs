@@ -1,14 +1,8 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Tools;
-using Z.Dapper.Plus;
 
 namespace DapperBenchmarks.repositories
 {
@@ -20,7 +14,7 @@ namespace DapperBenchmarks.repositories
             _dbConnection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public IEnumerable<AdresX> DapperExecute(List<string> niscodes)
+        public IEnumerable<AdresX> DapperQuery(List<string> niscodes)
         {
             string niscodesJSON = JsonSerializer.Serialize(niscodes);
 

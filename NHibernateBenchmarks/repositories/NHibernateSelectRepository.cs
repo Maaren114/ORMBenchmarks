@@ -1,13 +1,6 @@
-﻿using NHibernate;
-using NHibernate.Criterion;
+﻿using NHibernate.Criterion;
 using NHibernateBenchmarks.mappings;
-using ServiceStack.Caching;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Tools;
 
 namespace NHibernateBenchmarks.repositories
@@ -84,7 +77,7 @@ namespace NHibernateBenchmarks.repositories
             }
         }
 
-        public List<AdresX> NHibernateCreateSqlQuery(List<string> niscodes) // werkt! dit is batch
+        public List<AdresX> NHibernateCreateSqlQuery(List<string> niscodes)
         {
             string query = @"SELECT *
 	                         FROM Adressen
@@ -124,7 +117,7 @@ namespace NHibernateBenchmarks.repositories
                         Postcode = a.Postcode,
                         Status = a.Status
                     })
-                    .Take(15557)
+                    .Take(15000)
                     .ToList();
                 return adressen;
             }

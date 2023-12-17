@@ -31,7 +31,7 @@ namespace LinqToDbBenchmarks
 
             var niscodes = selectrepo.GetNisCodes(5000);
 
-            var adressen = selectrepo.LinqToDbSelect(niscodes);
+            var adressen = selectrepo.LinqToDb_Where(niscodes);
 
 
 

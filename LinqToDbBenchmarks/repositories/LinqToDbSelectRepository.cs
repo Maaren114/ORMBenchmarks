@@ -18,7 +18,7 @@ namespace LinqToDbBenchmarks.repositories
             _connection = new StratenRegisterConnection();
         }
 
-        public List<AdresX> LinqToDbSelect(List<string> niscodes)
+        public List<AdresX> LinqToDb_Where(List<string> niscodes)
         {
             List<AdresX> adressen = _connection.Adressen.Where(a => niscodes.Contains(a.NISCode)).ToList();
             return adressen;

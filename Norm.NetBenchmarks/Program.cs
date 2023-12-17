@@ -22,7 +22,7 @@ namespace Norm.NetBenchmarks
             niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
             niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
 
-            var adre = reposelect.Read(niscodes);
+            var adre = reposelect.NormNetRead(niscodes);
 
             //repodelete.CreateExecute(adressen);
             //repoupdate.UpdateExecute(adressen);

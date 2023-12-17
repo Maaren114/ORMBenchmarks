@@ -28,7 +28,10 @@ namespace OrmLiteBenchmarks.repositories
                 string query = @"SELECT *
                          FROM Adressen
                          WHERE NIScode IN (SELECT CONVERT(nvarchar(80), value)
-                                           FROM OPENJSON(@niscodes))";
+                                           FROM OPENJSON(@niscodes));";
+
+
+
 
                 var adressen = db.SqlList<AdresX>(query, new { niscodes = niscodesJSON });
                 return adressen;
@@ -99,16 +102,6 @@ namespace OrmLiteBenchmarks.repositories
                                        .Where<GemeenteX>(g => g.Gemeentenaam == gemeentenaam)
                                        .OrderBy(s => s.StraatID)
                                        .Limit(15000));
-
-
-            // Eager loading (beperkt tot 1 niveau diep?)
-            //var adressenInZottegem = db.LoadSelect<Adres>(
-            //                         db.From<Adres>()
-            //                        .Join<Adres, Straat>((a, s) => a.StraatId == s.StraatId)
-            //                        .Join<Straat, Gemeente>((s, g) => s.GemeenteId == g.GemeenteId)
-            //                        .Join<Gemeente, Provincie>((g, p) => g.ProvincieId == p.ProvincieID)
-            //                        .Where<Gemeente>(g => g.Gemeentenaam == "Zottegem"));
-
             db.Dispose();
             return adressenInZottegem;
         }

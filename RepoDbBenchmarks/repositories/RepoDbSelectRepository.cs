@@ -1,12 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using RepoDb;
 using RepoDb.Enumerations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Tools;
 
 namespace RepoDbBenchmarks.repositories
@@ -102,7 +97,7 @@ namespace RepoDbBenchmarks.repositories
             _connection.Open();
 
             string query = $@"
-                            SELECT TOP 20000 a.AdresID, a.StraatID, a.Huisnummer, a.Postcode, a.Appartementnummer, a.Busnummer, a.NISCode, a.Status
+                            SELECT TOP 15000 a.AdresID, a.StraatID, a.Huisnummer, a.Postcode, a.Appartementnummer, a.Busnummer, a.NISCode, a.Status
                             FROM Adressen a
                             INNER JOIN Straten s ON a.StraatID = s.StraatID
                             INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID

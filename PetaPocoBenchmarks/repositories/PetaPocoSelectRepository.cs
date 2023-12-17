@@ -13,7 +13,7 @@ namespace PetaPocoBenchmarks.repositories
             _database = new Database(new SqlConnection(Toolkit.GetConnectionString()));
         }
 
-        public List<AdresX> Fetch(List<string> niscodes)
+        public List<AdresX> PetaPoco_Fetch(List<string> niscodes)
         {
             _database.Connection.Open();
 

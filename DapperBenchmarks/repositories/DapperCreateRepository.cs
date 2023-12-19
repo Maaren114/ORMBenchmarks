@@ -21,37 +21,6 @@ namespace DapperBenchmarks.repositories
             _dbConnection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public List<AdresX> GetAddressen(string gemeentenaam)
-        {
-            string query = $@"
-                            SELECT TOP 15000 a.*
-                            FROM Adressen a
-                            INNER JOIN Straten s ON a.StraatID = s.StraatID
-                            INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID
-                            WHERE g.Gemeentenaam = @Gemeentenaam
-                            ORDER BY a.StraatID;";
-
-            List<AdresX> adressen = _dbConnection.Query<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
-            return adressen;
-        }
-
-        public List<string> GetNisCodes()
-        {
-            string query = $@"
-                            SELECT TOP 15000 a.NisCode
-                            FROM Adressen a;";
-
-            List<string> niscodes = _dbConnection.Query<string>(query).ToList();
-            return niscodes;
-        }
-
-        public void Test()
-        {
-            string query = $@"SELECT TOP 10 * FROM Adressen;";
-
-            IEnumerable<AdresX> adressen = _dbConnection.Query<AdresX>(query).Where(a => a.Huisnummer == "1");
-        }
-
         public void DapperExecute(List<AdresX> adressen)
         {
             string query = $@"
@@ -79,7 +48,7 @@ namespace DapperBenchmarks.repositories
                             )";
 
             string adressenJSON = JsonSerializer.Serialize(adressen);
-            int result = _dbConnection.Execute(query, new { adressen = adressenJSON });
+            _dbConnection.Execute(query, new { adressen = adressenJSON });
         }
 
         public void DapperBulkInsert_DapperPlus(List<AdresX> adressen)
@@ -90,6 +59,40 @@ namespace DapperBenchmarks.repositories
                 options.DestinationTableName = "Adressen";
             }).BulkInsert(adressen);
         }
+
+        #region helper methods
+        public List<AdresX> GetAddressen(string gemeentenaam)
+        {
+            string query = $@"
+                            SELECT TOP 15000 a.*
+                            FROM Adressen a
+                            INNER JOIN Straten s ON a.StraatID = s.StraatID
+                            INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID
+                            WHERE g.Gemeentenaam = @Gemeentenaam
+                            ORDER BY a.StraatID;";
+
+            List<AdresX> adressen = _dbConnection.Query<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
+            return adressen;
+        }
+
+        public List<string> GetNisCodes()
+        {
+            string query = $@"
+                            SELECT TOP 15000 a.NisCode
+                            FROM Adressen a
+                            ORDER BY NEWID();";
+
+            List<string> niscodes = _dbConnection.Query<string>(query).ToList();
+            return niscodes;
+        }
+
+        public void Test()
+        {
+            string query = $@"SELECT TOP 10 * FROM Adressen;";
+
+            IEnumerable<AdresX> adressen = _dbConnection.Query<AdresX>(query).Where(a => a.Huisnummer == "1");
+        }
+        #endregion
     }
 }
 

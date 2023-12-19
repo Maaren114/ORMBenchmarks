@@ -1,0 +1,210 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 13 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf
+// command took 2.46 sec and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf
+// command took 21.4 sec and exited with 1
+// start dotnet  build -c Release --no-restore --no-dependencies /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf
+// command took 4.08 sec and exited with 0
+// ***** Done, took 00:00:28 (28.15 sec)   *****
+// Found 13 benchmarks:
+//   UpdateBenchmarks.EFCore_BulkUpdate_BorisDj: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.EFCore_ExecuteSqlRaw: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.Dapper_Execute: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.Dapper_BulkUpdate_DapperPlus: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.LinqToDbExecute: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.NHibernate_Update: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.NHibernate_CreateSqlQuery: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.NormNetUpdateExecute: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.OrmLite_ExecuteNonQuery: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.PetaPocoExecute: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.RepoDb_UpdateAll: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.RepoDb_BulkUpdate: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.RepoDb_ExecuteNonQuery: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.EFCore_BulkUpdate_BorisDj: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c9331651-acae-41d7-9806-c86a0f159ecf.dll --anonymousPipes 3156 3208 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.EFCore_BulkUpdate_BorisDj --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 0 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-GUQUCV(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 217200.00 ns, 217.2000 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.WriteSni(Boolean canAccumulate)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.WritePacket(Byte flushMode, Boolean canAccumulate)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.WriteBytes(ReadOnlySpan`1 b, Int32 len, Int32 offsetBuffer, Boolean canAccumulate, TaskCompletionSource`1 completion, Byte[] array)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.WriteByteArray(Byte[] b, Int32 len, Int32 offsetBuffer, Boolean canAccumulate, TaskCompletionSource`1 completion)
+   at Microsoft.Data.SqlClient.TdsParser.WriteString(String s, Int32 length, Int32 offset, TdsParserStateObject stateObj, Boolean canAccumulate)
+   at Microsoft.Data.SqlClient.TdsParser.WriteUnterminatedValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.WriteValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.WriteBulkCopyValue(Object value, SqlMetaDataPriv metadata, TdsParserStateObject stateObj, Boolean isSqlType, Boolean isDataFeed, Boolean isNull)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.ReadWriteColumnValueAsync(Int32 col)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.CopyColumnsAsync(Int32 col, TaskCompletionSource`1 source)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.CopyRowsAsync(Int32 rowsSoFar, Int32 totalRows, CancellationToken cts, TaskCompletionSource`1 source)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.CopyBatchesAsyncContinued(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.CopyBatchesAsync(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestContinuedAsync(BulkCopySimpleResultSet internalResults, CancellationToken cts, TaskCompletionSource`1 source)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestAsync(CancellationToken cts, TaskCompletionSource`1 source)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.WriteToServerInternalAsync(CancellationToken ctoken)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.WriteRowSourceToServerAsync(Int32 columnCount, CancellationToken ctoken)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.WriteToServer(DataTable table, DataRowState rowState)
+   at Microsoft.Data.SqlClient.SqlBulkCopy.WriteToServer(DataTable table)
+   at EFCore.BulkExtensions.SqlAdapters.SqlServer.SqlOperationsServerAdapter.InsertAsync[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, Action`1 progress, Boolean isAsync, CancellationToken cancellationToken)
+   at EFCore.BulkExtensions.SqlAdapters.SqlServer.SqlOperationsServerAdapter.InsertAsync[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, Action`1 progress, Boolean isAsync, CancellationToken cancellationToken)
+   at EFCore.BulkExtensions.SqlAdapters.SqlServer.SqlOperationsServerAdapter.Insert[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, Action`1 progress)
+   at EFCore.BulkExtensions.SqlAdapters.SqlServer.SqlOperationsServerAdapter.MergeAsync[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, OperationType operationType, Action`1 progress, Boolean isAsync, CancellationToken cancellationToken)
+   at EFCore.BulkExtensions.SqlAdapters.SqlServer.SqlOperationsServerAdapter.MergeAsync[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, OperationType operationType, Action`1 progress, Boolean isAsync, CancellationToken cancellationToken)
+   at EFCore.BulkExtensions.SqlAdapters.SqlServer.SqlOperationsServerAdapter.Merge[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, OperationType operationType, Action`1 progress)
+   at EFCore.BulkExtensions.SqlBulkOperation.Merge[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, OperationType operationType, Action`1 progress)
+   at EFCore.BulkExtensions.DbContextBulkTransaction.Execute[T](DbContext context, Type type, IList`1 entities, OperationType operationType, BulkConfig bulkConfig, Action`1 progress)
+   at EFCore.BulkExtensions.DbContextBulkExtensions.BulkUpdate[T](DbContext context, IList`1 entities, Action`1 bulkAction, Action`1 progress, Type type)
+   at EFCoreBenchmarks.repositories.EFCoreUpdateRepository.EFCoreBulkUpdate_BorisDj(List`1 updates) in C:\Users\Maaren\source\repos\ORMBenchmarks\EFCoreBenchmarks\repositories\EFCoreUpdateRepository.cs:line 40
+   at Benchmarks.benchmarks.UpdateBenchmarks.EFCore_BulkUpdate_BorisDj() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 83
+   at BenchmarkDotNet.Autogenerated.Runnable_0.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\c9331651-acae-41d7-9806-c86a0f159ecf.notcs:line 272
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\c9331651-acae-41d7-9806-c86a0f159ecf.notcs:line 177
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:f2ae96f3-a088-4510-83d2-b9e02b6de89b
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\c9331651-acae-41d7-9806-c86a0f159ecf.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 13056 has exited with code -1.
+
+// ** Remained 12 (92,3%) benchmark(s) to run. Estimated finish 2023-12-18 21:10 (0h 9m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.EFCore_ExecuteSqlRaw: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c9331651-acae-41d7-9806-c86a0f159ecf.dll --anonymousPipes 3144 828 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.EFCore_ExecuteSqlRaw --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 1 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-ASDVHU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 229100.00 ns, 229.1000 us/op
+WorkloadJitting  1: 1 op, 498785600.00 ns, 498.7856 ms/op
+
+OverheadWarmup   1: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadWarmup   2: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadWarmup   3: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadWarmup   4: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadWarmup   5: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadWarmup   6: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadWarmup   7: 1 op, 700.00 ns, 700.0000 ns/op
+
+OverheadActual   1: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   2: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   3: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   4: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   5: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadActual   6: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadActual   7: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadActual   8: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   9: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadActual  10: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  11: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  12: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadActual  13: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  14: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  15: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  16: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  17: 1 op, 500.00 ns, 500.0000 ns/op
+OverheadActual  18: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  19: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  20: 1 op, 700.00 ns, 700.0000 ns/op
+
+WorkloadWarmup   1: 1 op, 247657700.00 ns, 247.6577 ms/op
+WorkloadWarmup   2: 1 op, 228781600.00 ns, 228.7816 ms/op
+WorkloadWarmup   3: 1 op, 741677400.00 ns, 741.6774 ms/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlRaw(DatabaseFacade databaseFacade, String sql, IEnumerable`1 parameters)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlRaw(DatabaseFacade databaseFacade, String sql, Object[] parameters)
+   at EFCoreBenchmarks.repositories.EFCoreUpdateRepository.EFCoreExecuteSqlRaw(List`1 updates) in C:\Users\Maaren\source\repos\ORMBenchmarks\EFCoreBenchmarks\repositories\EFCoreUpdateRepository.cs:line 71
+   at Benchmarks.benchmarks.UpdateBenchmarks.EFCore_ExecuteSqlRaw() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 89
+   at BenchmarkDotNet.Autogenerated.Runnable_1.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\c9331651-acae-41d7-9806-c86a0f159ecf.notcs:line 435
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineStage.Run(IStoppingCriteria criteria, Int64 invokeCount, IterationMode mode, IterationStage stage, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.Run(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_1.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\c9331651-acae-41d7-9806-c86a0f159ecf.notcs:line 342
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:4bcd3189-b3bb-4542-a13f-6d972d806a57
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\c9331651-acae-41d7-9806-c86a0f159ecf.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 11776 has exited with code -1.
+
+// ** Remained 11 (84,6%) benchmark(s) to run. Estimated finish 2023-12-18 21:09 (0h 8m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.Dapper_Execute: Job-NSSOOU(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet c9331651-acae-41d7-9806-c86a0f159ecf.dll --anonymousPipes 1216 1212 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.Dapper_Execute --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 2 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\c9331651-acae-41d7-9806-c86a0f159ecf\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-QIHPRA(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 202100.00 ns, 202.1000 us/op

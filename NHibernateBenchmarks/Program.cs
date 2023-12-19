@@ -17,8 +17,10 @@ namespace NHibernateBenchmarks
             var deleterepo = new NHibernateDeleteRepository();
             var selectrepo = new NHibernateSelectRepository();
 
+            var adressen =  dappercreaterepo.GetAddressen("Zottegem");
 
-            //var adressen = dappercreaterepo.GetAddressen("Zottegem");
+            updaterepo.NHibernate_Update(adressen);
+
 
             //List<string> niscodes = new List<string>();
             //niscodes.Add("2c4140d4-cff7-49be-a8c4-2375783344ee");
@@ -29,12 +31,6 @@ namespace NHibernateBenchmarks
             //niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
             //niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
 
-
-            var niscodes = dappercreaterepo.GetNisCodes();
-
-            selectrepo.NHibernate_CreateQuery_Hql(niscodes);
-            selectrepo.NHibernate_CreateCriteria(niscodes);
-            selectrepo.NHibernate_Query_Linq(niscodes);
 
 
 

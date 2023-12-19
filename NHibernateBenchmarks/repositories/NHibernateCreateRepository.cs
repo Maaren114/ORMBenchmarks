@@ -33,7 +33,7 @@ namespace NHibernateBenchmarks
             }
         }
 
-        public void NHibernateCreateSqlQuery(List<AdresX> adressen) // werkt! dit is batch
+        public void NHibernateCreateSqlQuery(List<AdresX> adressen)
         {
             string query = $@"
                             INSERT INTO Adressen

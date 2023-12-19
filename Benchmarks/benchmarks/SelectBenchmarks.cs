@@ -16,7 +16,7 @@ namespace Benchmarks.benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [CsvExporter]
-    [MaxIterationCount(1000)]
+    //[MaxIterationCount(1000)]
     public class SelectBenchmarks
     {
         private static EFCoreSelectRepository _EFCoreRepository = null!;
@@ -39,7 +39,7 @@ namespace Benchmarks.benchmarks
             _ormLiteRepository = new OrmLiteSelectRepository();
             _petapocorepository = new PetaPocoSelectRepository();
             _repoDbRepository = new RepoDbSelectRepository();
-            _niscodes = _EFCoreRepository.GetNISCodes(15000);
+            _niscodes = _dapperRepository.GetRandomNisCodes();
         }
 
         #region EF Core
@@ -147,6 +147,12 @@ namespace Benchmarks.benchmarks
             _repoDbRepository.RepoDbExecuteQuery(_niscodes);
         }
         #endregion
+
+        [IterationCleanup]
+        public void CleanupAfterIteration()
+        {
+            _niscodes = _dapperRepository.GetRandomNisCodes();
+        }
     }
 }
 

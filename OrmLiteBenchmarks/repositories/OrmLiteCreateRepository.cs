@@ -64,13 +64,13 @@ namespace OrmLiteBenchmarks.repositories
         }
 
         #region 1 per 1
-        public void InsertAll(List<StraatX> straten) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in thesis.
+        public void InsertAll(List<StraatX> straten) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in onderzoek.
         {
             var db = _factory.OpenDbConnection();
             db.InsertAll(straten);
         }
 
-        public void Insert(List<StraatX> straten) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in thesis.
+        public void Insert(List<StraatX> straten) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in onderzoek.
         {
             var db = _factory.OpenDbConnection();
 

@@ -49,7 +49,7 @@ namespace PetaPocoBenchmarks.repositories
 
             string adressenJSON = JsonSerializer.Serialize(adressen);
 
-            int result = _database.Execute(query, new { updates = adressenJSON });
+            _database.Execute(query, new { updates = adressenJSON });
 
             _database.Connection.Close();
         }

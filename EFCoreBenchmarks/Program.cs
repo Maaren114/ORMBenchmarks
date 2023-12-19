@@ -15,6 +15,12 @@ namespace EFCoreBenchmarks
             var selectrepo = new EFCoreSelectRepository();
             var testrepo = new TestRepository();
 
+            var adressen = updateRepo.GetAdressen();
+            updateRepo.EFCoreBulkUpdate_BorisDj(adressen);
+
+
+
+
             //List<AdresX> adressen = createRepo.GetAdressen("Zottegem", 15000);
             //adressen.ForEach(a => a.AdresID = 0);
 
@@ -90,13 +96,16 @@ namespace EFCoreBenchmarks
             //updateRepo.Update(straten);
 
 
-            var niscodes = selectrepo.GetNISCodes(5);
+            //var niscodes = selectrepo.GetNISCodes(5);
 
-            var adressen = selectrepo.EFCoreWhere(niscodes);
+            //var adressen = selectrepo.EFCoreWhere(niscodes);
 
 
 
             //deleterepo.Remove(adressen);
+
+
+
         }
         public static List<AdresX> GetBogusAdressen()
         {

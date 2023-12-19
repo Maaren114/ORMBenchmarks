@@ -20,7 +20,7 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public List<AdresX> EFCoreWhere(List<string> niscodes) // wel opgenomen in thesis
+        public List<AdresX> EFCoreWhere(List<string> niscodes)
         {
             List<AdresX> adressen = _context.Adressen.Where(a => niscodes.Contains(a.NISCode)).ToList();
             return adressen;

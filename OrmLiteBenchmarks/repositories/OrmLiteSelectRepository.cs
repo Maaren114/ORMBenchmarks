@@ -43,7 +43,7 @@ namespace OrmLiteBenchmarks.repositories
             using (var db = _factory.OpenDbConnection())
             {
                 List<AdresX> adressen = new List<AdresX>();
-                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098); // OPGELET: 2098 werkt nog, 2099 niet! (teveel parameters)
 
                 foreach (var niscodebatch in niscodebatches)
                 {

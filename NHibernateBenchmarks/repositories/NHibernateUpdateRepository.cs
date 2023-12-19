@@ -19,7 +19,7 @@ namespace NHibernateBenchmarks.repositories
             _sessionFactory = NHibernateHelper.ConfigureNHibernate();
         }
 
-        public void NHibernate_Update(List<AdresX> adressen) // werkt enkel wanneer adressen niet initieel werden opgevraagd door NHibnernate.
+        public void NHibernate_Update(List<AdresX> adressen) // Werkt enkel wanneer adressen niet initieel werden opgevraagd door NHibnernate.
         {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -32,7 +32,7 @@ namespace NHibernateBenchmarks.repositories
             }
         }
 
-        public void NHibernate_CreateSqlQuery(List<AdresX> updates)  // werkt enkel wanneer adressen niet initieel werden opgevraagd door NHibnernate.
+        public void NHibernate_CreateSqlQuery(List<AdresX> updates)  // Werkt enkel wanneer adressen niet initieel werden opgevraagd door NHibnernate.
         {
             string query = $@"
                             UPDATE adr

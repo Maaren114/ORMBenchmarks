@@ -16,11 +16,11 @@ namespace ZZZProjectsBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public void ZZZProjectsBulkUpdate(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void ZZZProjectsBulkUpdate(List<AdresX> adressen)
         {
             _context.BulkUpdate(adressen, options =>
             {
-                options.BatchSize = 16000;
+                options.BatchSize = 15000;
                 options.AutoMapOutputDirection = false;
             });
         }

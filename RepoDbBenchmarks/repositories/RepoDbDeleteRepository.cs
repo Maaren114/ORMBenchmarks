@@ -22,18 +22,14 @@ namespace RepoDbBenchmarks.repositories
         public void RepoDbDeleteAll(List<AdresX> adressen)
         {
             _connection.Open();
-            List<List<AdresX>> adressenbatches = SplitListIntoBatches(adressen, 2098);
-            foreach (var adressenbatch in adressenbatches)
-            {
-                _connection.DeleteAll(adressenbatch); // 262 gaat wel nog. 263 niet meer!!! (teveel parameters)
-            }
+            _connection.DeleteAll(adressen);
             _connection.Close();
         }
 
         public void RepoDbBulkDelete(List<AdresX> adressen)
         {
             _connection.Open();
-            _connection.BulkDelete(adressen, batchSize: 20000);
+            _connection.BulkDelete(adressen, batchSize: 15000);
             _connection.Close();
         }
 
@@ -52,19 +48,5 @@ namespace RepoDbBenchmarks.repositories
             _connection.ExecuteNonQuery(query, new { Adressen = adressenJSON });
             _connection.Close();
         }
-
-        #region helper methods
-        public List<List<T>> SplitListIntoBatches<T>(List<T> sourceList, int batchSize)
-        {
-            List<List<T>> batches = new List<List<T>>();
-
-            for (int i = 0; i < sourceList.Count; i += batchSize)
-            {
-                List<T> batch = sourceList.Skip(i).Take(batchSize).ToList();
-                batches.Add(batch);
-            }
-            return batches;
-        }
-        #endregion
     }
 }

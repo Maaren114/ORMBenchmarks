@@ -18,15 +18,15 @@ namespace ZZZProjectsBenchmarks.repositories
 
         public List<AdresX> GetAdressen(string gemeentenaam)
         {
-            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).Take(15557).ToList();
+            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).Take(15000).ToList();
             return adressen;
         }
 
-        public void EFCoreBulkInsert_ZZZProjects(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void EFCoreBulkInsert_ZZZProjects(List<AdresX> adressen)
         {
             _context.BulkInsert(adressen, options =>
             {
-                options.BatchSize = 16000;
+                options.BatchSize = 15000;
                 options.AutoMapOutputDirection = false;
             });
         }

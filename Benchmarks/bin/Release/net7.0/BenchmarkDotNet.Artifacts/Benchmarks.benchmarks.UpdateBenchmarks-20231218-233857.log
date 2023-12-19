@@ -1,0 +1,2073 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 16 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb
+// command took 2.62 sec and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb
+// command took 15.65 sec and exited with 1
+// start dotnet  build -c Release --no-restore --no-dependencies /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb
+// command took 3.19 sec and exited with 0
+// ***** Done, took 00:00:21 (21.68 sec)   *****
+// Found 16 benchmarks:
+//   UpdateBenchmarks.EFCore_Update: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.EFCore_UpdateRange: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.EFCore_BulkUpdate_BorisDj: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.EFCore_ExecuteSqlRaw: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.Dapper_Execute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.Dapper_BulkUpdate_DapperPlus: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.LinqToDbExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.NHibernate_Update: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.NHibernate_CreateSqlQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.NormNetUpdateExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.OrmLite_ExecuteNonQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.PetaPocoExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.RepoDb_UpdateAll: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.RepoDb_BulkUpdate: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.RepoDb_ExecuteNonQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+//   UpdateBenchmarks.ZZZProjectsBulkUpdate: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.EFCore_Update: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 2432 2704 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.EFCore_Update --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 0 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-ADVAXV(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 213700.00 ns, 213.7000 us/op
+WorkloadJitting  1: 1 op, 16383417800.00 ns, 16.3834 s/op
+
+OverheadWarmup   1: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadWarmup   2: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadWarmup   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   4: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   5: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadWarmup   6: 1 op, 800.00 ns, 800.0000 ns/op
+
+OverheadActual   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   2: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   5: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   6: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   7: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   8: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   9: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  10: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  11: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  12: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  13: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  14: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  15: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  16: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  17: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  18: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  19: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  20: 1 op, 1100.00 ns, 1.1000 us/op
+
+WorkloadWarmup   1: 1 op, 39411513300.00 ns, 39.4115 s/op
+WorkloadWarmup   2: 1 op, 2585427700.00 ns, 2.5854 s/op
+WorkloadWarmup   3: 1 op, 2602518000.00 ns, 2.6025 s/op
+WorkloadWarmup   4: 1 op, 2627524900.00 ns, 2.6275 s/op
+WorkloadWarmup   5: 1 op, 2686314300.00 ns, 2.6863 s/op
+WorkloadWarmup   6: 1 op, 2696207600.00 ns, 2.6962 s/op
+WorkloadWarmup   7: 1 op, 2727994400.00 ns, 2.7280 s/op
+WorkloadWarmup   8: 1 op, 2742775000.00 ns, 2.7428 s/op
+WorkloadWarmup   9: 1 op, 2775562600.00 ns, 2.7756 s/op
+WorkloadWarmup  10: 1 op, 2812980100.00 ns, 2.8130 s/op
+WorkloadWarmup  11: 1 op, 2810113900.00 ns, 2.8101 s/op
+WorkloadWarmup  12: 1 op, 2842159100.00 ns, 2.8422 s/op
+WorkloadWarmup  13: 1 op, 2868090300.00 ns, 2.8681 s/op
+WorkloadWarmup  14: 1 op, 2967312300.00 ns, 2.9673 s/op
+WorkloadWarmup  15: 1 op, 2968406300.00 ns, 2.9684 s/op
+WorkloadWarmup  16: 1 op, 2952798800.00 ns, 2.9528 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 3003717500.00 ns, 3.0037 s/op
+WorkloadActual   2: 1 op, 2987146800.00 ns, 2.9871 s/op
+WorkloadActual   3: 1 op, 3061964900.00 ns, 3.0620 s/op
+WorkloadActual   4: 1 op, 3092308600.00 ns, 3.0923 s/op
+WorkloadActual   5: 1 op, 3102708000.00 ns, 3.1027 s/op
+WorkloadActual   6: 1 op, 3107600100.00 ns, 3.1076 s/op
+WorkloadActual   7: 1 op, 3169915300.00 ns, 3.1699 s/op
+WorkloadActual   8: 1 op, 3172448700.00 ns, 3.1724 s/op
+WorkloadActual   9: 1 op, 3200227800.00 ns, 3.2002 s/op
+WorkloadActual  10: 1 op, 3219414800.00 ns, 3.2194 s/op
+WorkloadActual  11: 1 op, 3243627100.00 ns, 3.2436 s/op
+WorkloadActual  12: 1 op, 3290233900.00 ns, 3.2902 s/op
+WorkloadActual  13: 1 op, 3300167000.00 ns, 3.3002 s/op
+WorkloadActual  14: 1 op, 3325979300.00 ns, 3.3260 s/op
+WorkloadActual  15: 1 op, 3339914200.00 ns, 3.3399 s/op
+WorkloadActual  16: 1 op, 3371161300.00 ns, 3.3712 s/op
+WorkloadActual  17: 1 op, 3375733200.00 ns, 3.3757 s/op
+WorkloadActual  18: 1 op, 3400886600.00 ns, 3.4009 s/op
+WorkloadActual  19: 1 op, 3475070200.00 ns, 3.4751 s/op
+WorkloadActual  20: 1 op, 3594983200.00 ns, 3.5950 s/op
+WorkloadActual  21: 1 op, 3529620100.00 ns, 3.5296 s/op
+WorkloadActual  22: 1 op, 3536105500.00 ns, 3.5361 s/op
+WorkloadActual  23: 1 op, 3583903200.00 ns, 3.5839 s/op
+WorkloadActual  24: 1 op, 3552134200.00 ns, 3.5521 s/op
+WorkloadActual  25: 1 op, 3589686800.00 ns, 3.5897 s/op
+WorkloadActual  26: 1 op, 3602276700.00 ns, 3.6023 s/op
+WorkloadActual  27: 1 op, 3684858700.00 ns, 3.6849 s/op
+WorkloadActual  28: 1 op, 3668870500.00 ns, 3.6689 s/op
+WorkloadActual  29: 1 op, 3687966300.00 ns, 3.6880 s/op
+WorkloadActual  30: 1 op, 3694012000.00 ns, 3.6940 s/op
+WorkloadActual  31: 1 op, 3829096600.00 ns, 3.8291 s/op
+WorkloadActual  32: 1 op, 3757423800.00 ns, 3.7574 s/op
+WorkloadActual  33: 1 op, 3765679600.00 ns, 3.7657 s/op
+WorkloadActual  34: 1 op, 3798737100.00 ns, 3.7987 s/op
+WorkloadActual  35: 1 op, 3892687100.00 ns, 3.8927 s/op
+WorkloadActual  36: 1 op, 3843888500.00 ns, 3.8439 s/op
+WorkloadActual  37: 1 op, 3858365300.00 ns, 3.8584 s/op
+WorkloadActual  38: 1 op, 3950438800.00 ns, 3.9504 s/op
+WorkloadActual  39: 1 op, 3958378200.00 ns, 3.9584 s/op
+WorkloadActual  40: 1 op, 3906844000.00 ns, 3.9068 s/op
+WorkloadActual  41: 1 op, 3961552600.00 ns, 3.9616 s/op
+WorkloadActual  42: 1 op, 3969872200.00 ns, 3.9699 s/op
+WorkloadActual  43: 1 op, 4028840400.00 ns, 4.0288 s/op
+WorkloadActual  44: 1 op, 4149205900.00 ns, 4.1492 s/op
+WorkloadActual  45: 1 op, 4020385300.00 ns, 4.0204 s/op
+WorkloadActual  46: 1 op, 4076348000.00 ns, 4.0763 s/op
+WorkloadActual  47: 1 op, 4204946900.00 ns, 4.2049 s/op
+WorkloadActual  48: 1 op, 4215854600.00 ns, 4.2159 s/op
+WorkloadActual  49: 1 op, 4180164700.00 ns, 4.1802 s/op
+WorkloadActual  50: 1 op, 4159350000.00 ns, 4.1593 s/op
+WorkloadActual  51: 1 op, 4178687400.00 ns, 4.1787 s/op
+WorkloadActual  52: 1 op, 4273409300.00 ns, 4.2734 s/op
+WorkloadActual  53: 1 op, 4229225700.00 ns, 4.2292 s/op
+WorkloadActual  54: 1 op, 4260707400.00 ns, 4.2607 s/op
+WorkloadActual  55: 1 op, 4321249800.00 ns, 4.3212 s/op
+WorkloadActual  56: 1 op, 4275093400.00 ns, 4.2751 s/op
+WorkloadActual  57: 1 op, 4406912400.00 ns, 4.4069 s/op
+WorkloadActual  58: 1 op, 4341063100.00 ns, 4.3411 s/op
+WorkloadActual  59: 1 op, 4321312600.00 ns, 4.3213 s/op
+WorkloadActual  60: 1 op, 4373848300.00 ns, 4.3738 s/op
+WorkloadActual  61: 1 op, 4516973300.00 ns, 4.5170 s/op
+WorkloadActual  62: 1 op, 4441576500.00 ns, 4.4416 s/op
+WorkloadActual  63: 1 op, 4438017200.00 ns, 4.4380 s/op
+WorkloadActual  64: 1 op, 4453001000.00 ns, 4.4530 s/op
+WorkloadActual  65: 1 op, 4474674500.00 ns, 4.4747 s/op
+WorkloadActual  66: 1 op, 4507635500.00 ns, 4.5076 s/op
+WorkloadActual  67: 1 op, 4524355200.00 ns, 4.5244 s/op
+WorkloadActual  68: 1 op, 4509352000.00 ns, 4.5094 s/op
+WorkloadActual  69: 1 op, 4583659600.00 ns, 4.5837 s/op
+WorkloadActual  70: 1 op, 4682195700.00 ns, 4.6822 s/op
+WorkloadActual  71: 1 op, 4636967900.00 ns, 4.6370 s/op
+WorkloadActual  72: 1 op, 4673570400.00 ns, 4.6736 s/op
+WorkloadActual  73: 1 op, 4626387200.00 ns, 4.6264 s/op
+WorkloadActual  74: 1 op, 4641227200.00 ns, 4.6412 s/op
+WorkloadActual  75: 1 op, 4667569700.00 ns, 4.6676 s/op
+WorkloadActual  76: 1 op, 4676862000.00 ns, 4.6769 s/op
+WorkloadActual  77: 1 op, 4882787500.00 ns, 4.8828 s/op
+WorkloadActual  78: 1 op, 4919545100.00 ns, 4.9195 s/op
+WorkloadActual  79: 1 op, 4758973800.00 ns, 4.7590 s/op
+WorkloadActual  80: 1 op, 4754857700.00 ns, 4.7549 s/op
+WorkloadActual  81: 1 op, 4766369600.00 ns, 4.7664 s/op
+WorkloadActual  82: 1 op, 4812904800.00 ns, 4.8129 s/op
+WorkloadActual  83: 1 op, 5012886600.00 ns, 5.0129 s/op
+WorkloadActual  84: 1 op, 4881532800.00 ns, 4.8815 s/op
+WorkloadActual  85: 1 op, 5270835500.00 ns, 5.2708 s/op
+WorkloadActual  86: 1 op, 4953669200.00 ns, 4.9537 s/op
+WorkloadActual  87: 1 op, 4898053400.00 ns, 4.8981 s/op
+WorkloadActual  88: 1 op, 4923950500.00 ns, 4.9240 s/op
+WorkloadActual  89: 1 op, 4947322100.00 ns, 4.9473 s/op
+WorkloadActual  90: 1 op, 5013774900.00 ns, 5.0138 s/op
+WorkloadActual  91: 1 op, 4993006400.00 ns, 4.9930 s/op
+WorkloadActual  92: 1 op, 5060618600.00 ns, 5.0606 s/op
+WorkloadActual  93: 1 op, 5057354300.00 ns, 5.0574 s/op
+WorkloadActual  94: 1 op, 5049875600.00 ns, 5.0499 s/op
+WorkloadActual  95: 1 op, 5083704300.00 ns, 5.0837 s/op
+WorkloadActual  96: 1 op, 5075582700.00 ns, 5.0756 s/op
+WorkloadActual  97: 1 op, 5127175500.00 ns, 5.1272 s/op
+WorkloadActual  98: 1 op, 5130731700.00 ns, 5.1307 s/op
+WorkloadActual  99: 1 op, 5558772100.00 ns, 5.5588 s/op
+WorkloadActual  100: 1 op, 5205573300.00 ns, 5.2056 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 3003716600.00 ns, 3.0037 s/op
+WorkloadResult   2: 1 op, 2987145900.00 ns, 2.9871 s/op
+WorkloadResult   3: 1 op, 3061964000.00 ns, 3.0620 s/op
+WorkloadResult   4: 1 op, 3092307700.00 ns, 3.0923 s/op
+WorkloadResult   5: 1 op, 3102707100.00 ns, 3.1027 s/op
+WorkloadResult   6: 1 op, 3107599200.00 ns, 3.1076 s/op
+WorkloadResult   7: 1 op, 3169914400.00 ns, 3.1699 s/op
+WorkloadResult   8: 1 op, 3172447800.00 ns, 3.1724 s/op
+WorkloadResult   9: 1 op, 3200226900.00 ns, 3.2002 s/op
+WorkloadResult  10: 1 op, 3219413900.00 ns, 3.2194 s/op
+WorkloadResult  11: 1 op, 3243626200.00 ns, 3.2436 s/op
+WorkloadResult  12: 1 op, 3290233000.00 ns, 3.2902 s/op
+WorkloadResult  13: 1 op, 3300166100.00 ns, 3.3002 s/op
+WorkloadResult  14: 1 op, 3325978400.00 ns, 3.3260 s/op
+WorkloadResult  15: 1 op, 3339913300.00 ns, 3.3399 s/op
+WorkloadResult  16: 1 op, 3371160400.00 ns, 3.3712 s/op
+WorkloadResult  17: 1 op, 3375732300.00 ns, 3.3757 s/op
+WorkloadResult  18: 1 op, 3400885700.00 ns, 3.4009 s/op
+WorkloadResult  19: 1 op, 3475069300.00 ns, 3.4751 s/op
+WorkloadResult  20: 1 op, 3594982300.00 ns, 3.5950 s/op
+WorkloadResult  21: 1 op, 3529619200.00 ns, 3.5296 s/op
+WorkloadResult  22: 1 op, 3536104600.00 ns, 3.5361 s/op
+WorkloadResult  23: 1 op, 3583902300.00 ns, 3.5839 s/op
+WorkloadResult  24: 1 op, 3552133300.00 ns, 3.5521 s/op
+WorkloadResult  25: 1 op, 3589685900.00 ns, 3.5897 s/op
+WorkloadResult  26: 1 op, 3602275800.00 ns, 3.6023 s/op
+WorkloadResult  27: 1 op, 3684857800.00 ns, 3.6849 s/op
+WorkloadResult  28: 1 op, 3668869600.00 ns, 3.6689 s/op
+WorkloadResult  29: 1 op, 3687965400.00 ns, 3.6880 s/op
+WorkloadResult  30: 1 op, 3694011100.00 ns, 3.6940 s/op
+WorkloadResult  31: 1 op, 3829095700.00 ns, 3.8291 s/op
+WorkloadResult  32: 1 op, 3757422900.00 ns, 3.7574 s/op
+WorkloadResult  33: 1 op, 3765678700.00 ns, 3.7657 s/op
+WorkloadResult  34: 1 op, 3798736200.00 ns, 3.7987 s/op
+WorkloadResult  35: 1 op, 3892686200.00 ns, 3.8927 s/op
+WorkloadResult  36: 1 op, 3843887600.00 ns, 3.8439 s/op
+WorkloadResult  37: 1 op, 3858364400.00 ns, 3.8584 s/op
+WorkloadResult  38: 1 op, 3950437900.00 ns, 3.9504 s/op
+WorkloadResult  39: 1 op, 3958377300.00 ns, 3.9584 s/op
+WorkloadResult  40: 1 op, 3906843100.00 ns, 3.9068 s/op
+WorkloadResult  41: 1 op, 3961551700.00 ns, 3.9616 s/op
+WorkloadResult  42: 1 op, 3969871300.00 ns, 3.9699 s/op
+WorkloadResult  43: 1 op, 4028839500.00 ns, 4.0288 s/op
+WorkloadResult  44: 1 op, 4149205000.00 ns, 4.1492 s/op
+WorkloadResult  45: 1 op, 4020384400.00 ns, 4.0204 s/op
+WorkloadResult  46: 1 op, 4076347100.00 ns, 4.0763 s/op
+WorkloadResult  47: 1 op, 4204946000.00 ns, 4.2049 s/op
+WorkloadResult  48: 1 op, 4215853700.00 ns, 4.2159 s/op
+WorkloadResult  49: 1 op, 4180163800.00 ns, 4.1802 s/op
+WorkloadResult  50: 1 op, 4159349100.00 ns, 4.1593 s/op
+WorkloadResult  51: 1 op, 4178686500.00 ns, 4.1787 s/op
+WorkloadResult  52: 1 op, 4273408400.00 ns, 4.2734 s/op
+WorkloadResult  53: 1 op, 4229224800.00 ns, 4.2292 s/op
+WorkloadResult  54: 1 op, 4260706500.00 ns, 4.2607 s/op
+WorkloadResult  55: 1 op, 4321248900.00 ns, 4.3212 s/op
+WorkloadResult  56: 1 op, 4275092500.00 ns, 4.2751 s/op
+WorkloadResult  57: 1 op, 4406911500.00 ns, 4.4069 s/op
+WorkloadResult  58: 1 op, 4341062200.00 ns, 4.3411 s/op
+WorkloadResult  59: 1 op, 4321311700.00 ns, 4.3213 s/op
+WorkloadResult  60: 1 op, 4373847400.00 ns, 4.3738 s/op
+WorkloadResult  61: 1 op, 4516972400.00 ns, 4.5170 s/op
+WorkloadResult  62: 1 op, 4441575600.00 ns, 4.4416 s/op
+WorkloadResult  63: 1 op, 4438016300.00 ns, 4.4380 s/op
+WorkloadResult  64: 1 op, 4453000100.00 ns, 4.4530 s/op
+WorkloadResult  65: 1 op, 4474673600.00 ns, 4.4747 s/op
+WorkloadResult  66: 1 op, 4507634600.00 ns, 4.5076 s/op
+WorkloadResult  67: 1 op, 4524354300.00 ns, 4.5244 s/op
+WorkloadResult  68: 1 op, 4509351100.00 ns, 4.5094 s/op
+WorkloadResult  69: 1 op, 4583658700.00 ns, 4.5837 s/op
+WorkloadResult  70: 1 op, 4682194800.00 ns, 4.6822 s/op
+WorkloadResult  71: 1 op, 4636967000.00 ns, 4.6370 s/op
+WorkloadResult  72: 1 op, 4673569500.00 ns, 4.6736 s/op
+WorkloadResult  73: 1 op, 4626386300.00 ns, 4.6264 s/op
+WorkloadResult  74: 1 op, 4641226300.00 ns, 4.6412 s/op
+WorkloadResult  75: 1 op, 4667568800.00 ns, 4.6676 s/op
+WorkloadResult  76: 1 op, 4676861100.00 ns, 4.6769 s/op
+WorkloadResult  77: 1 op, 4882786600.00 ns, 4.8828 s/op
+WorkloadResult  78: 1 op, 4919544200.00 ns, 4.9195 s/op
+WorkloadResult  79: 1 op, 4758972900.00 ns, 4.7590 s/op
+WorkloadResult  80: 1 op, 4754856800.00 ns, 4.7549 s/op
+WorkloadResult  81: 1 op, 4766368700.00 ns, 4.7664 s/op
+WorkloadResult  82: 1 op, 4812903900.00 ns, 4.8129 s/op
+WorkloadResult  83: 1 op, 5012885700.00 ns, 5.0129 s/op
+WorkloadResult  84: 1 op, 4881531900.00 ns, 4.8815 s/op
+WorkloadResult  85: 1 op, 5270834600.00 ns, 5.2708 s/op
+WorkloadResult  86: 1 op, 4953668300.00 ns, 4.9537 s/op
+WorkloadResult  87: 1 op, 4898052500.00 ns, 4.8981 s/op
+WorkloadResult  88: 1 op, 4923949600.00 ns, 4.9239 s/op
+WorkloadResult  89: 1 op, 4947321200.00 ns, 4.9473 s/op
+WorkloadResult  90: 1 op, 5013774000.00 ns, 5.0138 s/op
+WorkloadResult  91: 1 op, 4993005500.00 ns, 4.9930 s/op
+WorkloadResult  92: 1 op, 5060617700.00 ns, 5.0606 s/op
+WorkloadResult  93: 1 op, 5057353400.00 ns, 5.0574 s/op
+WorkloadResult  94: 1 op, 5049874700.00 ns, 5.0499 s/op
+WorkloadResult  95: 1 op, 5083703400.00 ns, 5.0837 s/op
+WorkloadResult  96: 1 op, 5075581800.00 ns, 5.0756 s/op
+WorkloadResult  97: 1 op, 5127174600.00 ns, 5.1272 s/op
+WorkloadResult  98: 1 op, 5130730800.00 ns, 5.1307 s/op
+WorkloadResult  99: 1 op, 5558771200.00 ns, 5.5588 s/op
+WorkloadResult  100: 1 op, 5205572400.00 ns, 5.2056 s/op
+// GC:  210 6 0 1360008416 1
+// Threading:  3 0 1
+
+// AfterAll
+// Benchmark Process 14812 has exited with code 0.
+
+Mean = 4.167 s, StdErr = 0.065 s (1.57%), N = 100, StdDev = 0.654 s
+Min = 2.987 s, Q1 = 3.600 s, Median = 4.210 s, Q3 = 4.678 s, Max = 5.559 s
+IQR = 1.078 s, LowerFence = 1.984 s, UpperFence = 6.295 s
+ConfidenceInterval = [3.945 s; 4.389 s] (CI 99.9%), Margin = 0.222 s (5.33% of Mean)
+Skewness = -0.07, Kurtosis = 1.88, MValue = 3.58
+
+// ** Remained 15 (93,8%) benchmark(s) to run. Estimated finish 2023-12-19 4:31 (4h 33m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.EFCore_UpdateRange: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 2224 1584 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.EFCore_UpdateRange --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 1 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-JWCSOE(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 209500.00 ns, 209.5000 us/op
+WorkloadJitting  1: 1 op, 10762829900.00 ns, 10.7628 s/op
+
+OverheadWarmup   1: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   2: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadWarmup   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   4: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadWarmup   5: 1 op, 900.00 ns, 900.0000 ns/op
+
+OverheadActual   1: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   2: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   5: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   6: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   7: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   8: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   9: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  10: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  11: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  12: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  13: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  14: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  15: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  16: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  17: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  18: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  19: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  20: 1 op, 1100.00 ns, 1.1000 us/op
+
+WorkloadWarmup   1: 1 op, 2920374600.00 ns, 2.9204 s/op
+WorkloadWarmup   2: 1 op, 44169492100.00 ns, 44.1695 s/op
+WorkloadWarmup   3: 1 op, 2956924700.00 ns, 2.9569 s/op
+WorkloadWarmup   4: 1 op, 2987626100.00 ns, 2.9876 s/op
+WorkloadWarmup   5: 1 op, 3015613900.00 ns, 3.0156 s/op
+WorkloadWarmup   6: 1 op, 3039803800.00 ns, 3.0398 s/op
+WorkloadWarmup   7: 1 op, 3062732400.00 ns, 3.0627 s/op
+WorkloadWarmup   8: 1 op, 3088349300.00 ns, 3.0883 s/op
+WorkloadWarmup   9: 1 op, 3113682900.00 ns, 3.1137 s/op
+WorkloadWarmup  10: 1 op, 3184948500.00 ns, 3.1849 s/op
+WorkloadWarmup  11: 1 op, 3257407900.00 ns, 3.2574 s/op
+WorkloadWarmup  12: 1 op, 3322883800.00 ns, 3.3229 s/op
+WorkloadWarmup  13: 1 op, 3253632500.00 ns, 3.2536 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 3247203300.00 ns, 3.2472 s/op
+WorkloadActual   2: 1 op, 3284732400.00 ns, 3.2847 s/op
+WorkloadActual   3: 1 op, 3324507000.00 ns, 3.3245 s/op
+WorkloadActual   4: 1 op, 3334895900.00 ns, 3.3349 s/op
+WorkloadActual   5: 1 op, 3362020800.00 ns, 3.3620 s/op
+WorkloadActual   6: 1 op, 3425451400.00 ns, 3.4255 s/op
+WorkloadActual   7: 1 op, 3052097200.00 ns, 3.0521 s/op
+WorkloadActual   8: 1 op, 3073668900.00 ns, 3.0737 s/op
+WorkloadActual   9: 1 op, 3085514700.00 ns, 3.0855 s/op
+WorkloadActual  10: 1 op, 3105522100.00 ns, 3.1055 s/op
+WorkloadActual  11: 1 op, 3146815200.00 ns, 3.1468 s/op
+WorkloadActual  12: 1 op, 3192904900.00 ns, 3.1929 s/op
+WorkloadActual  13: 1 op, 3193257100.00 ns, 3.1933 s/op
+WorkloadActual  14: 1 op, 3223487100.00 ns, 3.2235 s/op
+WorkloadActual  15: 1 op, 3237033500.00 ns, 3.2370 s/op
+WorkloadActual  16: 1 op, 3381002700.00 ns, 3.3810 s/op
+WorkloadActual  17: 1 op, 3724139800.00 ns, 3.7241 s/op
+WorkloadActual  18: 1 op, 3669880800.00 ns, 3.6699 s/op
+WorkloadActual  19: 1 op, 3694839200.00 ns, 3.6948 s/op
+WorkloadActual  20: 1 op, 3715326000.00 ns, 3.7153 s/op
+WorkloadActual  21: 1 op, 3763205200.00 ns, 3.7632 s/op
+WorkloadActual  22: 1 op, 3771032300.00 ns, 3.7710 s/op
+WorkloadActual  23: 1 op, 3788334500.00 ns, 3.7883 s/op
+WorkloadActual  24: 1 op, 3805659300.00 ns, 3.8057 s/op
+WorkloadActual  25: 1 op, 3471501100.00 ns, 3.4715 s/op
+WorkloadActual  26: 1 op, 3482570300.00 ns, 3.4826 s/op
+WorkloadActual  27: 1 op, 3537698600.00 ns, 3.5377 s/op
+WorkloadActual  28: 1 op, 3540556200.00 ns, 3.5406 s/op
+WorkloadActual  29: 1 op, 3569315500.00 ns, 3.5693 s/op
+WorkloadActual  30: 1 op, 3592521700.00 ns, 3.5925 s/op
+WorkloadActual  31: 1 op, 3624497500.00 ns, 3.6245 s/op
+WorkloadActual  32: 1 op, 3646658500.00 ns, 3.6467 s/op
+WorkloadActual  33: 1 op, 3668037400.00 ns, 3.6680 s/op
+WorkloadActual  34: 1 op, 3747195400.00 ns, 3.7472 s/op
+WorkloadActual  35: 1 op, 3708679400.00 ns, 3.7087 s/op
+WorkloadActual  36: 1 op, 3722250400.00 ns, 3.7223 s/op
+WorkloadActual  37: 1 op, 3728852300.00 ns, 3.7289 s/op
+WorkloadActual  38: 1 op, 3801068100.00 ns, 3.8011 s/op
+WorkloadActual  39: 1 op, 3783271100.00 ns, 3.7833 s/op
+WorkloadActual  40: 1 op, 3782902300.00 ns, 3.7829 s/op
+WorkloadActual  41: 1 op, 3782667900.00 ns, 3.7827 s/op
+WorkloadActual  42: 1 op, 3825810500.00 ns, 3.8258 s/op
+WorkloadActual  43: 1 op, 3850390500.00 ns, 3.8504 s/op
+WorkloadActual  44: 1 op, 3855595100.00 ns, 3.8556 s/op
+WorkloadActual  45: 1 op, 3902238300.00 ns, 3.9022 s/op
+WorkloadActual  46: 1 op, 4002679300.00 ns, 4.0027 s/op
+WorkloadActual  47: 1 op, 3959512600.00 ns, 3.9595 s/op
+WorkloadActual  48: 1 op, 3955569000.00 ns, 3.9556 s/op
+WorkloadActual  49: 1 op, 4081246500.00 ns, 4.0812 s/op
+WorkloadActual  50: 1 op, 4035394800.00 ns, 4.0354 s/op
+WorkloadActual  51: 1 op, 4153071300.00 ns, 4.1531 s/op
+WorkloadActual  52: 1 op, 4111315500.00 ns, 4.1113 s/op
+WorkloadActual  53: 1 op, 4136276000.00 ns, 4.1363 s/op
+WorkloadActual  54: 1 op, 4126714300.00 ns, 4.1267 s/op
+WorkloadActual  55: 1 op, 4210335600.00 ns, 4.2103 s/op
+WorkloadActual  56: 1 op, 4195770800.00 ns, 4.1958 s/op
+WorkloadActual  57: 1 op, 4182479400.00 ns, 4.1825 s/op
+WorkloadActual  58: 1 op, 4324267500.00 ns, 4.3243 s/op
+WorkloadActual  59: 1 op, 4247349100.00 ns, 4.2473 s/op
+WorkloadActual  60: 1 op, 4219304500.00 ns, 4.2193 s/op
+WorkloadActual  61: 1 op, 4261887600.00 ns, 4.2619 s/op
+WorkloadActual  62: 1 op, 4300455700.00 ns, 4.3005 s/op
+WorkloadActual  63: 1 op, 4386522600.00 ns, 4.3865 s/op
+WorkloadActual  64: 1 op, 4316274700.00 ns, 4.3163 s/op
+WorkloadActual  65: 1 op, 4339499900.00 ns, 4.3395 s/op
+WorkloadActual  66: 1 op, 4331029400.00 ns, 4.3310 s/op
+WorkloadActual  67: 1 op, 4371673700.00 ns, 4.3717 s/op
+WorkloadActual  68: 1 op, 4433647200.00 ns, 4.4336 s/op
+WorkloadActual  69: 1 op, 4377395100.00 ns, 4.3774 s/op
+WorkloadActual  70: 1 op, 4484653800.00 ns, 4.4847 s/op
+WorkloadActual  71: 1 op, 4490500100.00 ns, 4.4905 s/op
+WorkloadActual  72: 1 op, 4661598700.00 ns, 4.6616 s/op
+WorkloadActual  73: 1 op, 4518471100.00 ns, 4.5185 s/op
+WorkloadActual  74: 1 op, 4492422700.00 ns, 4.4924 s/op
+WorkloadActual  75: 1 op, 4559092500.00 ns, 4.5591 s/op
+WorkloadActual  76: 1 op, 4535091700.00 ns, 4.5351 s/op
+WorkloadActual  77: 1 op, 4571473200.00 ns, 4.5715 s/op
+WorkloadActual  78: 1 op, 4608176600.00 ns, 4.6082 s/op
+WorkloadActual  79: 1 op, 4747919600.00 ns, 4.7479 s/op
+WorkloadActual  80: 1 op, 4767834600.00 ns, 4.7678 s/op
+WorkloadActual  81: 1 op, 4654866300.00 ns, 4.6549 s/op
+WorkloadActual  82: 1 op, 4651006300.00 ns, 4.6510 s/op
+WorkloadActual  83: 1 op, 4682303100.00 ns, 4.6823 s/op
+WorkloadActual  84: 1 op, 4706992900.00 ns, 4.7070 s/op
+WorkloadActual  85: 1 op, 4727551400.00 ns, 4.7276 s/op
+WorkloadActual  86: 1 op, 4766096300.00 ns, 4.7661 s/op
+WorkloadActual  87: 1 op, 4738842500.00 ns, 4.7388 s/op
+WorkloadActual  88: 1 op, 4788962100.00 ns, 4.7890 s/op
+WorkloadActual  89: 1 op, 4784097500.00 ns, 4.7841 s/op
+WorkloadActual  90: 1 op, 4906103600.00 ns, 4.9061 s/op
+WorkloadActual  91: 1 op, 4879266300.00 ns, 4.8793 s/op
+WorkloadActual  92: 1 op, 4913597300.00 ns, 4.9136 s/op
+WorkloadActual  93: 1 op, 4938593300.00 ns, 4.9386 s/op
+WorkloadActual  94: 1 op, 4898070600.00 ns, 4.8981 s/op
+WorkloadActual  95: 1 op, 4922572200.00 ns, 4.9226 s/op
+WorkloadActual  96: 1 op, 5054913600.00 ns, 5.0549 s/op
+WorkloadActual  97: 1 op, 5024387000.00 ns, 5.0244 s/op
+WorkloadActual  98: 1 op, 5042011400.00 ns, 5.0420 s/op
+WorkloadActual  99: 1 op, 5044244600.00 ns, 5.0442 s/op
+WorkloadActual  100: 1 op, 5003199200.00 ns, 5.0032 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 3247202400.00 ns, 3.2472 s/op
+WorkloadResult   2: 1 op, 3284731500.00 ns, 3.2847 s/op
+WorkloadResult   3: 1 op, 3324506100.00 ns, 3.3245 s/op
+WorkloadResult   4: 1 op, 3334895000.00 ns, 3.3349 s/op
+WorkloadResult   5: 1 op, 3362019900.00 ns, 3.3620 s/op
+WorkloadResult   6: 1 op, 3425450500.00 ns, 3.4255 s/op
+WorkloadResult   7: 1 op, 3052096300.00 ns, 3.0521 s/op
+WorkloadResult   8: 1 op, 3073668000.00 ns, 3.0737 s/op
+WorkloadResult   9: 1 op, 3085513800.00 ns, 3.0855 s/op
+WorkloadResult  10: 1 op, 3105521200.00 ns, 3.1055 s/op
+WorkloadResult  11: 1 op, 3146814300.00 ns, 3.1468 s/op
+WorkloadResult  12: 1 op, 3192904000.00 ns, 3.1929 s/op
+WorkloadResult  13: 1 op, 3193256200.00 ns, 3.1933 s/op
+WorkloadResult  14: 1 op, 3223486200.00 ns, 3.2235 s/op
+WorkloadResult  15: 1 op, 3237032600.00 ns, 3.2370 s/op
+WorkloadResult  16: 1 op, 3381001800.00 ns, 3.3810 s/op
+WorkloadResult  17: 1 op, 3724138900.00 ns, 3.7241 s/op
+WorkloadResult  18: 1 op, 3669879900.00 ns, 3.6699 s/op
+WorkloadResult  19: 1 op, 3694838300.00 ns, 3.6948 s/op
+WorkloadResult  20: 1 op, 3715325100.00 ns, 3.7153 s/op
+WorkloadResult  21: 1 op, 3763204300.00 ns, 3.7632 s/op
+WorkloadResult  22: 1 op, 3771031400.00 ns, 3.7710 s/op
+WorkloadResult  23: 1 op, 3788333600.00 ns, 3.7883 s/op
+WorkloadResult  24: 1 op, 3805658400.00 ns, 3.8057 s/op
+WorkloadResult  25: 1 op, 3471500200.00 ns, 3.4715 s/op
+WorkloadResult  26: 1 op, 3482569400.00 ns, 3.4826 s/op
+WorkloadResult  27: 1 op, 3537697700.00 ns, 3.5377 s/op
+WorkloadResult  28: 1 op, 3540555300.00 ns, 3.5406 s/op
+WorkloadResult  29: 1 op, 3569314600.00 ns, 3.5693 s/op
+WorkloadResult  30: 1 op, 3592520800.00 ns, 3.5925 s/op
+WorkloadResult  31: 1 op, 3624496600.00 ns, 3.6245 s/op
+WorkloadResult  32: 1 op, 3646657600.00 ns, 3.6467 s/op
+WorkloadResult  33: 1 op, 3668036500.00 ns, 3.6680 s/op
+WorkloadResult  34: 1 op, 3747194500.00 ns, 3.7472 s/op
+WorkloadResult  35: 1 op, 3708678500.00 ns, 3.7087 s/op
+WorkloadResult  36: 1 op, 3722249500.00 ns, 3.7222 s/op
+WorkloadResult  37: 1 op, 3728851400.00 ns, 3.7289 s/op
+WorkloadResult  38: 1 op, 3801067200.00 ns, 3.8011 s/op
+WorkloadResult  39: 1 op, 3783270200.00 ns, 3.7833 s/op
+WorkloadResult  40: 1 op, 3782901400.00 ns, 3.7829 s/op
+WorkloadResult  41: 1 op, 3782667000.00 ns, 3.7827 s/op
+WorkloadResult  42: 1 op, 3825809600.00 ns, 3.8258 s/op
+WorkloadResult  43: 1 op, 3850389600.00 ns, 3.8504 s/op
+WorkloadResult  44: 1 op, 3855594200.00 ns, 3.8556 s/op
+WorkloadResult  45: 1 op, 3902237400.00 ns, 3.9022 s/op
+WorkloadResult  46: 1 op, 4002678400.00 ns, 4.0027 s/op
+WorkloadResult  47: 1 op, 3959511700.00 ns, 3.9595 s/op
+WorkloadResult  48: 1 op, 3955568100.00 ns, 3.9556 s/op
+WorkloadResult  49: 1 op, 4081245600.00 ns, 4.0812 s/op
+WorkloadResult  50: 1 op, 4035393900.00 ns, 4.0354 s/op
+WorkloadResult  51: 1 op, 4153070400.00 ns, 4.1531 s/op
+WorkloadResult  52: 1 op, 4111314600.00 ns, 4.1113 s/op
+WorkloadResult  53: 1 op, 4136275100.00 ns, 4.1363 s/op
+WorkloadResult  54: 1 op, 4126713400.00 ns, 4.1267 s/op
+WorkloadResult  55: 1 op, 4210334700.00 ns, 4.2103 s/op
+WorkloadResult  56: 1 op, 4195769900.00 ns, 4.1958 s/op
+WorkloadResult  57: 1 op, 4182478500.00 ns, 4.1825 s/op
+WorkloadResult  58: 1 op, 4324266600.00 ns, 4.3243 s/op
+WorkloadResult  59: 1 op, 4247348200.00 ns, 4.2473 s/op
+WorkloadResult  60: 1 op, 4219303600.00 ns, 4.2193 s/op
+WorkloadResult  61: 1 op, 4261886700.00 ns, 4.2619 s/op
+WorkloadResult  62: 1 op, 4300454800.00 ns, 4.3005 s/op
+WorkloadResult  63: 1 op, 4386521700.00 ns, 4.3865 s/op
+WorkloadResult  64: 1 op, 4316273800.00 ns, 4.3163 s/op
+WorkloadResult  65: 1 op, 4339499000.00 ns, 4.3395 s/op
+WorkloadResult  66: 1 op, 4331028500.00 ns, 4.3310 s/op
+WorkloadResult  67: 1 op, 4371672800.00 ns, 4.3717 s/op
+WorkloadResult  68: 1 op, 4433646300.00 ns, 4.4336 s/op
+WorkloadResult  69: 1 op, 4377394200.00 ns, 4.3774 s/op
+WorkloadResult  70: 1 op, 4484652900.00 ns, 4.4847 s/op
+WorkloadResult  71: 1 op, 4490499200.00 ns, 4.4905 s/op
+WorkloadResult  72: 1 op, 4661597800.00 ns, 4.6616 s/op
+WorkloadResult  73: 1 op, 4518470200.00 ns, 4.5185 s/op
+WorkloadResult  74: 1 op, 4492421800.00 ns, 4.4924 s/op
+WorkloadResult  75: 1 op, 4559091600.00 ns, 4.5591 s/op
+WorkloadResult  76: 1 op, 4535090800.00 ns, 4.5351 s/op
+WorkloadResult  77: 1 op, 4571472300.00 ns, 4.5715 s/op
+WorkloadResult  78: 1 op, 4608175700.00 ns, 4.6082 s/op
+WorkloadResult  79: 1 op, 4747918700.00 ns, 4.7479 s/op
+WorkloadResult  80: 1 op, 4767833700.00 ns, 4.7678 s/op
+WorkloadResult  81: 1 op, 4654865400.00 ns, 4.6549 s/op
+WorkloadResult  82: 1 op, 4651005400.00 ns, 4.6510 s/op
+WorkloadResult  83: 1 op, 4682302200.00 ns, 4.6823 s/op
+WorkloadResult  84: 1 op, 4706992000.00 ns, 4.7070 s/op
+WorkloadResult  85: 1 op, 4727550500.00 ns, 4.7276 s/op
+WorkloadResult  86: 1 op, 4766095400.00 ns, 4.7661 s/op
+WorkloadResult  87: 1 op, 4738841600.00 ns, 4.7388 s/op
+WorkloadResult  88: 1 op, 4788961200.00 ns, 4.7890 s/op
+WorkloadResult  89: 1 op, 4784096600.00 ns, 4.7841 s/op
+WorkloadResult  90: 1 op, 4906102700.00 ns, 4.9061 s/op
+WorkloadResult  91: 1 op, 4879265400.00 ns, 4.8793 s/op
+WorkloadResult  92: 1 op, 4913596400.00 ns, 4.9136 s/op
+WorkloadResult  93: 1 op, 4938592400.00 ns, 4.9386 s/op
+WorkloadResult  94: 1 op, 4898069700.00 ns, 4.8981 s/op
+WorkloadResult  95: 1 op, 4922571300.00 ns, 4.9226 s/op
+WorkloadResult  96: 1 op, 5054912700.00 ns, 5.0549 s/op
+WorkloadResult  97: 1 op, 5024386100.00 ns, 5.0244 s/op
+WorkloadResult  98: 1 op, 5042010500.00 ns, 5.0420 s/op
+WorkloadResult  99: 1 op, 5044243700.00 ns, 5.0442 s/op
+WorkloadResult  100: 1 op, 5003198300.00 ns, 5.0032 s/op
+// GC:  207 7 0 1335918360 1
+// Threading:  3 0 1
+
+// AfterAll
+// Benchmark Process 3668 has exited with code 0.
+
+Mean = 4.079 s, StdErr = 0.057 s (1.40%), N = 100, StdDev = 0.571 s
+Min = 3.052 s, Q1 = 3.669 s, Median = 4.096 s, Q3 = 4.562 s, Max = 5.055 s
+IQR = 0.893 s, LowerFence = 2.330 s, UpperFence = 5.901 s
+ConfidenceInterval = [3.885 s; 4.272 s] (CI 99.9%), Margin = 0.194 s (4.75% of Mean)
+Skewness = -0.01, Kurtosis = 1.85, MValue = 4.08
+
+// ** Remained 14 (87,5%) benchmark(s) to run. Estimated finish 2023-12-19 4:30 (4h 14m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.EFCore_BulkUpdate_BorisDj: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 1428 2620 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.EFCore_BulkUpdate_BorisDj --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 2 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-VATQSE(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 216700.00 ns, 216.7000 us/op
+WorkloadJitting  1: 1 op, 10233491200.00 ns, 10.2335 s/op
+
+OverheadWarmup   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   2: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadWarmup   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   4: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   5: 1 op, 800.00 ns, 800.0000 ns/op
+
+OverheadActual   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   2: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   5: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   6: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   7: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   8: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   9: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  10: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  11: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  12: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  13: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  14: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  15: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  16: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  17: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  18: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  19: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  20: 1 op, 800.00 ns, 800.0000 ns/op
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+Operation cancelled by user.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean isAsync, Int32 timeout, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlRaw(DatabaseFacade databaseFacade, String sql, IEnumerable`1 parameters)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlRaw(DatabaseFacade databaseFacade, String sql, Object[] parameters)
+   at EFCore.BulkExtensions.SqlAdapters.SqlServer.SqlOperationsServerAdapter.MergeAsync[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, OperationType operationType, Action`1 progress, Boolean isAsync, CancellationToken cancellationToken)
+   at EFCore.BulkExtensions.SqlAdapters.SqlServer.SqlOperationsServerAdapter.Merge[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, OperationType operationType, Action`1 progress)
+   at EFCore.BulkExtensions.SqlBulkOperation.Merge[T](DbContext context, Type type, IList`1 entities, TableInfo tableInfo, OperationType operationType, Action`1 progress)
+   at EFCore.BulkExtensions.DbContextBulkTransaction.Execute[T](DbContext context, Type type, IList`1 entities, OperationType operationType, BulkConfig bulkConfig, Action`1 progress)
+   at EFCore.BulkExtensions.DbContextBulkExtensions.BulkUpdate[T](DbContext context, IList`1 entities, Action`1 bulkAction, Action`1 progress, Type type)
+   at EFCoreBenchmarks.repositories.EFCoreUpdateRepository.EFCoreBulkUpdate_BorisDj(List`1 updates) in C:\Users\Maaren\source\repos\ORMBenchmarks\EFCoreBenchmarks\repositories\EFCoreUpdateRepository.cs:line 40
+   at Benchmarks.benchmarks.UpdateBenchmarks.EFCore_BulkUpdate_BorisDj() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 83
+   at BenchmarkDotNet.Autogenerated.Runnable_2.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 598
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineStage.Run(IStoppingCriteria criteria, Int64 invokeCount, IterationMode mode, IterationStage stage, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.Run(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_2.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 505
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:750acde7-27ff-410d-8270-cb4ae4c08627
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 12128 has exited with code -1.
+
+// ** Remained 13 (81,2%) benchmark(s) to run. Estimated finish 2023-12-19 2:57 (2h 40m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.EFCore_ExecuteSqlRaw: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 1232 888 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.EFCore_ExecuteSqlRaw --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 3 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-URPBZO(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 214600.00 ns, 214.6000 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlRaw(DatabaseFacade databaseFacade, String sql, IEnumerable`1 parameters)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlRaw(DatabaseFacade databaseFacade, String sql, Object[] parameters)
+   at EFCoreBenchmarks.repositories.EFCoreUpdateRepository.EFCoreExecuteSqlRaw(List`1 updates) in C:\Users\Maaren\source\repos\ORMBenchmarks\EFCoreBenchmarks\repositories\EFCoreUpdateRepository.cs:line 71
+   at Benchmarks.benchmarks.UpdateBenchmarks.EFCore_ExecuteSqlRaw() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 89
+   at BenchmarkDotNet.Autogenerated.Runnable_3.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 761
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_3.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 666
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:825e6b59-7893-4939-b306-b598211fd940
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 28392 has exited with code -1.
+
+// ** Remained 12 (75,0%) benchmark(s) to run. Estimated finish 2023-12-19 2:10 (1h 53m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.Dapper_Execute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 1420 1412 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.Dapper_Execute --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 4 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-YPYEXR(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 213500.00 ns, 213.5000 us/op
+WorkloadJitting  1: 1 op, 29390134900.00 ns, 29.3901 s/op
+
+OverheadWarmup   1: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadWarmup   2: 1 op, 1500.00 ns, 1.5000 us/op
+OverheadWarmup   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   5: 1 op, 600.00 ns, 600.0000 ns/op
+
+OverheadActual   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   2: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   4: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   5: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   6: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   7: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   8: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   9: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadActual  10: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  11: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  12: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  13: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  14: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  15: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  16: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  17: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  18: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  19: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  20: 1 op, 700.00 ns, 700.0000 ns/op
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+Operation cancelled by user.
+The statement has been terminated.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in /_/Dapper/SqlMapper.cs:line 2965
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 656
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in /_/Dapper/SqlMapper.cs:line 527
+   at DapperBenchmarks.repositories.DapperUpdateRepository.DapperExecute(List`1 adresUpdates) in C:\Users\Maaren\source\repos\ORMBenchmarks\DapperBenchmarks\repositories\DapperUpdateRepository.cs:line 50
+   at Benchmarks.benchmarks.UpdateBenchmarks.Dapper_Execute() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 97
+   at BenchmarkDotNet.Autogenerated.Runnable_4.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 924
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineStage.Run(IStoppingCriteria criteria, Int64 invokeCount, IterationMode mode, IterationStage stage, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.Run(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_4.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 831
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:3930bffb-c2f1-489f-9817-32786dffbbd4
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 29232 has exited with code -1.
+
+// ** Remained 11 (68,8%) benchmark(s) to run. Estimated finish 2023-12-19 1:45 (1h 26m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.Dapper_BulkUpdate_DapperPlus: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 1216 1212 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.Dapper_BulkUpdate_DapperPlus --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 5 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-AAEFOJ(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 220000.00 ns, 220.0000 us/op
+WorkloadJitting  1: 1 op, 5074655400.00 ns, 5.0747 s/op
+
+OverheadWarmup   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   2: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   3: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadWarmup   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   5: 1 op, 800.00 ns, 800.0000 ns/op
+
+OverheadActual   1: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   2: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   3: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual   4: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   5: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   6: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   7: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   8: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   9: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  10: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  11: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  12: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  13: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  14: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  15: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  16: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  17: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  18: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  19: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  20: 1 op, 800.00 ns, 800.0000 ns/op
+
+WorkloadWarmup   1: 1 op, 50172670400.00 ns, 50.1727 s/op
+WorkloadWarmup   2: 1 op, 162400400.00 ns, 162.4004 ms/op
+WorkloadWarmup   3: 1 op, 159685100.00 ns, 159.6851 ms/op
+WorkloadWarmup   4: 1 op, 154540000.00 ns, 154.5400 ms/op
+WorkloadWarmup   5: 1 op, 154280200.00 ns, 154.2802 ms/op
+WorkloadWarmup   6: 1 op, 158123800.00 ns, 158.1238 ms/op
+WorkloadWarmup   7: 1 op, 157727900.00 ns, 157.7279 ms/op
+WorkloadWarmup   8: 1 op, 155457200.00 ns, 155.4572 ms/op
+WorkloadWarmup   9: 1 op, 156156800.00 ns, 156.1568 ms/op
+WorkloadWarmup  10: 1 op, 156476000.00 ns, 156.4760 ms/op
+WorkloadWarmup  11: 1 op, 158867100.00 ns, 158.8671 ms/op
+WorkloadWarmup  12: 1 op, 156677000.00 ns, 156.6770 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 155972600.00 ns, 155.9726 ms/op
+WorkloadActual   2: 1 op, 156436100.00 ns, 156.4361 ms/op
+WorkloadActual   3: 1 op, 150447100.00 ns, 150.4471 ms/op
+WorkloadActual   4: 1 op, 205551600.00 ns, 205.5516 ms/op
+WorkloadActual   5: 1 op, 172587100.00 ns, 172.5871 ms/op
+WorkloadActual   6: 1 op, 156414400.00 ns, 156.4144 ms/op
+WorkloadActual   7: 1 op, 155788500.00 ns, 155.7885 ms/op
+WorkloadActual   8: 1 op, 153549500.00 ns, 153.5495 ms/op
+WorkloadActual   9: 1 op, 155367500.00 ns, 155.3675 ms/op
+WorkloadActual  10: 1 op, 153824600.00 ns, 153.8246 ms/op
+WorkloadActual  11: 1 op, 154615100.00 ns, 154.6151 ms/op
+WorkloadActual  12: 1 op, 155263400.00 ns, 155.2634 ms/op
+WorkloadActual  13: 1 op, 155998500.00 ns, 155.9985 ms/op
+WorkloadActual  14: 1 op, 153914200.00 ns, 153.9142 ms/op
+WorkloadActual  15: 1 op, 153221300.00 ns, 153.2213 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 155971700.00 ns, 155.9717 ms/op
+WorkloadResult   2: 1 op, 156435200.00 ns, 156.4352 ms/op
+WorkloadResult   3: 1 op, 150446200.00 ns, 150.4462 ms/op
+WorkloadResult   4: 1 op, 156413500.00 ns, 156.4135 ms/op
+WorkloadResult   5: 1 op, 155787600.00 ns, 155.7876 ms/op
+WorkloadResult   6: 1 op, 153548600.00 ns, 153.5486 ms/op
+WorkloadResult   7: 1 op, 155366600.00 ns, 155.3666 ms/op
+WorkloadResult   8: 1 op, 153823700.00 ns, 153.8237 ms/op
+WorkloadResult   9: 1 op, 154614200.00 ns, 154.6142 ms/op
+WorkloadResult  10: 1 op, 155262500.00 ns, 155.2625 ms/op
+WorkloadResult  11: 1 op, 155997600.00 ns, 155.9976 ms/op
+WorkloadResult  12: 1 op, 153913300.00 ns, 153.9133 ms/op
+WorkloadResult  13: 1 op, 153220400.00 ns, 153.2204 ms/op
+// GC:  0 0 0 5656560 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 30536 has exited with code 0.
+
+Mean = 154.677 ms, StdErr = 0.468 ms (0.30%), N = 13, StdDev = 1.688 ms
+Min = 150.446 ms, Q1 = 153.824 ms, Median = 155.262 ms, Q3 = 155.972 ms, Max = 156.435 ms
+IQR = 2.148 ms, LowerFence = 150.602 ms, UpperFence = 159.194 ms
+ConfidenceInterval = [152.656 ms; 156.698 ms] (CI 99.9%), Margin = 2.021 ms (1.31% of Mean)
+Skewness = -1.03, Kurtosis = 3.35, MValue = 2
+
+// ** Remained 10 (62,5%) benchmark(s) to run. Estimated finish 2023-12-19 1:29 (1h 8m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.LinqToDbExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 1164 1168 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.LinqToDbExecute --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 6 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-EDUFHH(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 219900.00 ns, 219.9000 us/op
+WorkloadJitting  1: 1 op, 357925000.00 ns, 357.9250 ms/op
+
+OverheadWarmup   1: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadWarmup   2: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   5: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadWarmup   6: 1 op, 700.00 ns, 700.0000 ns/op
+
+OverheadActual   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   2: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   4: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   5: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   6: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   7: 1 op, 1300.00 ns, 1.3000 us/op
+OverheadActual   8: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   9: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  10: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  11: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  12: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  13: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadActual  14: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  15: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  16: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  17: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  18: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  19: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  20: 1 op, 800.00 ns, 800.0000 ns/op
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+Operation cancelled by user.
+The statement has been terminated.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at LinqToDB.Data.DataConnection.ExecuteNonQuery(DbCommand command)
+   at LinqToDB.Data.DataConnection.ExecuteNonQuery()
+   at LinqToDB.Data.CommandInfo.Execute()
+   at LinqToDB.Data.DataConnectionExtensions.Execute(DataConnection connection, String sql, Object parameters)
+   at LinqToDbBenchmarks.repositories.LinqToDbUpdateRepository.LinqToDbExecute(List`1 updates) in C:\Users\Maaren\source\repos\ORMBenchmarks\LinqToDbBenchmarks\repositories\LinqToDbUpdateRepository.cs:line 53
+   at Benchmarks.benchmarks.UpdateBenchmarks.LinqToDbExecute() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 111
+   at BenchmarkDotNet.Autogenerated.Runnable_6.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1250
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineStage.Run(IStoppingCriteria criteria, Int64 invokeCount, IterationMode mode, IterationStage stage, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.Run(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_6.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1157
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:a4fb754b-b3aa-440b-bf54-91c7d765e4cb
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 12488 has exited with code -1.
+
+// ** Remained 9 (56,2%) benchmark(s) to run. Estimated finish 2023-12-19 1:15 (0h 53m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.NHibernate_Update: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 4484 2704 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.NHibernate_Update --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 7 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-DHRGIP(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 234400.00 ns, 234.4000 us/op
+WorkloadJitting  1: 1 op, 47457929800.00 ns, 47.4579 s/op
+
+OverheadWarmup   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   2: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   4: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadWarmup   5: 1 op, 1100.00 ns, 1.1000 us/op
+
+OverheadActual   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   2: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   5: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   6: 1 op, 1300.00 ns, 1.3000 us/op
+OverheadActual   7: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   8: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   9: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  10: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  11: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  12: 1 op, 1400.00 ns, 1.4000 us/op
+OverheadActual  13: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  14: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  15: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  16: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  17: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  18: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  19: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  20: 1 op, 900.00 ns, 900.0000 ns/op
+
+WorkloadWarmup   1: 1 op, 15727563300.00 ns, 15.7276 s/op
+WorkloadWarmup   2: 1 op, 2446813400.00 ns, 2.4468 s/op
+WorkloadWarmup   3: 1 op, 2442071700.00 ns, 2.4421 s/op
+WorkloadWarmup   4: 1 op, 2472084700.00 ns, 2.4721 s/op
+WorkloadWarmup   5: 1 op, 2444213600.00 ns, 2.4442 s/op
+WorkloadWarmup   6: 1 op, 2465590800.00 ns, 2.4656 s/op
+WorkloadWarmup   7: 1 op, 2434491400.00 ns, 2.4345 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 2463404600.00 ns, 2.4634 s/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at EFCoreBenchmarks.repositories.EFCoreUpdateRepository.GetRandomAdressen() in C:\Users\Maaren\source\repos\ORMBenchmarks\EFCoreBenchmarks\repositories\EFCoreUpdateRepository.cs:line 113
+   at Benchmarks.benchmarks.UpdateBenchmarks.CleanupAfterIteration() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 184
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineActualStage.RunAuto(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineActualStage.Run(Int64 invokeCount, IterationMode iterationMode, Boolean runAuto, Int32 unrollFactor, Boolean forceSpecific)
+   at BenchmarkDotNet.Engines.EngineActualStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, Boolean forceSpecific)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_7.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1320
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:7ab5ff10-c58b-4f42-9eba-a7bf7cb3ce3b
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 20660 has exited with code -1.
+
+// ** Remained 8 (50,0%) benchmark(s) to run. Estimated finish 2023-12-19 1:07 (0h 44m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.NHibernate_CreateSqlQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 1164 1412 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.NHibernate_CreateSqlQuery --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 8 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-NAWDZN(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 223300.00 ns, 223.3000 us/op
+WorkloadJitting  1: 1 op, 702095600.00 ns, 702.0956 ms/op
+
+OverheadWarmup   1: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadWarmup   2: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   4: 1 op, 600.00 ns, 600.0000 ns/op
+OverheadWarmup   5: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   6: 1 op, 800.00 ns, 800.0000 ns/op
+
+OverheadActual   1: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   2: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   3: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   4: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   5: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   6: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   7: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual   8: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   9: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  10: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  11: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  12: 1 op, 1500.00 ns, 1.5000 us/op
+OverheadActual  13: 1 op, 2400.00 ns, 2.4000 us/op
+OverheadActual  14: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  15: 1 op, 2200.00 ns, 2.2000 us/op
+OverheadActual  16: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  17: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  18: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  19: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  20: 1 op, 1000.00 ns, 1.0000 us/op
+
+WorkloadWarmup   1: 1 op, 229504200.00 ns, 229.5042 ms/op
+WorkloadWarmup   2: 1 op, 204108400.00 ns, 204.1084 ms/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> NHibernate.Exceptions.GenericADOException: could not execute native bulk manipulation query:
+                            UPDATE adr
+                            SET
+	                            adr.StraatID = adru.StraatID,
+	                            adr.Huisnummer = adru.Huisnummer,
+	                            adr.Appartementnummer = adru.Appartementnummer,
+	                            adr.Busnummer = adru.Busnummer,
+	                            adr.Postcode = adru.Postcode,
+	                            adr.Status = adru.Status,
+                                adr.NISCode = adru.NISCode
+                            FROM Adressen adr
+                            INNER JOIN OPENJSON(:updates) WITH
+                            (
+	                            AdresID int,
+	                            StraatID int,
+	                            Huisnummer nvarchar(80),
+	                            Appartementnummer nvarchar(80),
+	                            Busnummer nvarchar(80),
+	                            Postcode int,
+	                            Status nvarchar(80),
+                                NISCode nvarchar(80)
+                            ) adru
+                            ON adr.AdresID = adru.AdresID;[SQL: 
+                            UPDATE adr
+                            SET
+	                            adr.StraatID = adru.StraatID,
+	                            adr.Huisnummer = adru.Huisnummer,
+	                            adr.Appartementnummer = adru.Appartementnummer,
+	                            adr.Busnummer = adru.Busnummer,
+	                            adr.Postcode = adru.Postcode,
+	                            adr.Status = adru.Status,
+                                adr.NISCode = adru.NISCode
+                            FROM Adressen adr
+                            INNER JOIN OPENJSON(@p0) WITH
+                            (
+	                            AdresID int,
+	                            StraatID int,
+	                            Huisnummer nvarchar(80),
+	                            Appartementnummer nvarchar(80),
+	                            Busnummer nvarchar(80),
+	                            Postcode int,
+	                            Status nvarchar(80),
+                                NISCode nvarchar(80)
+                            ) adru
+                            ON adr.AdresID = adru.AdresID;]
+ ---> System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+Operation cancelled by user.
+The statement has been terminated.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(DbCommand cmd)
+   at NHibernate.Engine.Query.NativeSQLQueryPlan.PerformExecuteUpdate(QueryParameters queryParameters, ISessionImplementor session)
+ClientConnectionId:b21a8b8c-ce7c-4438-9692-366d926f7976
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at NHibernate.Engine.Query.NativeSQLQueryPlan.PerformExecuteUpdate(QueryParameters queryParameters, ISessionImplementor session)
+   at NHibernate.Impl.StatelessSessionImpl.ExecuteNativeUpdate(NativeSQLQuerySpecification nativeSQLQuerySpecification, QueryParameters queryParameters)
+   at NHibernate.Impl.SqlQueryImpl.ExecuteUpdate()
+   at NHibernateBenchmarks.repositories.NHibernateUpdateRepository.NHibernate_CreateSqlQuery(List`1 updates) in C:\Users\Maaren\source\repos\ORMBenchmarks\NHibernateBenchmarks\repositories\NHibernateUpdateRepository.cs:line 66
+   at Benchmarks.benchmarks.UpdateBenchmarks.NHibernate_CreateSqlQuery() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 125
+   at BenchmarkDotNet.Autogenerated.Runnable_8.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1576
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineStage.Run(IStoppingCriteria criteria, Int64 invokeCount, IterationMode mode, IterationStage stage, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.Run(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_8.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1483
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 24376 has exited with code -1.
+
+// ** Remained 7 (43,8%) benchmark(s) to run. Estimated finish 2023-12-19 0:59 (0h 34m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.NormNetUpdateExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 2564 1204 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.NormNetUpdateExecute --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 9 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-NEHFGX(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 209400.00 ns, 209.4000 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Norm.Norm.Execute(String command, Object parameters, String memberName, String sourceFilePath, Int32 sourceLineNumber)
+   at Norm.NormExtensions.Execute(DbConnection connection, String command, Object parameters, String memberName, String sourceFilePath, Int32 sourceLineNumber)
+   at Norm.NetBenchmarks.repositories.NormNetUpdateRepository.UpdateExecute(List`1 updates) in C:\Users\Maaren\source\repos\ORMBenchmarks\Norm.NetBenchmarks\repositories\NormNetUpdateRepository.cs:line 48
+   at Benchmarks.benchmarks.UpdateBenchmarks.NormNetUpdateExecute() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 133
+   at BenchmarkDotNet.Autogenerated.Runnable_9.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1739
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_9.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1644
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:b13e49d3-10ef-4fa6-a7b2-c254383bf895
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 1972 has exited with code -1.
+
+// ** Remained 6 (37,5%) benchmark(s) to run. Estimated finish 2023-12-19 0:52 (0h 27m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.OrmLite_ExecuteNonQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 2540 1124 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.OrmLite_ExecuteNonQuery --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 10 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-EAYVNS(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 418100.00 ns, 418.1000 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+Operation cancelled by user.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ServiceStack.OrmLite.OrmLiteCommand.ExecuteNonQuery() in /home/runner/work/ServiceStack/ServiceStack/ServiceStack.OrmLite/src/ServiceStack.OrmLite/OrmLiteCommand.cs:line 46
+   at ServiceStack.OrmLite.OrmLiteResultsFilterExtensions.ExecNonQuery(IDbCommand dbCmd, String sql, Object anonType) in /home/runner/work/ServiceStack/ServiceStack/ServiceStack.OrmLite/src/ServiceStack.OrmLite/OrmLiteResultsFilterExtensions.cs:line 32
+   at ServiceStack.OrmLite.OrmLiteReadApi.<>c__DisplayClass60_0.<ExecuteNonQuery>b__0(IDbCommand dbCmd) in /home/runner/work/ServiceStack/ServiceStack/ServiceStack.OrmLite/src/ServiceStack.OrmLite/OrmLiteReadApi.cs:line 563
+   at ServiceStack.OrmLite.OrmLiteExecFilter.Exec[T](IDbConnection dbConn, Func`2 filter) in /home/runner/work/ServiceStack/ServiceStack/ServiceStack.OrmLite/src/ServiceStack.OrmLite/OrmLiteExecFilter.cs:line 68
+   at ServiceStack.OrmLite.OrmLiteReadExpressionsApi.Exec[T](IDbConnection dbConn, Func`2 filter) in /home/runner/work/ServiceStack/ServiceStack/ServiceStack.OrmLite/src/ServiceStack.OrmLite/OrmLiteReadExpressionsApi.cs:line 18
+   at ServiceStack.OrmLite.OrmLiteReadApi.ExecuteNonQuery(IDbConnection dbConn, String sql, Object anonType) in /home/runner/work/ServiceStack/ServiceStack/ServiceStack.OrmLite/src/ServiceStack.OrmLite/OrmLiteReadApi.cs:line 563
+   at OrmLiteBenchmarks.repositories.OrmLiteUpdateRepository.OrmLiteExecuteNonQuery(List`1 adressen) in C:\Users\Maaren\source\repos\ORMBenchmarks\OrmLiteBenchmarks\repositories\OrmLiteUpdateRepository.cs:line 51
+   at Benchmarks.benchmarks.UpdateBenchmarks.OrmLite_ExecuteNonQuery() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 141
+   at BenchmarkDotNet.Autogenerated.Runnable_10.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1902
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_10.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1807
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:c29d3623-1b67-482d-afaf-6b8db89577dc
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 14184 has exited with code -1.
+
+// ** Remained 5 (31,2%) benchmark(s) to run. Estimated finish 2023-12-19 0:46 (0h 21m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.PetaPocoExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 4488 1740 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.PetaPocoExecute --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 11 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-ISMCWJ(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 207400.00 ns, 207.4000 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.SqlClient.SqlException (0x80131904): Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at PetaPoco.Database.<>c.<ExecuteNonQueryHelper>b__312_0(IDbCommand c)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 executionFunction)
+   at PetaPoco.Database.ExecuteNonQueryHelper(IDbCommand cmd)
+   at PetaPoco.Database.ExecuteInternal(CommandType commandType, String sql, Object[] args)
+   at PetaPoco.Database.Execute(String sql, Object[] args)
+   at PetaPocoBenchmarks.repositories.PetaPocoUpdateRepository.PetaPocoExecute(List`1 adressen) in C:\Users\Maaren\source\repos\ORMBenchmarks\PetaPocoBenchmarks\repositories\PetaPocoUpdateRepository.cs:line 52
+   at Benchmarks.benchmarks.UpdateBenchmarks.PetaPocoExecute() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 149
+   at BenchmarkDotNet.Autogenerated.Runnable_11.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 2065
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_11.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 1970
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:e320759f-b764-423b-8377-00794ac1af10
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 30680 has exited with code -1.
+
+// ** Remained 4 (25,0%) benchmark(s) to run. Estimated finish 2023-12-19 0:42 (0h 15m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.RepoDb_UpdateAll: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 1164 1232 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.RepoDb_UpdateAll --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 12 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-ENAOHG(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 213100.00 ns, 213.1000 us/op
+WorkloadJitting  1: 1 op, 29198728200.00 ns, 29.1987 s/op
+
+OverheadWarmup   1: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadWarmup   2: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   4: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadWarmup   5: 1 op, 700.00 ns, 700.0000 ns/op
+
+OverheadActual   1: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   2: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   3: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   4: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   5: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   6: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   7: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   8: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual   9: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  10: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  11: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  12: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  13: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  14: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  15: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  16: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  17: 1 op, 1300.00 ns, 1.3000 us/op
+OverheadActual  18: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  19: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  20: 1 op, 800.00 ns, 800.0000 ns/op
+
+WorkloadWarmup   1: 1 op, 27706094600.00 ns, 27.7061 s/op
+WorkloadWarmup   2: 1 op, 2404462500.00 ns, 2.4045 s/op
+WorkloadWarmup   3: 1 op, 2420921100.00 ns, 2.4209 s/op
+WorkloadWarmup   4: 1 op, 2634918100.00 ns, 2.6349 s/op
+WorkloadWarmup   5: 1 op, 2509695000.00 ns, 2.5097 s/op
+WorkloadWarmup   6: 1 op, 2348514200.00 ns, 2.3485 s/op
+WorkloadWarmup   7: 1 op, 2398756400.00 ns, 2.3988 s/op
+WorkloadWarmup   8: 1 op, 2330504300.00 ns, 2.3305 s/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 2342704000.00 ns, 2.3427 s/op
+WorkloadActual   2: 1 op, 2326279800.00 ns, 2.3263 s/op
+WorkloadActual   3: 1 op, 2420796300.00 ns, 2.4208 s/op
+WorkloadActual   4: 1 op, 2374812500.00 ns, 2.3748 s/op
+WorkloadActual   5: 1 op, 2363549400.00 ns, 2.3635 s/op
+WorkloadActual   6: 1 op, 2346892300.00 ns, 2.3469 s/op
+WorkloadActual   7: 1 op, 2391218700.00 ns, 2.3912 s/op
+WorkloadActual   8: 1 op, 2332625600.00 ns, 2.3326 s/op
+WorkloadActual   9: 1 op, 2319105900.00 ns, 2.3191 s/op
+WorkloadActual  10: 1 op, 2378376300.00 ns, 2.3784 s/op
+WorkloadActual  11: 1 op, 2330613500.00 ns, 2.3306 s/op
+WorkloadActual  12: 1 op, 2362460100.00 ns, 2.3625 s/op
+WorkloadActual  13: 1 op, 2305641600.00 ns, 2.3056 s/op
+WorkloadActual  14: 1 op, 2433743300.00 ns, 2.4337 s/op
+WorkloadActual  15: 1 op, 2362433200.00 ns, 2.3624 s/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 2342703200.00 ns, 2.3427 s/op
+WorkloadResult   2: 1 op, 2326279000.00 ns, 2.3263 s/op
+WorkloadResult   3: 1 op, 2420795500.00 ns, 2.4208 s/op
+WorkloadResult   4: 1 op, 2374811700.00 ns, 2.3748 s/op
+WorkloadResult   5: 1 op, 2363548600.00 ns, 2.3635 s/op
+WorkloadResult   6: 1 op, 2346891500.00 ns, 2.3469 s/op
+WorkloadResult   7: 1 op, 2391217900.00 ns, 2.3912 s/op
+WorkloadResult   8: 1 op, 2332624800.00 ns, 2.3326 s/op
+WorkloadResult   9: 1 op, 2319105100.00 ns, 2.3191 s/op
+WorkloadResult  10: 1 op, 2378375500.00 ns, 2.3784 s/op
+WorkloadResult  11: 1 op, 2330612700.00 ns, 2.3306 s/op
+WorkloadResult  12: 1 op, 2362459300.00 ns, 2.3625 s/op
+WorkloadResult  13: 1 op, 2305640800.00 ns, 2.3056 s/op
+WorkloadResult  14: 1 op, 2433742500.00 ns, 2.4337 s/op
+WorkloadResult  15: 1 op, 2362432400.00 ns, 2.3624 s/op
+// GC:  4 3 0 33580408 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 13740 has exited with code 0.
+
+Mean = 2.359 s, StdErr = 0.009 s (0.40%), N = 15, StdDev = 0.036 s
+Min = 2.306 s, Q1 = 2.332 s, Median = 2.362 s, Q3 = 2.377 s, Max = 2.434 s
+IQR = 0.045 s, LowerFence = 2.264 s, UpperFence = 2.444 s
+ConfidenceInterval = [2.321 s; 2.398 s] (CI 99.9%), Margin = 0.039 s (1.65% of Mean)
+Skewness = 0.52, Kurtosis = 2.26, MValue = 2
+
+// ** Remained 3 (18,8%) benchmark(s) to run. Estimated finish 2023-12-19 0:41 (0h 11m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.RepoDb_BulkUpdate: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 2532 2500 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.RepoDb_BulkUpdate --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 13 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-CWMOSB(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 223300.00 ns, 223.3000 us/op
+WorkloadJitting  1: 1 op, 698405100.00 ns, 698.4051 ms/op
+
+OverheadWarmup   1: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadWarmup   2: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   3: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   4: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadWarmup   5: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   6: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   7: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   8: 1 op, 1200.00 ns, 1.2000 us/op
+
+OverheadActual   1: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   2: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   5: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual   6: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   7: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual   8: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   9: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  10: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  11: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  12: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  13: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  14: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  15: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  16: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  17: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  18: 1 op, 1400.00 ns, 1.4000 us/op
+OverheadActual  19: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  20: 1 op, 900.00 ns, 900.0000 ns/op
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+Operation cancelled by user.
+The statement has been terminated.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean isAsync, Int32 timeout, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at RepoDb.DbConnectionExtension.ExecuteNonQueryInternal(IDbConnection connection, String commandText, Object param, Nullable`1 commandType, Nullable`1 commandTimeout, String traceKey, IDbTransaction transaction, ITrace trace, Type entityType, DbFieldCollection dbFields, Boolean skipCommandArrayParametersCheck)
+   at RepoDb.DbConnectionExtension.ExecuteNonQuery(IDbConnection connection, String commandText, Object param, Nullable`1 commandType, String traceKey, Nullable`1 commandTimeout, IDbTransaction transaction, ITrace trace)
+   at RepoDb.SqlConnectionExtension.BulkUpdateInternalBase(SqlConnection connection, String tableName, DbDataReader reader, IEnumerable`1 qualifiers, IEnumerable`1 mappings, SqlBulkCopyOptions options, String hints, Nullable`1 bulkCopyTimeout, Nullable`1 batchSize, Nullable`1 usePhysicalPseudoTempTable, SqlTransaction transaction)
+   at RepoDb.SqlConnectionExtension.BulkUpdateInternal(SqlConnection connection, String tableName, DbDataReader reader, IEnumerable`1 qualifiers, IEnumerable`1 mappings, Nullable`1 options, String hints, Nullable`1 bulkCopyTimeout, Nullable`1 batchSize, Nullable`1 usePhysicalPseudoTempTable, SqlTransaction transaction)
+   at RepoDb.SqlConnectionExtension.BulkUpdate[TEntity](SqlConnection connection, IEnumerable`1 entities, Expression`1 qualifiers, IEnumerable`1 mappings, Nullable`1 options, String hints, Nullable`1 bulkCopyTimeout, Nullable`1 batchSize, Nullable`1 usePhysicalPseudoTempTable, SqlTransaction transaction)
+   at RepoDbBenchmarks.repositories.RepoDbUpdateRepository.RepoDbBulkUpdate(List`1 adressen) in C:\Users\Maaren\source\repos\ORMBenchmarks\RepoDbBenchmarks\repositories\RepoDbUpdateRepository.cs:line 27
+   at Benchmarks.benchmarks.UpdateBenchmarks.RepoDb_BulkUpdate() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 163
+   at BenchmarkDotNet.Autogenerated.Runnable_13.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 2391
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineStage.Run(IStoppingCriteria criteria, Int64 invokeCount, IterationMode mode, IterationStage stage, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.Run(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_13.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 2298
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:452b8430-45db-4454-87f2-df26717b6b9d
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 7980 has exited with code -1.
+
+// ** Remained 2 (12,5%) benchmark(s) to run. Estimated finish 2023-12-19 0:37 (0h 7m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.RepoDb_ExecuteNonQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 1164 4488 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.RepoDb_ExecuteNonQuery --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 14 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-YYNKGY(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 223500.00 ns, 223.5000 us/op
+WorkloadJitting  1: 1 op, 14598555700.00 ns, 14.5986 s/op
+
+OverheadWarmup   1: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   2: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   4: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadWarmup   5: 1 op, 800.00 ns, 800.0000 ns/op
+
+OverheadActual   1: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   2: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   4: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   5: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual   6: 1 op, 1300.00 ns, 1.3000 us/op
+OverheadActual   7: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   8: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   9: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  10: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  11: 1 op, 2300.00 ns, 2.3000 us/op
+OverheadActual  12: 1 op, 2100.00 ns, 2.1000 us/op
+OverheadActual  13: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  14: 1 op, 700.00 ns, 700.0000 ns/op
+OverheadActual  15: 1 op, 1100.00 ns, 1.1000 us/op
+OverheadActual  16: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  17: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  18: 1 op, 2900.00 ns, 2.9000 us/op
+OverheadActual  19: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  20: 1 op, 1000.00 ns, 1.0000 us/op
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+Operation cancelled by user.
+The statement has been terminated.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at RepoDb.DbConnectionExtension.ExecuteNonQueryInternal(IDbConnection connection, String commandText, Object param, Nullable`1 commandType, Nullable`1 commandTimeout, String traceKey, IDbTransaction transaction, ITrace trace, Type entityType, DbFieldCollection dbFields, Boolean skipCommandArrayParametersCheck)
+   at RepoDb.DbConnectionExtension.ExecuteNonQuery(IDbConnection connection, String commandText, Object param, Nullable`1 commandType, String traceKey, Nullable`1 commandTimeout, IDbTransaction transaction, ITrace trace)
+   at RepoDbBenchmarks.repositories.RepoDbUpdateRepository.RepoDbExecuteNonQuery(List`1 adressen) in C:\Users\Maaren\source\repos\ORMBenchmarks\RepoDbBenchmarks\repositories\RepoDbUpdateRepository.cs:line 61
+   at Benchmarks.benchmarks.UpdateBenchmarks.RepoDb_ExecuteNonQuery() in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\benchmarks\UpdateBenchmarks.cs:line 169
+   at BenchmarkDotNet.Autogenerated.Runnable_14.WorkloadActionUnroll(Int64 invokeCount) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 2554
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineStage.Run(IStoppingCriteria criteria, Int64 invokeCount, IterationMode mode, IterationStage stage, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.Run(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.EngineWarmupStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, RunStrategy runStrategy)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_14.Run(IHost host, String benchmarkName) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 2461
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+ClientConnectionId:a9ae4c8a-65c6-40d0-8597-1fedc8e79426
+Error Number:-2,State:0,Class:11
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\b3f48cb4-3709-4024-9f34-784d9f1effcb.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 2540 has exited with code -1.
+
+// ** Remained 1 (6,2%) benchmark(s) to run. Estimated finish 2023-12-19 0:34 (0h 3m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UpdateBenchmarks.ZZZProjectsBulkUpdate: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet b3f48cb4-3709-4024-9f34-784d9f1effcb.dll --anonymousPipes 2508 1740 --benchmarkName Benchmarks.benchmarks.UpdateBenchmarks.ZZZProjectsBulkUpdate --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 15 in C:\Users\Maaren\source\repos\ORMBenchmarks\Benchmarks\bin\Release\net7.0\b3f48cb4-3709-4024-9f34-784d9f1effcb\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.10
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: Job-VTTEZZ(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 212100.00 ns, 212.1000 us/op
+WorkloadJitting  1: 1 op, 36613998900.00 ns, 36.6140 s/op
+
+OverheadWarmup   1: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   2: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadWarmup   3: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadWarmup   4: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadWarmup   5: 1 op, 1000.00 ns, 1.0000 us/op
+
+OverheadActual   1: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   2: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual   3: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   4: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   5: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   6: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual   7: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual   8: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual   9: 1 op, 1400.00 ns, 1.4000 us/op
+OverheadActual  10: 1 op, 1200.00 ns, 1.2000 us/op
+OverheadActual  11: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  12: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  13: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  14: 1 op, 1300.00 ns, 1.3000 us/op
+OverheadActual  15: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  16: 1 op, 800.00 ns, 800.0000 ns/op
+OverheadActual  17: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  18: 1 op, 900.00 ns, 900.0000 ns/op
+OverheadActual  19: 1 op, 1000.00 ns, 1.0000 us/op
+OverheadActual  20: 1 op, 900.00 ns, 900.0000 ns/op
+
+WorkloadWarmup   1: 1 op, 35982070900.00 ns, 35.9821 s/op
+WorkloadWarmup   2: 1 op, 158947500.00 ns, 158.9475 ms/op
+WorkloadWarmup   3: 1 op, 170332600.00 ns, 170.3326 ms/op
+WorkloadWarmup   4: 1 op, 166440000.00 ns, 166.4400 ms/op
+WorkloadWarmup   5: 1 op, 167044800.00 ns, 167.0448 ms/op
+WorkloadWarmup   6: 1 op, 156065900.00 ns, 156.0659 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 155901000.00 ns, 155.9010 ms/op
+WorkloadActual   2: 1 op, 157137700.00 ns, 157.1377 ms/op
+WorkloadActual   3: 1 op, 158214400.00 ns, 158.2144 ms/op
+WorkloadActual   4: 1 op, 164055700.00 ns, 164.0557 ms/op
+WorkloadActual   5: 1 op, 166562700.00 ns, 166.5627 ms/op
+WorkloadActual   6: 1 op, 161455400.00 ns, 161.4554 ms/op
+WorkloadActual   7: 1 op, 178420600.00 ns, 178.4206 ms/op
+WorkloadActual   8: 1 op, 160609100.00 ns, 160.6091 ms/op
+WorkloadActual   9: 1 op, 169639600.00 ns, 169.6396 ms/op
+WorkloadActual  10: 1 op, 156257200.00 ns, 156.2572 ms/op
+WorkloadActual  11: 1 op, 157941200.00 ns, 157.9412 ms/op
+WorkloadActual  12: 1 op, 159124900.00 ns, 159.1249 ms/op
+WorkloadActual  13: 1 op, 156568300.00 ns, 156.5683 ms/op
+WorkloadActual  14: 1 op, 157807000.00 ns, 157.8070 ms/op
+WorkloadActual  15: 1 op, 158539000.00 ns, 158.5390 ms/op
+WorkloadActual  16: 1 op, 166279900.00 ns, 166.2799 ms/op
+WorkloadActual  17: 1 op, 169780100.00 ns, 169.7801 ms/op
+WorkloadActual  18: 1 op, 162687700.00 ns, 162.6877 ms/op
+WorkloadActual  19: 1 op, 156208400.00 ns, 156.2084 ms/op
+WorkloadActual  20: 1 op, 156727900.00 ns, 156.7279 ms/op
+WorkloadActual  21: 1 op, 159749000.00 ns, 159.7490 ms/op
+WorkloadActual  22: 1 op, 160079100.00 ns, 160.0791 ms/op
+WorkloadActual  23: 1 op, 168714500.00 ns, 168.7145 ms/op
+WorkloadActual  24: 1 op, 179796300.00 ns, 179.7963 ms/op
+WorkloadActual  25: 1 op, 161244600.00 ns, 161.2446 ms/op
+WorkloadActual  26: 1 op, 172354700.00 ns, 172.3547 ms/op
+WorkloadActual  27: 1 op, 157302900.00 ns, 157.3029 ms/op
+WorkloadActual  28: 1 op, 157313100.00 ns, 157.3131 ms/op
+WorkloadActual  29: 1 op, 168429100.00 ns, 168.4291 ms/op
+WorkloadActual  30: 1 op, 169331200.00 ns, 169.3312 ms/op
+WorkloadActual  31: 1 op, 164386100.00 ns, 164.3861 ms/op
+WorkloadActual  32: 1 op, 156760300.00 ns, 156.7603 ms/op
+WorkloadActual  33: 1 op, 157373400.00 ns, 157.3734 ms/op
+WorkloadActual  34: 1 op, 176194100.00 ns, 176.1941 ms/op
+WorkloadActual  35: 1 op, 159358500.00 ns, 159.3585 ms/op
+WorkloadActual  36: 1 op, 163338800.00 ns, 163.3388 ms/op
+WorkloadActual  37: 1 op, 169900000.00 ns, 169.9000 ms/op
+WorkloadActual  38: 1 op, 161406900.00 ns, 161.4069 ms/op
+WorkloadActual  39: 1 op, 156239200.00 ns, 156.2392 ms/op
+WorkloadActual  40: 1 op, 165411700.00 ns, 165.4117 ms/op
+WorkloadActual  41: 1 op, 165657900.00 ns, 165.6579 ms/op
+WorkloadActual  42: 1 op, 163786200.00 ns, 163.7862 ms/op
+WorkloadActual  43: 1 op, 158344700.00 ns, 158.3447 ms/op
+WorkloadActual  44: 1 op, 169719600.00 ns, 169.7196 ms/op
+WorkloadActual  45: 1 op, 166285000.00 ns, 166.2850 ms/op
+WorkloadActual  46: 1 op, 172760500.00 ns, 172.7605 ms/op
+WorkloadActual  47: 1 op, 158269100.00 ns, 158.2691 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 155900000.00 ns, 155.9000 ms/op
+WorkloadResult   2: 1 op, 157136700.00 ns, 157.1367 ms/op
+WorkloadResult   3: 1 op, 158213400.00 ns, 158.2134 ms/op
+WorkloadResult   4: 1 op, 164054700.00 ns, 164.0547 ms/op
+WorkloadResult   5: 1 op, 166561700.00 ns, 166.5617 ms/op
+WorkloadResult   6: 1 op, 161454400.00 ns, 161.4544 ms/op
+WorkloadResult   7: 1 op, 178419600.00 ns, 178.4196 ms/op
+WorkloadResult   8: 1 op, 160608100.00 ns, 160.6081 ms/op
+WorkloadResult   9: 1 op, 169638600.00 ns, 169.6386 ms/op
+WorkloadResult  10: 1 op, 156256200.00 ns, 156.2562 ms/op
+WorkloadResult  11: 1 op, 157940200.00 ns, 157.9402 ms/op
+WorkloadResult  12: 1 op, 159123900.00 ns, 159.1239 ms/op
+WorkloadResult  13: 1 op, 156567300.00 ns, 156.5673 ms/op
+WorkloadResult  14: 1 op, 157806000.00 ns, 157.8060 ms/op
+WorkloadResult  15: 1 op, 158538000.00 ns, 158.5380 ms/op
+WorkloadResult  16: 1 op, 166278900.00 ns, 166.2789 ms/op
+WorkloadResult  17: 1 op, 169779100.00 ns, 169.7791 ms/op
+WorkloadResult  18: 1 op, 162686700.00 ns, 162.6867 ms/op
+WorkloadResult  19: 1 op, 156207400.00 ns, 156.2074 ms/op
+WorkloadResult  20: 1 op, 156726900.00 ns, 156.7269 ms/op
+WorkloadResult  21: 1 op, 159748000.00 ns, 159.7480 ms/op
+WorkloadResult  22: 1 op, 160078100.00 ns, 160.0781 ms/op
+WorkloadResult  23: 1 op, 168713500.00 ns, 168.7135 ms/op
+WorkloadResult  24: 1 op, 179795300.00 ns, 179.7953 ms/op
+WorkloadResult  25: 1 op, 161243600.00 ns, 161.2436 ms/op
+WorkloadResult  26: 1 op, 172353700.00 ns, 172.3537 ms/op
+WorkloadResult  27: 1 op, 157301900.00 ns, 157.3019 ms/op
+WorkloadResult  28: 1 op, 157312100.00 ns, 157.3121 ms/op
+WorkloadResult  29: 1 op, 168428100.00 ns, 168.4281 ms/op
+WorkloadResult  30: 1 op, 169330200.00 ns, 169.3302 ms/op
+WorkloadResult  31: 1 op, 164385100.00 ns, 164.3851 ms/op
+WorkloadResult  32: 1 op, 156759300.00 ns, 156.7593 ms/op
+WorkloadResult  33: 1 op, 157372400.00 ns, 157.3724 ms/op
+WorkloadResult  34: 1 op, 176193100.00 ns, 176.1931 ms/op
+WorkloadResult  35: 1 op, 159357500.00 ns, 159.3575 ms/op
+WorkloadResult  36: 1 op, 163337800.00 ns, 163.3378 ms/op
+WorkloadResult  37: 1 op, 169899000.00 ns, 169.8990 ms/op
+WorkloadResult  38: 1 op, 161405900.00 ns, 161.4059 ms/op
+WorkloadResult  39: 1 op, 156238200.00 ns, 156.2382 ms/op
+WorkloadResult  40: 1 op, 165410700.00 ns, 165.4107 ms/op
+WorkloadResult  41: 1 op, 165656900.00 ns, 165.6569 ms/op
+WorkloadResult  42: 1 op, 163785200.00 ns, 163.7852 ms/op
+WorkloadResult  43: 1 op, 158343700.00 ns, 158.3437 ms/op
+WorkloadResult  44: 1 op, 169718600.00 ns, 169.7186 ms/op
+WorkloadResult  45: 1 op, 166284000.00 ns, 166.2840 ms/op
+WorkloadResult  46: 1 op, 172759500.00 ns, 172.7595 ms/op
+WorkloadResult  47: 1 op, 158268100.00 ns, 158.2681 ms/op
+// GC:  0 0 0 1912736 1
+// Threading:  0 0 1
+
+// AfterAll
+// Benchmark Process 18168 has exited with code 0.
+
+Mean = 163.178 ms, StdErr = 0.925 ms (0.57%), N = 47, StdDev = 6.342 ms
+Min = 155.900 ms, Q1 = 157.873 ms, Median = 161.406 ms, Q3 = 167.495 ms, Max = 179.795 ms
+IQR = 9.622 ms, LowerFence = 143.440 ms, UpperFence = 181.928 ms
+ConfidenceInterval = [159.927 ms; 166.430 ms] (CI 99.9%), Margin = 3.251 ms (1.99% of Mean)
+Skewness = 0.82, Kurtosis = 2.76, MValue = 2.38
+
+// ** Remained 0 (0,0%) benchmark(s) to run. Estimated finish 2023-12-19 0:33 (0h 0m from now) **
+Successfully reverted power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts\results\Benchmarks.benchmarks.UpdateBenchmarks-report.csv
+  BenchmarkDotNet.Artifacts\results\Benchmarks.benchmarks.UpdateBenchmarks-report-github.md
+  BenchmarkDotNet.Artifacts\results\Benchmarks.benchmarks.UpdateBenchmarks-report.html
+
+// * Detailed results *
+UpdateBenchmarks.EFCore_BulkUpdate_BorisDj: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.EFCore_ExecuteSqlRaw: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.Dapper_Execute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.LinqToDbExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.NHibernate_Update: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.NHibernate_CreateSqlQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.NormNetUpdateExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.OrmLite_ExecuteNonQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.PetaPocoExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.RepoDb_BulkUpdate: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.RepoDb_ExecuteNonQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+UpdateBenchmarks.Dapper_BulkUpdate_DapperPlus: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 154.677 ms, StdErr = 0.468 ms (0.30%), N = 13, StdDev = 1.688 ms
+Min = 150.446 ms, Q1 = 153.824 ms, Median = 155.262 ms, Q3 = 155.972 ms, Max = 156.435 ms
+IQR = 2.148 ms, LowerFence = 150.602 ms, UpperFence = 159.194 ms
+ConfidenceInterval = [152.656 ms; 156.698 ms] (CI 99.9%), Margin = 2.021 ms (1.31% of Mean)
+Skewness = -1.03, Kurtosis = 3.35, MValue = 2
+-------------------- Histogram --------------------
+[149.504 ms ; 157.080 ms) | @@@@@@@@@@@@@
+---------------------------------------------------
+
+UpdateBenchmarks.ZZZProjectsBulkUpdate: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 163.178 ms, StdErr = 0.925 ms (0.57%), N = 47, StdDev = 6.342 ms
+Min = 155.900 ms, Q1 = 157.873 ms, Median = 161.406 ms, Q3 = 167.495 ms, Max = 179.795 ms
+IQR = 9.622 ms, LowerFence = 143.440 ms, UpperFence = 181.928 ms
+ConfidenceInterval = [159.927 ms; 166.430 ms] (CI 99.9%), Margin = 3.251 ms (1.99% of Mean)
+Skewness = 0.82, Kurtosis = 2.76, MValue = 2.38
+-------------------- Histogram --------------------
+[155.683 ms ; 160.295 ms) | @@@@@@@@@@@@@@@@@@@@@
+[160.295 ms ; 165.348 ms) | @@@@@@@@@
+[165.348 ms ; 169.961 ms) | @@@@@@@@@@@@
+[169.961 ms ; 174.863 ms) | @@
+[174.863 ms ; 180.301 ms) | @@@
+---------------------------------------------------
+
+UpdateBenchmarks.RepoDb_UpdateAll: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 2.359 s, StdErr = 0.009 s (0.40%), N = 15, StdDev = 0.036 s
+Min = 2.306 s, Q1 = 2.332 s, Median = 2.362 s, Q3 = 2.377 s, Max = 2.434 s
+IQR = 0.045 s, LowerFence = 2.264 s, UpperFence = 2.444 s
+ConfidenceInterval = [2.321 s; 2.398 s] (CI 99.9%), Margin = 0.039 s (1.65% of Mean)
+Skewness = 0.52, Kurtosis = 2.26, MValue = 2
+-------------------- Histogram --------------------
+[2.286 s ; 2.368 s) | @@@@@@@@@@
+[2.368 s ; 2.453 s) | @@@@@
+---------------------------------------------------
+
+UpdateBenchmarks.EFCore_UpdateRange: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 4.079 s, StdErr = 0.057 s (1.40%), N = 100, StdDev = 0.571 s
+Min = 3.052 s, Q1 = 3.669 s, Median = 4.096 s, Q3 = 4.562 s, Max = 5.055 s
+IQR = 0.893 s, LowerFence = 2.330 s, UpperFence = 5.901 s
+ConfidenceInterval = [3.885 s; 4.272 s] (CI 99.9%), Margin = 0.194 s (4.75% of Mean)
+Skewness = -0.01, Kurtosis = 1.85, MValue = 4.08
+-------------------- Histogram --------------------
+[2.891 s ; 3.066 s) | @
+[3.066 s ; 3.389 s) | @@@@@@@@@@@@@@
+[3.389 s ; 3.535 s) | @@@
+[3.535 s ; 3.858 s) | @@@@@@@@@@@@@@@@@@@@@@@@@@
+[3.858 s ; 4.072 s) | @@@@@
+[4.072 s ; 4.395 s) | @@@@@@@@@@@@@@@@@@@
+[4.395 s ; 4.798 s) | @@@@@@@@@@@@@@@@@@@@@
+[4.798 s ; 5.129 s) | @@@@@@@@@@@
+---------------------------------------------------
+
+UpdateBenchmarks.EFCore_Update: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 4.167 s, StdErr = 0.065 s (1.57%), N = 100, StdDev = 0.654 s
+Min = 2.987 s, Q1 = 3.600 s, Median = 4.210 s, Q3 = 4.678 s, Max = 5.559 s
+IQR = 1.078 s, LowerFence = 1.984 s, UpperFence = 6.295 s
+ConfidenceInterval = [3.945 s; 4.389 s] (CI 99.9%), Margin = 0.222 s (5.33% of Mean)
+Skewness = -0.07, Kurtosis = 1.88, MValue = 3.58
+-------------------- Histogram --------------------
+[2.802 s ; 3.046 s) | @@
+[3.046 s ; 3.416 s) | @@@@@@@@@@@@@@@@
+[3.416 s ; 3.664 s) | @@@@@@@@
+[3.664 s ; 4.034 s) | @@@@@@@@@@@@@@@@@@
+[4.034 s ; 4.527 s) | @@@@@@@@@@@@@@@@@@@@@@@@
+[4.527 s ; 4.734 s) | @@@@@@@@
+[4.734 s ; 5.104 s) | @@@@@@@@@@@@@@@@@@@
+[5.104 s ; 5.384 s) | @@@@
+[5.384 s ; 5.744 s) | @
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.13.10, Windows 10 (10.0.19045.3803/22H2/2022Update)
+Intel Core i7-8700 CPU 3.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
+.NET SDK 8.0.100-preview.7.23376.3
+  [Host]     : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+  Job-YKBZWW : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+
+InvocationCount=1  UnrollFactor=1  
+
+| Method                       | Mean       | Error     | StdDev    | Rank | Gen0        | Gen1      | Allocated  |
+|----------------------------- |-----------:|----------:|----------:|-----:|------------:|----------:|-----------:|
+| EFCore_BulkUpdate_BorisDj    |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| EFCore_ExecuteSqlRaw         |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| Dapper_Execute               |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| LinqToDbExecute              |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| NHibernate_Update            |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| NHibernate_CreateSqlQuery    |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| NormNetUpdateExecute         |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| OrmLite_ExecuteNonQuery      |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| PetaPocoExecute              |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| RepoDb_BulkUpdate            |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| RepoDb_ExecuteNonQuery       |         NA |        NA |        NA |    ? |          NA |        NA |         NA |
+| Dapper_BulkUpdate_DapperPlus |   154.7 ms |   2.02 ms |   1.69 ms |    1 |           - |         - |    5.39 MB |
+| ZZZProjectsBulkUpdate        |   163.2 ms |   3.25 ms |   6.34 ms |    2 |           - |         - |    1.82 MB |
+| RepoDb_UpdateAll             | 2,359.4 ms |  38.90 ms |  36.38 ms |    3 |   4000.0000 | 3000.0000 |   32.02 MB |
+| EFCore_UpdateRange           | 4,078.5 ms | 193.77 ms | 571.32 ms |    4 | 207000.0000 | 7000.0000 | 1274.03 MB |
+| EFCore_Update                | 4,166.7 ms | 221.91 ms | 654.29 ms |    4 | 210000.0000 | 6000.0000 | 1297.01 MB |
+
+Benchmarks with issues:
+  UpdateBenchmarks.EFCore_BulkUpdate_BorisDj: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.EFCore_ExecuteSqlRaw: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.Dapper_Execute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.LinqToDbExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.NHibernate_Update: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.NHibernate_CreateSqlQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.NormNetUpdateExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.OrmLite_ExecuteNonQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.PetaPocoExecute: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.RepoDb_BulkUpdate: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+  UpdateBenchmarks.RepoDb_ExecuteNonQuery: Job-YKBZWW(InvocationCount=1, UnrollFactor=1)
+
+// * Warnings *
+Environment
+  Summary -> Detected error exit code from one of the benchmarks. It might be caused by following antivirus software:
+        - McAfee (\\?\C:\Program Files\mcafee\WPS\1.13.209.1\mc-fw-host.exe)
+        - Windows Defender (windowsdefender://)
+Use InProcessEmitToolchain or InProcessNoEmitToolchain to avoid new process creation.
+
+MultimodalDistribution
+  UpdateBenchmarks.EFCore_UpdateRange: InvocationCount=1, UnrollFactor=1 -> It seems that the distribution is bimodal (mValue = 4.08)
+  UpdateBenchmarks.EFCore_Update: InvocationCount=1, UnrollFactor=1      -> It seems that the distribution is bimodal (mValue = 3.58)
+
+// * Hints *
+Outliers
+  UpdateBenchmarks.Dapper_BulkUpdate_DapperPlus: InvocationCount=1, UnrollFactor=1 -> 2 outliers were removed (172.59 ms, 205.55 ms)
+// * Config Issues *
+
+// * Warnings *
+Configuration
+  Summary -> The exporter CsvExporter is already present in configuration. There may be unexpected results.
+
+// * Legends *
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Rank      : Relative position of current benchmark mean among all benchmarks (Arabic style)
+  Gen0      : GC Generation 0 collects per 1000 operations
+  Gen1      : GC Generation 1 collects per 1000 operations
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms      : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:54:39 (3279.93 sec), executed benchmarks: 16
+
+Global total time: 00:55:02 (3302.29 sec), executed benchmarks: 16
+// * Artifacts cleanup *
+Artifacts cleanup is finished

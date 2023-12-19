@@ -14,20 +14,17 @@ namespace RepoDbBenchmarks
             var repodelete = new RepoDbDeleteRepository();
 
 
-
             var adressen = reposelect.GetAdressen("Zottegem");
 
-            repoupdate.RepoDbExecuteNonQuery(adressen);
+            repocreate.RepoDbInsertAll(adressen);
+
+            //repoupdate.RepoDbBulkUpdate(adressen);
 
 
 
+            //repodelete.RepoDbDeleteAll(adressen);
 
-
-
-
-
-
-
+            //repoupdate.RepoDbUpdateAll(adressen);
 
 
 

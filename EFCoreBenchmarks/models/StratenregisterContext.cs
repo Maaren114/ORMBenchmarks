@@ -14,7 +14,7 @@ public partial class StratenregisterContext : DbContext
 
     public StratenregisterContext(DbContextOptions<StratenregisterContext> options) : base(options)
     {
-
+        this.Database.SetCommandTimeout(360);
     }
 
     public virtual DbSet<AdresX> Adressen { get; set; }
@@ -27,7 +27,7 @@ public partial class StratenregisterContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(Toolkit.GetConnectionString(), options => options.MaxBatchSize(16000));
+        optionsBuilder.UseSqlServer(Toolkit.GetConnectionString(), options => options.MaxBatchSize(15000));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

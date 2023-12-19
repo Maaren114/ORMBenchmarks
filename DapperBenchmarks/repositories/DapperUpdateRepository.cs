@@ -47,14 +47,14 @@ namespace DapperBenchmarks.repositories
                             ON adr.AdresID = adru.AdresID;";
 
             string adresUpdatesJSON = JsonSerializer.Serialize(adresUpdates);
-            int result = _dbConnection.Execute(query, new { updates = adresUpdatesJSON });
+            _dbConnection.Execute(query, new { updates = adresUpdatesJSON });
         }
 
         public void DapperBulkUpdate_DapperPlus(List<AdresX> adressen)
         {
             _dbConnection.UseBulkOptions(options =>
             {
-                options.BatchSize = 20000;
+                options.BatchSize = 15000;
                 options.AutoMapOutputDirection = false;
                 options.DestinationTableName = "Adressen";
             }).BulkUpdate(adressen);

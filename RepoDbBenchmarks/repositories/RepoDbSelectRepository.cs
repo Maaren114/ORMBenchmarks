@@ -19,7 +19,7 @@ namespace RepoDbBenchmarks.repositories
         {
             _connection.Open();
             List<AdresX> adressen = new List<AdresX>();
-            List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+            List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098); // OPGEPAST: 2098 werkt nog, 2099 niet!
 
             foreach (var niscodebatch in niscodebatches)
             {
@@ -35,7 +35,7 @@ namespace RepoDbBenchmarks.repositories
         {
             _connection.Open();
             List<AdresX> adressen = new List<AdresX>();
-            List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+            List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098); // OPGEPAST: 2098 werkt nog, 2099 niet!
 
             foreach (var niscodebatch in niscodebatches)
             {

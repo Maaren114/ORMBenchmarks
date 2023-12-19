@@ -101,6 +101,18 @@ namespace EFCoreBenchmarks.repositories
 
             _context.Database.ExecuteSql(query);
         }
+
+        #region helper methods
+        public List<AdresX> GetAdressen()
+        {
+            string query = $@"
+                            SELECT TOP 15000 *
+                            FROM Adressen a;";
+
+            List<AdresX> adressen = _context.Adressen.FromSqlRaw(query).ToList();
+            return adressen;
+        }
+        #endregion
     }
 }
 

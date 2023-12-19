@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Order;
+using Bogus;
 using DapperBenchmarks.repositories;
 using EFCoreBenchmarks.repositories;
 using LinqToDbBenchmarks.repositories;
@@ -19,10 +20,14 @@ namespace Benchmarks.benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [CsvExporter]
-    [MaxIterationCount(100)]
-    //[SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 10, iterationCount: 100, id: "benchmarks")]
+    //[MaxIterationCount(100)]
     public class CreateBenchmarks
     {
+        private static EFCoreUpdateRepository _EFCoreUpdateRepository = null!;
+
+
+
+
         private static EFCoreCreateRepository _EFCoreRepository = null!;
         private static ZZZProjectsCreateRepository _zzzProjectRepository = null!;
         private static DapperCreateRepository _dapperRepository = null!;
@@ -32,8 +37,14 @@ namespace Benchmarks.benchmarks
         private static OrmLiteCreateRepository _ormLiteRepository = null!;
         private static PetaPocoCreateRepository _petapocorepository = null!;
         private static RepoDbCreateRepository _repoDbRepository = null!;
-
         private List<AdresX> _adressen = new List<AdresX>();
+        private Faker<AdresX> _faker = new Faker<AdresX>()
+        .RuleFor(a => a.Appartementnummer, f => f.Address.BuildingNumber())
+        .RuleFor(a => a.Status, f => f.PickRandom(new[] { "Active", "Inactive", "Pending" }))
+        .RuleFor(a => a.Busnummer, f => f.Address.BuildingNumber())
+        .RuleFor(a => a.Huisnummer, f => f.Address.BuildingNumber())
+        .RuleFor(a => a.Postcode, f => f.Random.Number(0, 10000))
+        .RuleFor(a => a.NISCode, f => Guid.NewGuid().ToString());
 
         public CreateBenchmarks()
         {
@@ -46,8 +57,10 @@ namespace Benchmarks.benchmarks
             _ormLiteRepository = new OrmLiteCreateRepository();
             _petapocorepository = new PetaPocoCreateRepository();
             _repoDbRepository = new RepoDbCreateRepository();
-            _adressen = _EFCoreRepository.GetAdressen("Zottegem", 15557);
-            _adressen.ForEach(a => a.AdresID = 0);
+
+            _EFCoreUpdateRepository = new EFCoreUpdateRepository();
+            _adressen = _EFCoreUpdateRepository.GetAdressen();
+            RandomizeAdresgegegevens();
         }
 
         #region EF Core
@@ -74,12 +87,6 @@ namespace Benchmarks.benchmarks
         {
             _EFCoreRepository.EFCoreExecuteSqlRaw(_adressen);
         }
-
-        //[Benchmark]
-        //public void EFCore_ExecuteSql()
-        //{
-        //    _EFCoreRepository.EFCoreExecuteSql(_adressen);
-        //}
 
         [Benchmark]
         public void EFCore_BulkInsert_ZZZProjects()
@@ -183,9 +190,22 @@ namespace Benchmarks.benchmarks
         [IterationCleanup]
         public void CleanupAfterIteration()
         {
-            _EFCoreRepository = new EFCoreCreateRepository();
-            _adressen = _EFCoreRepository.GetAdressen("Zottegem", 15557);
-            _adressen.ForEach(a => a.AdresID = 0);
+            RandomizeAdresgegegevens();
+        }
+
+        private void RandomizeAdresgegegevens()
+        {
+            _adressen.ForEach(a =>
+            {
+                var nieuweWaarden = _faker.Generate();
+                a.AdresID = 0;
+                a.Appartementnummer = nieuweWaarden.Appartementnummer;
+                a.Status = nieuweWaarden.Status;
+                a.Busnummer = nieuweWaarden.Busnummer;
+                a.Huisnummer = nieuweWaarden.Huisnummer;
+                a.Postcode = nieuweWaarden.Postcode;
+                a.NISCode = nieuweWaarden.NISCode;
+            });
         }
     }
 }

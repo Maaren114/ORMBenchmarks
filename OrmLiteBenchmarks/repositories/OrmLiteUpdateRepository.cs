@@ -53,7 +53,7 @@ namespace OrmLiteBenchmarks.repositories
         }
 
         #region 1 per 1
-        public void OrmLiteUpdateAll(List<AdresX> adressen) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in thesis.
+        public void OrmLiteUpdateAll(List<AdresX> adressen) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in onderzoek.
         {
             using (var db = _factory.OpenDbConnection())
             {
@@ -61,7 +61,7 @@ namespace OrmLiteBenchmarks.repositories
             }
         }
 
-        public void OrmLiteUpdate(List<AdresX> adressen) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in thesis.
+        public void OrmLiteUpdate(List<AdresX> adressen) // Voegt 1 per 1 toe. Daarom niet geïncludeerd in onderzoek.
         {
             using (var db = _factory.OpenDbConnection())
             {

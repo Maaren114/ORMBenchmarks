@@ -37,10 +37,10 @@ namespace EFCoreBenchmarks.repositories
 
         public void EFCoreBulkDelete_BorisDj(List<AdresX> adressen)
         {
-            _context.BulkDelete(adressen, options => options.BatchSize = 16000);
+            _context.BulkDelete(adressen, options => options.BatchSize = 15000);
         }
 
-        public void ExecuteSqlRaw(List<AdresX> adressen) // vraag hiervoor alle adressen van Zottegem op (15.575 adressen)
+        public void ExecuteSqlRaw(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
 

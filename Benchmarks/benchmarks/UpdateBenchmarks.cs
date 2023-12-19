@@ -16,6 +16,9 @@ using OrmLiteBenchmarks.repositories;
 using PetaPocoBenchmarks.repositories;
 using RepoDbBenchmarks.repositories;
 using ZZZProjectsBenchmarks.repositories;
+using Bogus.DataSets;
+using Bogus;
+using FluentNHibernate.MappingModel;
 
 namespace Benchmarks.benchmarks
 {
@@ -23,7 +26,7 @@ namespace Benchmarks.benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [CsvExporter]
-    [MaxIterationCount(100)]
+    //[MaxIterationCount(1000)]
     public class UpdateBenchmarks
     {
         private static EFCoreUpdateRepository _EFCoreRepository = null!;
@@ -35,7 +38,14 @@ namespace Benchmarks.benchmarks
         private static PetaPocoUpdateRepository _petapocorepository = null!;
         private static RepoDbUpdateRepository _repodbrepository = null!;
         private static ZZZProjectsUpdateRepository _zzzprojectsrepository = null!;
-        private List<AdresX> _AdressenZottegem = new List<AdresX>();
+        private List<AdresX> _adressen = new List<AdresX>();
+        private Faker<AdresX> _faker = new Faker<AdresX>()
+        .RuleFor(a => a.Appartementnummer, f => f.Address.BuildingNumber())
+        .RuleFor(a => a.Status, f => f.PickRandom(new[] { "Active", "Inactive", "Pending" }))
+        .RuleFor(a => a.Busnummer, f => f.Address.BuildingNumber())
+        .RuleFor(a => a.Huisnummer, f => f.Address.BuildingNumber())
+        .RuleFor(a => a.Postcode, f => f.Random.Number(0, 10000))
+        .RuleFor(a => a.NISCode, f => Guid.NewGuid().ToString());
 
         public UpdateBenchmarks()
         {
@@ -48,60 +58,47 @@ namespace Benchmarks.benchmarks
             _petapocorepository = new PetaPocoUpdateRepository();
             _repodbrepository = new RepoDbUpdateRepository();
             _zzzprojectsrepository = new ZZZProjectsUpdateRepository();
-
-            var efcorerepo = new EFCoreCreateRepository();
-
-            _AdressenZottegem = efcorerepo.GetAdressen("Zottegem", 15557);
-
-            _AdressenZottegem.ForEach(a =>
-            {
-                a.Status = "CHANGED";
-            });
+            _adressen = _EFCoreRepository.GetAdressen();
+            RandomizeAdresgegegevens();
         }
 
         #region EF Core
         [Benchmark]
         public void EFCore_Update()
         {
-            _EFCoreRepository.EFCoreUpdate(_AdressenZottegem);
+            _EFCoreRepository.EFCoreUpdate(_adressen);
         }
 
         [Benchmark]
         public void EFCore_UpdateRange()
         {
-            _EFCoreRepository.EFCoreUpdateRange(_AdressenZottegem);
+            _EFCoreRepository.EFCoreUpdateRange(_adressen);
         }
 
         [Benchmark]
         public void EFCore_BulkUpdate_BorisDj()
         {
-            _EFCoreRepository.EFCoreBulkUpdate_BorisDj(_AdressenZottegem);
+            _EFCoreRepository.EFCoreBulkUpdate_BorisDj(_adressen);
         }
 
         [Benchmark]
-        public void EFCore_ExecuteRaw()
+        public void EFCore_ExecuteSqlRaw()
         {
-            _EFCoreRepository.EFCoreExecuteSqlRaw(_AdressenZottegem);
+            _EFCoreRepository.EFCoreExecuteSqlRaw(_adressen);
         }
-
-        //[Benchmark]
-        //public void EFCore_ExecuteSql()
-        //{
-        //    _EFCoreRepository.EFCoreExecuteSql(_AdressenZottegem);
-        //}
         #endregion
 
         #region Dapper
         [Benchmark]
         public void Dapper_Execute()
         {
-            _dapperRepository.DapperExecute(_AdressenZottegem);
+            _dapperRepository.DapperExecute(_adressen);
         }
 
         [Benchmark]
         public void Dapper_BulkUpdate_DapperPlus()
         {
-            _dapperRepository.DapperBulkUpdate_DapperPlus(_AdressenZottegem);
+            _dapperRepository.DapperBulkUpdate_DapperPlus(_adressen);
         }
         #endregion
 
@@ -109,7 +106,7 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void LinqToDbExecute()
         {
-            _linqToDbRepository.LinqToDbExecute(_AdressenZottegem);
+            _linqToDbRepository.LinqToDbExecute(_adressen);
         }
         #endregion
 
@@ -117,13 +114,13 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void NHibernate_Update()
         {
-            _nhibernateRepository.NHibernate_Update(_AdressenZottegem);
+            _nhibernateRepository.NHibernate_Update(_adressen);
         }
 
         [Benchmark]
         public void NHibernate_CreateSqlQuery()
         {
-            _nhibernateRepository.NHibernate_CreateSqlQuery(_AdressenZottegem);
+            _nhibernateRepository.NHibernate_CreateSqlQuery(_adressen);
         }
         #endregion
 
@@ -131,7 +128,7 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void NormNetUpdateExecute()
         {
-            _normNetRepository.UpdateExecute(_AdressenZottegem);
+            _normNetRepository.UpdateExecute(_adressen);
         }
         #endregion
 
@@ -139,7 +136,7 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void OrmLite_ExecuteNonQuery()
         {
-            _ormLiteRepository.OrmLiteExecuteNonQuery(_AdressenZottegem);
+            _ormLiteRepository.OrmLiteExecuteNonQuery(_adressen);
         }
         #endregion
 
@@ -147,7 +144,7 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void PetaPocoExecute()
         {
-            _petapocorepository.PetaPocoExecute(_AdressenZottegem);
+            _petapocorepository.PetaPocoExecute(_adressen);
         }
         #endregion
 
@@ -155,19 +152,19 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void RepoDb_UpdateAll()
         {
-            _repodbrepository.RepoDbUpdateAll(_AdressenZottegem);
+            _repodbrepository.RepoDbUpdateAll(_adressen);
         }
 
         [Benchmark]
         public void RepoDb_BulkUpdate()
         {
-            _repodbrepository.RepoDbBulkUpdate(_AdressenZottegem);
+            _repodbrepository.RepoDbBulkUpdate(_adressen);
         }
 
         [Benchmark]
         public void RepoDb_ExecuteNonQuery()
         {
-            _repodbrepository.RepoDbExecuteNonQuery(_AdressenZottegem);
+            _repodbrepository.RepoDbExecuteNonQuery(_adressen);
         }
         #endregion
 
@@ -175,11 +172,33 @@ namespace Benchmarks.benchmarks
         [Benchmark]
         public void ZZZProjectsBulkUpdate()
         {
-            _zzzprojectsrepository.ZZZProjectsBulkUpdate(_AdressenZottegem);
+            _zzzprojectsrepository.ZZZProjectsBulkUpdate(_adressen);
         }
         #endregion
 
+        [IterationCleanup]
+        public void CleanupAfterIteration()
+        {
+            RandomizeAdresgegegevens();
+        }
+
+        private void RandomizeAdresgegegevens()
+        {
+            _adressen.ForEach(a =>
+            {
+                var nieuweWaarden = _faker.Generate();
+                a.Appartementnummer = nieuweWaarden.Appartementnummer;
+                a.Status = nieuweWaarden.Status;
+                a.Busnummer = nieuweWaarden.Busnummer;
+                a.Huisnummer = nieuweWaarden.Huisnummer;
+                a.Postcode = nieuweWaarden.Postcode;
+                a.NISCode = nieuweWaarden.NISCode;
+            });
+        }
     }
 }
+
+
+
 
 

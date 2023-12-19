@@ -22,7 +22,7 @@ namespace EFCoreBenchmarks.repositories
             _context = new StratenregisterContext();
         }
 
-        public void EFCoreAdd(List<AdresX> adressen) // OPGENOMEN IN THESIS :)
+        public void EFCoreAdd(List<AdresX> adressen)
         {
             foreach (var adres in adressen)
             {
@@ -31,7 +31,7 @@ namespace EFCoreBenchmarks.repositories
             _context.SaveChanges();
         }
 
-        public void EFCoreAddRange(List<AdresX> adressen) // OPGENOMEN IN THESIS :)
+        public void EFCoreAddRange(List<AdresX> adressen)
         {
             _context.Adressen.AddRange(adressen);
             _context.SaveChanges();
@@ -39,7 +39,7 @@ namespace EFCoreBenchmarks.repositories
 
         public void EFCoreBulkInsert_BorisDj(List<AdresX> adressen)
         {
-            _context.BulkInsert(adressen, options => options.BatchSize = 16000);
+            _context.BulkInsert(adressen, options => options.BatchSize = 15000);
         }
 
         public void EFCoreExecuteSqlRaw(List<AdresX> adressen)

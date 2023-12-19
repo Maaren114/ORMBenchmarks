@@ -18,20 +18,6 @@ namespace Norm.NetBenchmarks.repositories
             _connection = new SqlConnection(Toolkit.GetConnectionString());
         }
 
-        public List<AdresX> GetAdressen(string gemeentenaam)
-        {
-            string query = $@"
-                            SELECT TOP 15557 a.*
-                            FROM Adressen a
-                            INNER JOIN Straten s ON a.StraatID = s.StraatID
-                            INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID
-                            WHERE g.Gemeentenaam = @Gemeentenaam
-                            ORDER BY a.StraatID;";
-
-            List<AdresX> adressen = _connection.Read<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
-            return adressen;
-        }
-
         public void CreateExecute(List<AdresX> adressen)
         {
             string adressenJSON = JsonSerializer.Serialize(adressen);
@@ -62,5 +48,21 @@ namespace Norm.NetBenchmarks.repositories
 
             _connection.Execute(query, new { adressen = adressenJSON });
         }
+
+        #region helper methods
+        public List<AdresX> GetAdressen(string gemeentenaam)
+        {
+            string query = $@"
+                            SELECT TOP 15000 a.*
+                            FROM Adressen a
+                            INNER JOIN Straten s ON a.StraatID = s.StraatID
+                            INNER JOIN Gemeentes g ON g.GemeenteID = s.GemeenteID
+                            WHERE g.Gemeentenaam = @Gemeentenaam
+                            ORDER BY a.StraatID;";
+
+            List<AdresX> adressen = _connection.Read<AdresX>(query, new { Gemeentenaam = gemeentenaam }).ToList();
+            return adressen;
+        }
+        #endregion
     }
 }

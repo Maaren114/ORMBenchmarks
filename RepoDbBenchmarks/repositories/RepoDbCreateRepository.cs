@@ -21,11 +21,7 @@ namespace RepoDbBenchmarks.repositories
         public void RepoDbInsertAll(List<AdresX> adressen)
         {
             _connection.Open();
-            List<List<AdresX>> adressenbatches = SplitListIntoBatches(adressen, 2098);
-            foreach (var adressenbatch in adressenbatches)
-            {
-                _connection.InsertAll(adressenbatch, batchSize: 262); // 262 gaat wel nog. 263 niet meer!!! (teveel parameters)
-            }
+            _connection.InsertAll(adressen, batchSize: 262); // OPGEPAST: 262 gaat wel nog. 263 niet meer. (teveel parameters)
             _connection.Close();
         }
 
@@ -69,20 +65,6 @@ namespace RepoDbBenchmarks.repositories
             _connection.ExecuteNonQuery(query, new { Adressen = adressenJSON });
             _connection.Close();
         }
-
-        #region helper methods
-        public List<List<T>> SplitListIntoBatches<T>(List<T> sourceList, int batchSize)
-        {
-            List<List<T>> batches = new List<List<T>>();
-
-            for (int i = 0; i < sourceList.Count; i += batchSize)
-            {
-                List<T> batch = sourceList.Skip(i).Take(batchSize).ToList();
-                batches.Add(batch);
-            }
-            return batches;
-        }
-        #endregion
     }
 }
 

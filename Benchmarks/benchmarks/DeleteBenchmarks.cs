@@ -23,7 +23,7 @@ namespace Benchmarks.benchmarks
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [CsvExporter]
-    [MaxIterationCount(100)]
+    //[MaxIterationCount(100)]
     public class DeleteBenchmarks
     {
         private static EFCoreDeleteRepository _EFCoreRepository = null!;
@@ -35,8 +35,9 @@ namespace Benchmarks.benchmarks
         private static OrmLiteDeleteRepository _ormLiteRepository = null!;
         private static PetaPocoDeleteRepository _petapocorepository = null!;
         private static RepoDbDeleteRepository _repoDbRepository = null!;
-
-        private List<AdresX> _adressen = new List<AdresX>();
+        private static DapperSelectRepository _dapperSelectRepository = null!;
+        private static DapperCreateRepository _dapperCreateRepository = null!;
+        private static List<AdresX> _adressen = new List<AdresX>();
 
         public DeleteBenchmarks()
         {
@@ -49,8 +50,9 @@ namespace Benchmarks.benchmarks
             _ormLiteRepository = new OrmLiteDeleteRepository();
             _petapocorepository = new PetaPocoDeleteRepository();
             _repoDbRepository = new RepoDbDeleteRepository();
-            var repo = new EFCoreCreateRepository();
-            _adressen = repo.GetAdressen("Zottegem", 15557);
+            _dapperSelectRepository = new DapperSelectRepository();
+            _adressen = _dapperSelectRepository.GetRandomAdressen();
+            _dapperCreateRepository = new DapperCreateRepository();
         }
 
         #region EF Core
@@ -77,12 +79,6 @@ namespace Benchmarks.benchmarks
         {
             _EFCoreRepository.ExecuteSqlRaw(_adressen);
         }
-
-        //[Benchmark]
-        //public void EFCore_ExecuteSql()
-        //{
-        //    _EFCoreRepository.EFCoreExecuteSql(_adressen);
-        //}
 
         [Benchmark]
         public void EFCore_BulkDelete_ZZZProjects()
@@ -138,7 +134,7 @@ namespace Benchmarks.benchmarks
         public void NormNetExecute()
         {
             _normNetRepository.DeleteExecute(_adressen);
-           
+
         }
         #endregion
 
@@ -183,5 +179,16 @@ namespace Benchmarks.benchmarks
             _repoDbRepository.RepoDbExecuteNonQuery(_adressen);
         }
         #endregion
+
+        [IterationCleanup]
+        public void CleanupAfterIteration()
+        {
+            _adressen = _dapperSelectRepository.GetRandomAdressen();
+            _dapperCreateRepository.DapperExecute(_adressen);
+        }
     }
 }
+
+
+
+

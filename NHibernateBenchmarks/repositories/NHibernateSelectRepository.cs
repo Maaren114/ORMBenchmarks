@@ -21,7 +21,7 @@ namespace NHibernateBenchmarks.repositories
             {
                 List<AdresX> adressen = new List<AdresX>();
 
-                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098); // 2098 gaat nog, 2099 niet! (teveel parameters)
 
                 foreach (var niscodebatch in niscodebatches)
                 {
@@ -44,7 +44,7 @@ namespace NHibernateBenchmarks.repositories
             {
                 List<AdresX> adressen = new List<AdresX>();
 
-                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098); // 2098 gaat nog, 2099 niet! (teveel parameters)
 
                 foreach (var niscodebatch in niscodebatches)
                 {
@@ -64,7 +64,7 @@ namespace NHibernateBenchmarks.repositories
             using (var transaction = session.BeginTransaction())
             {
                 List<AdresX> adressen = new List<AdresX>();
-                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098);
+                List<List<string>> niscodebatches = SplitListIntoBatches(niscodes, 2098); // 2098 gaat nog, 2099 niet! (teveel parameters)
 
                 foreach (var niscodebatch in niscodebatches)
                 {

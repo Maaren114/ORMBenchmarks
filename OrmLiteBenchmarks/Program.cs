@@ -12,9 +12,12 @@ namespace OrmLiteBenchmarks
             var repodelete = new OrmLiteDeleteRepository();
             var reposelect = new OrmLiteSelectRepository();
 
+            var adressen = reposelect.GetAdressen("Zottegem");
+            repodelete.OrmLiteDeleteAll(adressen);
 
+            //var niscodes = reposelect.GetNisCodes(15000).ToList();
 
-            //var adressen = reposelect.GetAdressen("Zottegem").Take(10).ToList();
+            //reposelect.OrmLiteSelect(niscodes);
 
             //var straten = reposelect.GetStraten(50);
 
@@ -39,8 +42,8 @@ namespace OrmLiteBenchmarks
             //niscodes.Add("98154d7e-11be-4820-8447-7f181e3ee084");
 
 
-            var niscodes = reposelect.GetNisCodes(15000).Take(450).ToList();
-            var x = reposelect.OrmLiteSqlList(niscodes);
+            //var niscodes = reposelect.GetNisCodes(15000).Take(450).ToList();
+            //var x = reposelect.OrmLiteSqlList(niscodes);
 
 
             //var adressen = reposelect.Select(niscodes);

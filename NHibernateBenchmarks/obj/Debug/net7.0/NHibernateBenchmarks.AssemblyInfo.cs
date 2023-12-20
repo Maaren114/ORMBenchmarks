@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NHibernateBenchmarks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cc83eca28b60a3fee4752685a5913b683918f03")]
 [assembly: System.Reflection.AssemblyProductAttribute("NHibernateBenchmarks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NHibernateBenchmarks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

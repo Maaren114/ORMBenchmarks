@@ -19,6 +19,7 @@ namespace NHibernateBenchmarks.mappings
             Map(x => x.Busnummer);
             Map(x => x.Status);
             Map(x => x.NISCode);
+            Map(x => x.Postcode);
             Map(x => x.StraatID).Column("StraatID");
             //References(x => x.Straat, "StraatID");
         }

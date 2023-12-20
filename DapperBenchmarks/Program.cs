@@ -16,11 +16,11 @@ namespace DapperBenchmarks
             var deleterepo = new DapperDeleteRepository();
             var selectrepo = new DapperSelectRepository();
 
-
-
             var adressen = selectrepo.GetAdressen();
 
-            updateRepo.DapperBulkUpdate_DapperPlus(adressen);
+
+            createRepo.Test2();
+
 
 
 

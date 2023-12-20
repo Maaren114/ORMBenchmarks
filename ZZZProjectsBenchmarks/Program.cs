@@ -13,20 +13,9 @@ namespace ZZZProjectsBenchmarks
 
             var adressen = repocreate.GetAdressen("Zottegem");
 
+            repodelete.EFCoreBulkDelete_ZZZProjects(adressen);
 
 
-            repoupdate.ZZZProjectsBulkUpdate(adressen);
-
-
-
-            //adressen.ForEach(x =>
-            //{
-            //    x.Status = ":)";
-            
-            //});
-
-            //repoupdate.ZZZProjectsBulkUpdate(adressen);
-            //repocreate.ZZZProjectsBulkInsert(adressen);
         }
     }
 }

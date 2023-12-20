@@ -92,6 +92,15 @@ namespace DapperBenchmarks.repositories
 
             IEnumerable<AdresX> adressen = _dbConnection.Query<AdresX>(query).Where(a => a.Huisnummer == "1");
         }
+
+        public void Test2()
+        {
+            string query = $@"SELECT TOP 10 * FROM Adressen WHERE AdresID = " + "1" + " ;";
+
+            IEnumerable<AdresX> adressen = _dbConnection.Query<AdresX>(query);
+
+
+        }
         #endregion
     }
 }

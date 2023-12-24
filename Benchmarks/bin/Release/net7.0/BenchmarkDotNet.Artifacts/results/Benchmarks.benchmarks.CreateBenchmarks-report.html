@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>Benchmarks.benchmarks.CreateBenchmarks-20231219-214325</title>
+<title>Benchmarks.benchmarks.CreateBenchmarks-20231223-224258</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -17,7 +17,7 @@ BenchmarkDotNet v0.13.10, Windows 10 (10.0.19045.3803/22H2/2022Update)
 Intel Core i7-8700 CPU 3.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
 .NET SDK 8.0.100-preview.7.23376.3
   [Host]     : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
-  Job-HWFZOU : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+  Job-QLFFJU : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>InvocationCount=1  UnrollFactor=1  
 </code></pre>
@@ -25,24 +25,24 @@ Intel Core i7-8700 CPU 3.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical c
 <table>
 <thead><tr><th>Method                 </th><th>Mean </th><th>Error</th><th>StdDev</th><th>Median</th><th>Rank</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>RepoDb_BulkInsert</td><td>50.71 ms</td><td>5.885 ms</td><td>15.910 ms</td><td>46.64 ms</td><td>1</td><td>-</td><td>-</td><td>-</td><td>726.66 KB</td>
-</tr><tr><td>LinqToDb_BulkCopy</td><td>56.36 ms</td><td>8.200 ms</td><td>22.170 ms</td><td>49.83 ms</td><td>1</td><td>-</td><td>-</td><td>-</td><td>725.9 KB</td>
-</tr><tr><td>EFCore_BulkInsert_ZZZProjects</td><td>60.96 ms</td><td>4.783 ms</td><td>12.683 ms</td><td>55.59 ms</td><td>2</td><td>-</td><td>-</td><td>-</td><td>1136.52 KB</td>
-</tr><tr><td>Dapper_BulkInsert_DapperPlus</td><td>63.51 ms</td><td>6.636 ms</td><td>18.054 ms</td><td>54.95 ms</td><td>2</td><td>-</td><td>-</td><td>-</td><td>4325.1 KB</td>
-</tr><tr><td>OrmLite_BulkInsert</td><td>70.55 ms</td><td>5.889 ms</td><td>15.719 ms</td><td>63.83 ms</td><td>3</td><td>1000.0000</td><td>-</td><td>-</td><td>7116.97 KB</td>
-</tr><tr><td>EFCore_BulkInsert_BorisDj</td><td>89.26 ms</td><td>7.276 ms</td><td>20.039 ms</td><td>81.34 ms</td><td>4</td><td>2000.0000</td><td>1000.0000</td><td>-</td><td>14198.98 KB</td>
-</tr><tr><td>LinqToDb_Execute</td><td>198.55 ms</td><td>2.777 ms</td><td>2.319 ms</td><td>197.64 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13886.55 KB</td>
-</tr><tr><td>PetaPocoExecute</td><td>201.41 ms</td><td>4.019 ms</td><td>7.647 ms</td><td>201.11 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13897.51 KB</td>
-</tr><tr><td>Dapper_Execute</td><td>202.33 ms</td><td>5.118 ms</td><td>13.836 ms</td><td>196.52 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13890.55 KB</td>
-</tr><tr><td>RepoDb_ExecuteNonQuery</td><td>204.49 ms</td><td>4.069 ms</td><td>10.721 ms</td><td>199.57 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13888.71 KB</td>
-</tr><tr><td>EFCore_ExecuteSqlRaw</td><td>204.79 ms</td><td>3.847 ms</td><td>9.722 ms</td><td>202.81 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13897.54 KB</td>
-</tr><tr><td>NormNetExecute</td><td>208.56 ms</td><td>6.175 ms</td><td>17.007 ms</td><td>204.63 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13889.34 KB</td>
-</tr><tr><td>NHibernate_CreateSqlQuery</td><td>210.84 ms</td><td>4.125 ms</td><td>6.777 ms</td><td>210.48 ms</td><td>6</td><td>-</td><td>-</td><td>-</td><td>13913.71 KB</td>
-</tr><tr><td>OrmLite_ExecuteNonQuery</td><td>224.88 ms</td><td>4.465 ms</td><td>9.612 ms</td><td>222.20 ms</td><td>7</td><td>2000.0000</td><td>2000.0000</td><td>-</td><td>28161 KB</td>
-</tr><tr><td>NHibernate_Save</td><td>1,681.26 ms</td><td>32.489 ms</td><td>39.899 ms</td><td>1,673.58 ms</td><td>8</td><td>20000.0000</td><td>6000.0000</td><td>1000.0000</td><td>120673.52 KB</td>
-</tr><tr><td>EFCore_AddRange</td><td>2,189.30 ms</td><td>21.256 ms</td><td>17.750 ms</td><td>2,195.24 ms</td><td>9</td><td>27000.0000</td><td>9000.0000</td><td>2000.0000</td><td>163862.48 KB</td>
-</tr><tr><td>EFCore_Add</td><td>2,210.80 ms</td><td>13.791 ms</td><td>12.225 ms</td><td>2,210.41 ms</td><td>9</td><td>27000.0000</td><td>9000.0000</td><td>2000.0000</td><td>164339.02 KB</td>
-</tr><tr><td>RepoDb_InsertAll</td><td>2,377.68 ms</td><td>19.831 ms</td><td>16.560 ms</td><td>2,375.35 ms</td><td>10</td><td>6000.0000</td><td>3000.0000</td><td>-</td><td>47150.77 KB</td>
+</thead><tbody><tr><td>RepoDb_BulkInsert</td><td>48.38 ms</td><td>5.602 ms</td><td>14.86 ms</td><td>43.42 ms</td><td>1</td><td>-</td><td>-</td><td>-</td><td>726.66 KB</td>
+</tr><tr><td>LinqToDb_BulkCopy</td><td>49.68 ms</td><td>5.593 ms</td><td>15.12 ms</td><td>49.02 ms</td><td>1</td><td>-</td><td>-</td><td>-</td><td>725.9 KB</td>
+</tr><tr><td>Dapper_BulkInsert_DapperPlus</td><td>60.69 ms</td><td>6.848 ms</td><td>18.28 ms</td><td>53.15 ms</td><td>2</td><td>-</td><td>-</td><td>-</td><td>4325.1 KB</td>
+</tr><tr><td>EFCore_BulkInsert_ZZZProjects</td><td>64.89 ms</td><td>8.262 ms</td><td>22.48 ms</td><td>55.42 ms</td><td>2</td><td>-</td><td>-</td><td>-</td><td>1136.52 KB</td>
+</tr><tr><td>OrmLite_BulkInsert</td><td>67.45 ms</td><td>4.118 ms</td><td>10.78 ms</td><td>61.93 ms</td><td>3</td><td>1000.0000</td><td>-</td><td>-</td><td>7116.97 KB</td>
+</tr><tr><td>EFCore_BulkInsert_BorisDj</td><td>92.70 ms</td><td>9.113 ms</td><td>25.40 ms</td><td>82.08 ms</td><td>4</td><td>2000.0000</td><td>1000.0000</td><td>-</td><td>14199.02 KB</td>
+</tr><tr><td>LinqToDb_Execute</td><td>215.37 ms</td><td>4.292 ms</td><td>10.53 ms</td><td>215.04 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13886.23 KB</td>
+</tr><tr><td>Dapper_Execute</td><td>215.92 ms</td><td>4.396 ms</td><td>11.81 ms</td><td>214.93 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13889.95 KB</td>
+</tr><tr><td>RepoDb_ExecuteNonQuery</td><td>217.79 ms</td><td>4.355 ms</td><td>11.24 ms</td><td>216.37 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13888.32 KB</td>
+</tr><tr><td>NHibernate_CreateSqlQuery</td><td>218.41 ms</td><td>6.105 ms</td><td>16.71 ms</td><td>212.65 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13913.93 KB</td>
+</tr><tr><td>NormNetExecute</td><td>218.46 ms</td><td>5.379 ms</td><td>14.82 ms</td><td>214.73 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13889.27 KB</td>
+</tr><tr><td>PetaPocoExecute</td><td>218.57 ms</td><td>4.690 ms</td><td>12.60 ms</td><td>215.92 ms</td><td>5</td><td>-</td><td>-</td><td>-</td><td>13897.77 KB</td>
+</tr><tr><td>EFCore_ExecuteSqlRaw</td><td>227.75 ms</td><td>6.915 ms</td><td>18.81 ms</td><td>221.94 ms</td><td>6</td><td>-</td><td>-</td><td>-</td><td>13898.13 KB</td>
+</tr><tr><td>OrmLite_ExecuteNonQuery</td><td>241.18 ms</td><td>5.095 ms</td><td>14.03 ms</td><td>238.05 ms</td><td>7</td><td>1000.0000</td><td>1000.0000</td><td>1000.0000</td><td>28162.98 KB</td>
+</tr><tr><td>NHibernate_Save</td><td>1,740.24 ms</td><td>31.845 ms</td><td>28.23 ms</td><td>1,735.62 ms</td><td>8</td><td>20000.0000</td><td>6000.0000</td><td>-</td><td>128867.49 KB</td>
+</tr><tr><td>EFCore_AddRange</td><td>2,141.51 ms</td><td>31.226 ms</td><td>24.38 ms</td><td>2,135.37 ms</td><td>9</td><td>25000.0000</td><td>8000.0000</td><td>-</td><td>163851.97 KB</td>
+</tr><tr><td>EFCore_Add</td><td>2,172.67 ms</td><td>42.998 ms</td><td>35.90 ms</td><td>2,191.42 ms</td><td>9</td><td>25000.0000</td><td>8000.0000</td><td>-</td><td>164320.73 KB</td>
+</tr><tr><td>RepoDb_InsertAll</td><td>2,330.73 ms</td><td>17.353 ms</td><td>14.49 ms</td><td>2,332.17 ms</td><td>10</td><td>6000.0000</td><td>3000.0000</td><td>-</td><td>47150.77 KB</td>
 </tr></tbody></table>
 </body>
 </html>

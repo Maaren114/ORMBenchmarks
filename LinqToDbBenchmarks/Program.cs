@@ -17,8 +17,8 @@ namespace LinqToDbBenchmarks
             var selectrepo = new LinqToDbSelectRepository();
 
             var adressen = dapperselect.GetAdressen();
-            deleterepo.LinqToDbDelete(adressen);
 
+            createrepo.LinqToDbBulkCopy(adressen);
         }
 
     }

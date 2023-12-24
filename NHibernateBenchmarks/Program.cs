@@ -19,7 +19,7 @@ namespace NHibernateBenchmarks
 
             var adressen = dapperselect.GetAdressen();
 
-            updaterepo.NHibernate_Update(adressen);
+            deleterepo.NHibernateDelete(adressen);
 
         }
     }

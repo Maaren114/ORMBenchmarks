@@ -112,9 +112,28 @@ namespace EFCoreBenchmarks.repositories
             List<AdresX> adressen = _context.Adressen.FromSqlRaw(query).ToList();
             return adressen;
         }
+
+        public List<StraatX> GetStraten()
+        {
+            string query = $@"
+                            SELECT TOP 15000 *
+                            FROM Straten s;";
+
+            List<StraatX> straten = _context.Straten.FromSqlRaw(query).ToList();
+            return straten;
+        }
+
+        public void EFCoreUpdateRangeStraten(List<StraatX> updates)
+        {
+            _context.Straten.UpdateRange(updates);
+            _context.SaveChanges();
+        }
         #endregion
     }
 }
+
+
+
 
 
 

@@ -18,7 +18,7 @@ namespace ZZZProjectsBenchmarks.repositories
 
         public List<AdresX> GetAdressen(string gemeentenaam)
         {
-            List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).Take(15000).ToList();
+            List<AdresX> adressen = _context.Adressen.Take(15000).ToList();
             return adressen;
         }
 

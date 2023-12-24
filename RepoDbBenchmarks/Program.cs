@@ -16,10 +16,11 @@ namespace RepoDbBenchmarks
             var repodelete = new RepoDbDeleteRepository();
 
 
-            var adressen = dapperselect.GetAdressen();
+            var adressen = dapperselect.GetRandomNisCodes();
 
-            repodelete.RepoDbDeleteAll(adressen);
 
+
+            reposelect.RepoDbQuery(adressen);
         }
     }
 }

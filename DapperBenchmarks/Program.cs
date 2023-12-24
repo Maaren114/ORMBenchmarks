@@ -18,8 +18,7 @@ namespace DapperBenchmarks
 
             var adressen = selectrepo.GetAdressen();
 
-
-            createRepo.Test2();
+            createRepo.DapperBulkInsert_DapperPlus(adressen);
 
 
 

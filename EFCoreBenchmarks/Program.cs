@@ -15,14 +15,7 @@ namespace EFCoreBenchmarks
             var selectrepo = new EFCoreSelectRepository();
             var testrepo = new TestRepository();
 
-            var adressen = updateRepo.GetAdressen();
-
-
-
-
-            deleterepo.EFCoreRemove(adressen);
-
-
+            var adres = selectrepo.GetAdresAdoNet(111106541);
         }
     }
 }

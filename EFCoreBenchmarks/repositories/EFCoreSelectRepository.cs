@@ -62,6 +62,51 @@ namespace EFCoreBenchmarks.repositories
         {
             return _context.Adressen.Map(a => a.NISCode).Take(amount).ToList();
         }
+
+        public AdresX GetAdres(int adresID)
+        {
+            var adres = _context.Adressen.FirstOrDefault(a => a.AdresID == adresID);
+            return adres;
+        }
+
+        public AdresX GetAdresAdoNet(int adresID)
+        {
+            using (SqlConnection connection = new SqlConnection(Toolkit.GetConnectionString()))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM Adressen WHERE AdresID = @AdresID";
+                using (SqlCommand commando = new SqlCommand(query, connection))
+                {
+                    commando.Parameters.Add(new SqlParameter("@AdresID", adresID));
+
+                    using (SqlDataReader reader = commando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            AdresX adres = new AdresX
+                            {
+                                AdresID = (int)reader["AdresID"],
+                                StraatID = (int)reader["StraatID"],
+                                Huisnummer = (string)reader["Huisnummer"],
+                                Appartementnummer = (string)reader["Appartementnummer"],
+                                Busnummer = (string)reader["Busnummer"],
+                                Status = (string)reader["Status"],
+                                NISCode = (string)reader["NISCode"],
+                                Postcode = (int)reader["Postcode"]
+                            };
+
+                            return adres;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
     }
 }

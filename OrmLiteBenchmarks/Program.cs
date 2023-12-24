@@ -17,7 +17,6 @@ namespace OrmLiteBenchmarks
             var adressen = dapperselect.GetAdressen();
 
             repodelete.OrmLiteDeleteAll(adressen);
-
         }
     }
 }

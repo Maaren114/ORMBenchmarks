@@ -135,6 +135,12 @@ namespace EFCoreBenchmarks.repositories
             List<AdresX> adressen = _context.Adressen.Where(adres => adres.Straat.Gemeente.Gemeentenaam == gemeentenaam).OrderBy(a => a.StraatID).Take(aantal).AsNoTracking().ToList();
             return adressen;
         }
+
+        internal void EFCoreAddStraten(List<StraatX> straten)
+        {
+            _context.Straten.AddRange(straten);
+            _context.SaveChanges();
+        }
         #endregion
     }
 }

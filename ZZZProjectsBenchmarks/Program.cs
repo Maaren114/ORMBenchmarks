@@ -15,7 +15,6 @@ namespace ZZZProjectsBenchmarks
 
             repodelete.EFCoreBulkDelete_ZZZProjects(adressen);
 
-
         }
     }
 }
